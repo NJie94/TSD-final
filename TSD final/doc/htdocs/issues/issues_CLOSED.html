@@ -1,0 +1,578 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- Subroutine: PrintHtmlHeader -->
+<html>
+<head>
+<title>  ccdoc home page   Ccdoc Issues</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor=white>
+<a name=top></a>
+<center>
+<font size="+2"><b><font size=2><a href="../../index.html">ccdoc home page</a></font><br>Ccdoc Issues</b></font><br><font size="+2"><b>CLOSED Status</b></font><br><b><a href="issues.html">All</a></b>
+<br>
+Joe Linoff
+<br>
+$Date: 2004/09/30 16:09:26 $
+<br>
+<font size="-1">$Revision: 1.33 $</font>
+</center>
+<!-- Subroutine: PrintHtmlEntrySummaryTable -->
+<a name=summary></a>
+<hr noshade width="100%" size=2>
+<center>
+<font size="+1">Entry Summary</font><br>
+<table border=1>
+<tr>
+<th>Id
+<th>Title
+<th>Status
+</tr>
+<tr>
+<td><a href="#TAG_0011">0011</a></td>
+<td>Instantiations of class template methods are reported as global functions.</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0023">0023</a></td>
+<td>DOC++ vs ccdoc</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0055">0055</a></td>
+<td>ccdoc generates default special members for C style structs </td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0057">0057</a></td>
+<td>"Undocumented" as default short desc. in tables is confusing.</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0058">0058</a></td>
+<td>Provide a way to turn off the default author and version for packages.</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0065">0065</a></td>
+<td>Links from documentation in namespaces are not recognized correctly.</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0081">0081</a></td>
+<td>Multi-space blank lines between SHORT and LONG descriptions cause them to merge.</td>
+<td>CLOSED</td>
+</tr>
+<tr>
+<td><a href="#TAG_0100">0100</a></td>
+<td>If using switch -files with a wildcard expression the first file is not processed.</td>
+<td>CLOSED</td>
+</tr>
+</table>
+</center>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0011></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>Instantiations of class template methods are reported as global functions.</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/08/24</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/08/24</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0011
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0023">[Next]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+In the following example, the instantiation of the template
+constructor is incorrectly reported as a global function.
+<pre>
+    template &lt;class T&gt;
+    class A {
+    public:
+      A();
+    };
+
+    // Instantiation is incorrectly reported as
+    // a global function.
+    template &lt;class T&gt;
+    A&lt;T&gt;::A()
+    {
+    }
+</pre>
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+This occurs because ccdoc attempts to do a name resolution to determine
+where the instantiation belongs so it tries to look up A&lt;T&gt; and can't
+find it.
+<p>
+The best way to work around this problem is to tell ccdoc to ignore
+the template method instantiations as shown below:
+<pre>
+    template &lt;class T&gt;
+    class A {
+    public:
+      A();
+    };
+
+    <b><i>#if !defined(__ccdoc__)</i></b>
+    // Instantiation is incorrectly reported as
+    // a global function.
+    template &lt;class T&gt;
+    A&lt;T&gt;::A()
+    {
+    }
+    <b><i>#endif</i></b>
+</pre>
+Meanwhile, I am looking at adding a feature to ccdoc to tell it to
+ignore template method instantiations (without ignoring template
+functions), see issue <a href="#TAG_0012">0012</a>.
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0023></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>DOC++ vs ccdoc</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:pbc@poczta.onet.pl">Bragas</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/08/28</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2003/02/18</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0023
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0055">[Next]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0011">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+I'm wondering if you couldn't merge your project with DOC++. They look very
+similar and joining your efforts could help creating even better tool (best
+in its category ?).
+<p>
+I'm not DOC++ developer and this is just my private impression.
+<p>
+<hr>
+<i>
+That is an interesting suggestion. I never really gave it much thought
+because there are a large number of documentation generation tools out
+there (see my other tools page) and I have no idea which ones are
+suitable for merging.
+</i>
+<p>
+<i>
+As far as I am concerned, the DOC++ developers (or anyone else for
+that matter) are free to take the ccdoc code and incorporate it into
+their system(s). I would be happy to support them in that
+effort. Furthermore, if they showed sufficient commitment to my goal
+of improving documentation in the C++ community for free, I would be
+happy to hand it over completely.
+</i>
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+Surveyed current ccdoc users and asked whether they wanted this
+project merged with Doxygen or DOC++. All (100%) of the respondents
+said no because they felt that the tools served different needs.
+Ccdoc was viewed as an interface documentation tool and doxygen was
+viewed as a source code documentation tool. In many cases, folks used
+both.
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0055></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>ccdoc generates default special members for C style structs </td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:ddekany@freemail.hu">Dékány Dániel</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/09/20</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/09/20</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0055
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0057">[Next]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0023">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+Ccdoc should never create default special members (constructor, destructor,
+operator=) for structs in C programs, since there is no such thing in C.
+<hr>
+<i>
+This is true. Unfortunately, ccdoc does not officially support C.
+</i>
+<p>
+<i>
+Perhaps this problem can be solved in another way by allowing 
+you to specify -nocdsm in phase1 for certain files. 
+</i>
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+Client has a workaround. I will re-open this issue if I get additional
+requests.
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0057></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>"Undocumented" as default short desc. in tables is confusing.</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:ddekany@freemail.hu">Dékány Dániel</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/09/20</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/09/21</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0057
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0058">[Next]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0055">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+"Undocumented", the default short description can be confusing in HTML
+tables when most entries have a short description, since "Undocumented"
+entries can be easily overlooked. I think the solution is to give switch to
+override this text, then I can replace it with "-".
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+Ccdoc already supports this. 
+The resolution is described in detail in issue <a href="#TAG_0058">0058</a>.
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0058></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>Provide a way to turn off the default author and version for packages.</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:ddekany@freemail.hu">Dékány Dániel</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/09/20</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/09/21</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0058
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0065">[Next]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0057">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+Reporting unascribed as the default package author and reporting version as
+unknown is not so useful in some projects, since we do it on package level.
+Perhaps -[no]rptdnpa and -[no]rptdnpd, where np is for non-package entity?
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+Ccdoc provides a mechanism for turning off the default author and version
+for any package by allowing the client to specify them explicitly. The
+technique for doing this is to create a text file with entries for each
+property. That file could look something like this:
+<blockquote>
+<pre>
+// Create empty entries for packages to avoid using the defaults.
+/**
+ * &amp;nbsp;
+ * @author &amp;nbsp;
+ * @version &amp;nbsp;
+ * @pkgdoc PKG1
+ */
+/**
+ * &amp;nbsp;
+ * @author &amp;nbsp;
+ * @version &amp;nbsp;
+ * @pkgdoc PKG1::SUBPKG1
+ */
+/**
+ * &amp;nbsp;
+ * @author &amp;nbsp;
+ * @version &amp;nbsp;
+ * @pkgdoc PKG1::SUBPKG2
+ */
+</pre>
+</blockquote>
+This file would be added to the phase 1 flow as follows:
+<blockquote>
+<pre>
+ccdoc -db $CCDOC_DATABASE pkgdoc.txt
+</pre>
+</blockquote>
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0065></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>Links from documentation in namespaces are not recognized correctly.</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:glass@cholod.ru">Dmitry A.Steklenev</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/09/25</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/09/25</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0065
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0081">[Next]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0058">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+Code Sample:
+<blockquote>
+<pre>
+namespace nms  {
+
+  class some_class
+  {
+     public:
+       void some_class();
+  };
+
+  /** 
+   * Some description
+   * 
+   * Red, but not linked:
+   * @$ some_class
+   * and "see also" have same problem.
+   * @see some_class
+   */
+  
+  class some_other_class
+  {
+     public:
+       void some_other_class();
+  };
+}
+</pre>
+</blockquote>
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+Ccdoc does not resolve scoped identifiers (because it does not process
+included header files that may contain "using" statements). This means that
+the user must be explicitly specify the full scope of an identifier
+as shown below.
+<blockquote>
+<pre>
+namespace nms  {
+
+  class some_class
+  {
+     public:
+       void some_class();
+  };
+
+  /** 
+   * Some description
+   * 
+   * Red, but not linked:
+   * @$ <b>nms::</b>some_class
+   * and "see also" have same problem.
+   * @see <b>nms::</b>some_class
+   */
+  
+  class some_other_class
+  {
+     public:
+       void some_other_class();
+  };
+}
+</pre>
+</blockquote>
+<p>
+I added fix that will resolve partially scoped references in most cases. See issue
+<a href="#TAG_0118">0118</a> for details.
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0081></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>Multi-space blank lines between SHORT and LONG descriptions cause them to merge.</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:bzoe@javtech.com">Ben Zoe</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/10/23</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/10/24</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0081
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0100">[Next]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0065">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+Multi-space blank lines between SHORT and LONG descriptions cause them
+to merge.
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+The current ccdoc behavior is correct.
+Blanks are used to indicates lines in HTML &lt;pre&gt; clauses.
+The fix that was described (testing for lines that
+contain w/s) would fail to properly parse the following case:
+<blockquote>
+<pre>
+/**
+ * This is a short description with some code in it:
+ * <pre>
+ * // Whitespace test
+ * 
+ * </pre>
+ *
+ * This is the start of the long description.
+ */
+</pre>
+</blockquote>
+<p>
+I am not sure that this resolution is correct because the ccdoc
+short description does not conform to the javadoc specification.
+See issue <a href="#TAG_0089">0089</a> for details.
+</blockquote>
+<!-- Subroutine: PrintHtmlEntry -->
+<a name=TAG_0100></a>
+<hr noshade width="100%" size=2>
+<table width="100%"  border=0 cellspacing=0 cellpadding=0>
+<tr valign=top>
+<td>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td><b>Title: </b></td><td>If using switch -files with a wildcard expression the first file is not processed.</td></tr>
+<tr><td><b>Status: </b></td><td>CLOSED</td></tr>
+<tr><td><b>Reported By: </b></td><td><a href="mailto:marten.gustavsson@amfpension.se">Mårten Gustavsson</a></td></tr>
+<tr><td><b>Reported On: </b></td><td>2001/11/09</td></tr>
+<tr><td><b>Resolved By: </b></td><td>Joe Linoff</td></tr>
+<tr><td><b>Resolved On: </b></td><td>2001/11/12</td></tr>
+</table>
+</td>
+<td align=right>
+<b>Id: </b>0100
+<br>
+<font size="-1"><a href="#top">[Top]</a></font>
+<br>
+<font size="-1"><a href="#summary">[Summary]</a></font>
+<br>
+<font size="-1"><a href="#TAG_0081">[Previous]</a></font>
+</td>
+</tr>
+</table><b>Problem Description: </b>
+<blockquote>
+
+I saw in the issue list that someone has a problem with gnuwin32. If
+using switch -files with a wildcard expression the first file is not
+processed. No problem if removing the -files switch.
+</blockquote>
+<b>Solution Description: </b>
+<blockquote>
+
+The first file is not really ignored because the ccdoc expects it to contain a list
+of files to process. When it doesn't find any files it goes on to the other entries
+on the command line.
+</blockquote>
+<!-- Subroutine: PrintHtmlTrailer -->
+<hr noshade width="100%" size=2>
+<center>
+<font size="-1">
+<a href="#top">[Top]</a>
+<br>
+This page is maintained by <a href="mailto:jdl@xilinx.com">Joe Linoff</a>.
+<br>
+Last updated: $Date: 2004/09/30 16:09:26 $
+<br>
+<br>
+<i>This page was automatically generated by issues.pl.</i>
+</font>
+</center>
+</body>
+</html>

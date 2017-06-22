@@ -1,0 +1,1352 @@
+<html>
+<head>
+<title>CcDoc News Archive</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<h2 align="center"><a name="top"></a><font size="2"><a href="../index.html">ccdoc 
+  home page</a></font><br>
+  News Archive<br>
+  <font size="2">$Revision: 1.51 $<br>
+  $Date: 2004/09/30 04:32:59 $ <br>
+  Joe Linoff</font></h2>
+<hr>
+<table width="100%" border="2" cellspacing="0" cellpadding="10" bordercolor="#CCCCCC">
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">June 5, 2003<br>
+      Thursday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Logged two new issues:</p>
+      <ul>
+        <li>Issue <a href="issues/issues.html#TAG_0174">0174</a> - Bug#195282: 
+          ccdoc: FTBFS with g++-3.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0175">0175</a> - Generate an 
+          index in HTML and XML.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">May 21, 2003<br>
+      Wednesday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Released a new version of ccdoc (r40) that fixes issues <a href="issues/issues.html#TAG_0172">0172</a> 
+        and <a href="issues/issues.html#TAG_0173">0173</a>.</p>
+      <p> I will be on vacation until mid-June so no work will be done on ccdoc 
+        during that time.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">May 15, 2003<br>
+      Thursday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Logged a new issue:</p>
+      <ul>
+        <li>Issue <a href="issues/issues.html#TAG_0173">0173</a> - The md5hash 
+          macro is being improperly ignored by the rptmac1 heuristic.</li>
+      </ul>
+      <p>This issue has been fixed in r40 (not yet released). </p>
+      <p>I will release r40 in the next couple of days.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Mar 11, 2003<br>
+      Tuesday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Logged a new issue:</p>
+      <ul>
+        <li>Issue <a href="issues/issues.html#TAG_0172">0172</a> - Template friend 
+          declarations are not resolved properly when packages are used.</li>
+      </ul>
+      <p>This issue has been fixed in r40 (not yet released). If this is a critical 
+        problem for you, please let me know and I will spin a release.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Mar 06, 2003<br>
+      Thursday </td>
+    <td valign="top" bgcolor="#FFFFCC">Dmitry Steklenev has ported ccdoc v08r39 
+      to the OS/2 Warp platform. It can be downloaded from this URL (which is 
+      also available on the downloads page): ftp://ftp.ptv.ru/pub/glass/ccdoc/ccdoc_v08/ccdoc_v08r39.zip 
+      . </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC"> 
+      <p>Mar 03, 2003<br>
+        Monday </p>
+    </td>
+    <td valign="top" bgcolor="#FFFFCC">The Mac OSX port is now available.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 28, 2003<br>
+      Friday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc: v08r39, is available with the following changes:</p>
+      <ul>
+        <li>Converted all of the source files to unix format for the upcoming 
+          release to cygwin (ccdoc-0.8.39-1).</li>
+        <li>Converted all of the source files to unix format for the upcoming 
+          release to cygwin (ccdoc-0.8.39-1).</li>
+        <li>Created a cygwin compatible release package (with lots of help from 
+          the cygwin folks). The package provides a man page, a configure script, 
+          patches, etc. This might be useful for folks that want to support ccdoc 
+          on linux platforms. I will add a link to the cygwin package when it 
+          is officially accepted.</li>
+        <li>Improved the man page generation (also for cygwin). There were still 
+          a number of problems in r38. The r39 man page is now readable.</li>
+        <li>Removed dead code found by Christian Ehrlicher during his port to 
+          the Borland compiler.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0152">0152</a> - Ignore duplicate 
+          macros names. <i>This surfaced during r39 testing. I found a case where 
+          duplicate macros were reported when they were defined in different packages.</i></li>
+        <li>Issue <a href="issues/issues.html#TAG_0167">0167</a> - In German we 
+          want to use embedded dots in the short description.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0168">0168</a> - Slow g++ 3.2 
+          compile of help.cc because of the large help string.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0169">0169</a> - Man page has 
+          formatting problems.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0170">0170</a> - Bug on NT platforms 
+          parsing command line with spaces and wildcards.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0171">0171</a> - Constructors 
+          with constructed default arguments are reported with the wrong method 
+          name.</li>
+        <li>Added _INCLUDED and _included suffixes to the -rtpmac1 heuristics.</li>
+      </ul>
+      The Mac OSX port is not yet available because the server on the SourceForge 
+      compile farm server that I use for porting is down. I will update the release 
+      as soon as it is ported.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 27, 2003<br>
+      Thursday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>The following issues have been reported and will be fixed in the upcoming 
+        v08r39 release. Please contact me if you need any of these fixes now.</p>
+      <ul>
+        <li>Converted all of the source files to unix format for the upcoming 
+          release to cygwin.</li>
+        <li>Removed dead code found by Christian Ehrlicher during his port to 
+          the Borland compiler</li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 26, 2003<br>
+      Wednesday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>The following issues have been reported and will be fixed in the upcoming 
+        v08r39 release. Please contact me if you need any of these fixes now.</p>
+      <ul>
+        <li>Issue <a href="issues/issues.html#TAG_0152">0152</a> - Ignore duplicate 
+          macros names. <i>This resurfaced during r39 testing. I found a case 
+          where duplicate macros were reported when they were defined in different 
+          packages.</i></li>
+        <li>Issue <a href="issues/issues.html#TAG_0170">0170</a> - Bug on NT platforms 
+          parsing command line with spaces and wildcards.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0171">0171</a> - Constructors 
+          with constructed default arguments are reported with the wrong method 
+          name.</li>
+        <li>Improved the man page generation. There were still a number of problems. 
+          The r39 man page is now readable.</li>
+        <li>Added _INCLUDED and _included suffixes to the -rtpmac1 heuristics.</li>
+      </ul>
+      The current plan is to release v08r39 this weekend.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 25, 2003<br>
+      Tuesday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>The following issues have been reported and will be fixed in the upcoming 
+        v08r39 release. Please contact me if you need any of these fixes now.</p>
+      <ul>
+        <li>Issue <a href="issues/issues.html#TAG_0167">0167</a> - In German we 
+          want to use embedded dots in the short description.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0168">0168</a> - Slow g++ 3.2 
+          compile of help.cc because of the large help string.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0169">0169</a> - Man page has 
+          formatting problems.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 24, 2003<br>
+      Monday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc: v08r38, is available that has extensive updates 
+        to the on-line help. </p>
+      <p>It is very similar in function to v08r37. The only differences are:</p>
+      <ul>
+        <li>It officially supports the @endlink directive.</li>
+        <li>It ignores macros with the _INCLUDED_ suffix in -rptmac1 mode.</li>
+        <li>Issue <a href="issues/issues.html#TAG_0166">0166</a> was fixed.</li>
+      </ul>
+      <p>There are a number of infra-structure changes. I added a script to automatically 
+        update the downloads page and removed the Makefile dependency on the set_release_info 
+        script. None of the infra-structure changes affect the program.</p>
+      <p>I also added the FAQ.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 21, 2003<br>
+      Friday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08r37 is available that fixes the bugs described 
+        by the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0157">0157</a> - In some cases operator 
+          code is being processed incorrectly.</li>
+        <li><a href="issues/issues.html#TAG_0158">0158</a> - Class method implementations 
+          are reported as global functions.</li>
+        <li><a href="issues/issues.html#TAG_0159">0159</a> - Very long names make 
+          the contents table very hard to read.</li>
+        <li><a href="issues/issues.html#TAG_0159">0160</a> - Empty function names 
+          appear under certain conditions.</li>
+        <li><a href="issues/issues.html#TAG_0161">0161</a> - Strange function 
+          names like &quot;max)&quot; appear sometimes.</li>
+        <li><a href="issues/issues.html#TAG_0162">0162</a> - Doxygen compatibility 
+          - support single line comments using doxygen syntax.</li>
+        <li><a href="issues/issues.html#TAG_0163">0163</a> - Doxygen compatibility 
+          - ignore the @endlink directive.</li>
+        <li><a href="issues/issues.html#TAG_0164">0164</a> - Doxygen compatibility 
+          - ignore @file comment blocks.</li>
+      </ul>
+      <p>This release was made because this version actually successfully parsed 
+        an STL release!</p>
+      <p>The best practices document was also updated to include namespace and 
+        template sections.</p>
+      <p>Be careful, there was an intermediate version of r37 that was available 
+        for a couple of days because of source forge compile farm problems. To 
+        make sure that you have the correct version of r37 look for the -doxygen 
+        switch in the help.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 20, 2003<br>
+      Thursday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08r36 is available that fixes the bugs described 
+        by the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0156">0156</a> - More namespace problems 
+          in r35.</li>
+      </ul>
+      <p>This release was made because this was a critical bug.</p>
+      <p>Two new bugs were reported.</p>
+      <p>These have already been fixed in the working version of r37 and will 
+        be released later this week.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0157">0157</a> - In some cases operator 
+          code is being processed incorrectly.</li>
+        <li><a href="issues/issues.html#TAG_0158">0158</a> - Class method implementations 
+          are reported as global functions.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 19, 2003<br>
+      Wednesday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08r35 is available that fixes the bugs described 
+        by the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0154">0154</a> - Eliminate the requirement 
+          that the -rptmac and -rptmac1 switches appear in phase 1.</li>
+        <li><a href="issues/issues.html#TAG_0155">0155</a> - Incorrect documentation 
+          when there is only one ccdoc namespace comment for namespace declarations 
+          in multiple files.</li>
+      </ul>
+      <p>This release was made because the r34 requirement that -rptmac and -rptmac1 
+        switches appear in phase 1 was inconsistent with the interface paradigm.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 18, 2003<br>
+      Tuesday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08r34 is available that fixes the bugs described 
+        by the following issues:</p>
+      <ul>
+        <a href="issues/issues.html#TAG_0056">0056</a> - Incorrect line numbers 
+        reported in warning messages. 
+        <li><a href="issues/issues.html#TAG_0098">0098</a> - It would be a help 
+          if you made the reference red if the class cannot be found for @link.</li>
+        <li><a href="issues/issues.html#TAG_0107">0107</a> - javadoc # syntax 
+          is not supported in the {@link...} directive.</li>
+        <li><a href="issues/issues.html#TAG_0109">0109</a> - Print warnings to 
+          stderr.</li>
+        <li><a href="issues/issues.html#TAG_0122">0122</a> - Enhance template 
+          reporting.</li>
+        <li><a href="issues/issues.html#TAG_0149">0149</a>- Template method implementations 
+          confuse ccdoc. There was a corner case that was not handled properly.</li>
+        <li><a href="issues/issues.html#TAG_0150">0150</a> - Make it easier to 
+          update the revision number in the source files.</li>
+        <li><a href="issues/issues.html#TAG_0152">0152</a> - Ignore duplicate 
+          macros names.</li>
+        <li><a href="issues/issues.html#TAG_0153">0153</a> - Add a heuristic to 
+          ignore include guards and DLLIMPORT macros.</li>
+      </ul>
+      <p>This release was made because a user had a critical need for the 0149 
+        fix and because I had some time.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 17, 2003<br>
+      Monday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08r33 is available that fixes the bugs described 
+        by issues</p>
+      <ul>
+        <li> <a href="issues/issues.html#TAG_0144">0144</a> - Mark static members 
+          and methods in the class overview.</li>
+        <li> <a href="issues/issues.html#TAG_0149">0149</a>- Template method implementations 
+          confuse ccdoc.</li>
+      </ul>
+      <p>This release was made because a user had a critical need for the 0149 
+        fix.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Feb 10, 2003<br>
+      Monday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08r32 is available that fixes the bugs described 
+        by issues</p>
+      <ul>
+        <li> <a href="issues/issues.html#TAG_0146">0146</a> - Namespace processing 
+          doesn't work properly in certain cases.</li>
+        <li> <a href="issues/issues.html#TAG_0147">0147</a>- Lots of compiler 
+          warnings when building ccdoc using the Borland C++ compiler.</li>
+      </ul>
+      <p>This release was made because a user had a critical need for the 0146 
+        fix.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Jan 30, 2003<br>
+      Thursday</td>
+    <td valign="top" bgcolor="#FFFFCC">A new version of ccdoc v08r31 is available 
+      that fixes the bug described by issue <a href="issues/issues.html#TAG_0145">0145</a>. 
+      This release was made because a user had a critical need for this fix.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Jan 29, 2003<br>
+      Wednesday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Two new ports are available:</p>
+      <ol>
+        <li>CerfCube SA1110 - Debian 3.0</li>
+        <li>x86 - Freebsd 4.7<br>
+        </li>
+      </ol>
+      <p>Added four new issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0141">0141</a> - Architecture is not 
+          reflected in the bin directory name.</li>
+        <li><a href="issues/issues.html#TAG_0142">0142</a> - No man page for linux 
+          ports.</li>
+        <li><a href="issues/issues.html#TAG_0143">0143</a> - Support javadocs 
+          frames format.</li>
+        <li><a href="issues/issues.html#TAG_0144">0144</a> - Mark static members 
+          and methods in the class overview.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Jan 20, 2003<br>
+      Monday </td>
+    <td valign="top" bgcolor="#FFFFCC">A new version of ccdoc v08r30 has been 
+      released. This version provides a unix style man page and some updates to 
+      the on-line help and license info to reference ccdoc.sourceforge.net instead 
+      of www.joelinoff.com/ccdoc. Added a port to the IBM Websphere platform (J2EE). 
+      There are no other changes to the program. 
+      <p></p>
+      <p>Couldn't do the CerfCube port because there was a problem at the source 
+        forge compile farm. I will release it when that platform becomes available.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Jan 15, 2003<br>
+      Wednesday </td>
+    <td valign="top" bgcolor="#FFFFCC">Updated the ccdoc v08r29 release to fix 
+      a bug (issue <a href="issues/issues.html#TAG_0140">0140</a>) that was uncovered 
+      during large system regression testing. The bug fix required a single line 
+      change so I decided not to bump the release number. Instead I changed the 
+      release date from 1/14 to 1/15. 
+      <p></p>
+      <p>Added the MacOS X 10.1 port.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Jan 14, 2003<br>
+      Tuesday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc v08<b>r29</b> has been released that fixes issues 
+        <a href="issues/issues.html#TAG_0138">0138</a> and <a href="issues/issues.html#TAG_0139">0139</a>. 
+        These bug fixes were considered serious enough to warrant a new release. 
+        In addition the copyright notice was updated and the issues list was added 
+        to the project page. </p>
+      <p>I figured out how to use the compile farm and was able to successfully 
+        port to a number of new platforms.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Jan 02,2003<br>
+      Thursday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Updated the counter script to allow users to add keys by id. This allows 
+        multiple users to share the same counter file. I also added a bunch of 
+        examples that show how to use the script in the help.</p>
+      <p>Uploaded all of the ccdoc source to the sourceforge.net CVS repository 
+        and added the sourceforge log to this page per their request.</p>
+      <p>I still need to figure out how to organize the release to make it source 
+        forge like but for now you should be able to get everything that you need. 
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Dec 31, 2002<br>
+      Tuesday </td>
+    <td valign="top" bgcolor="#FFFFCC">Updated the counter script to acknowledge 
+      the resources that I used, to add the version variable (which will be set 
+      when ccdoc is moved to the sourceforge repository) and added a 16x24 font 
+      to provide larger numbers. The latter change forced me to add a new switch 
+      called -font. There are two choices 8x8 and 16x24. To find out more about 
+      all of the available switches, enter the following URL in your browser: 
+      <a href="http://ccdoc.sourceforge.net/cgi-bin/counter.pl?help">http://ccdoc.sourceforge.net/cgi-bin/counter.pl?help</a>. 
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Dec 30, 2002<br>
+      Monday </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Finally completed the counter perl script (see the downloads page) and 
+        all of the executables. The project release has been officially moved 
+        to ccdoc.sourceforge.net!</p>
+      <p>I still need to update the CVS repository.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Dec 26, 2002<br>
+      Thursday</td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Changed the look and feel of the main page to make it much simpler (ala 
+        google - no frames, no fancy stuff). Also updated almost all of the documents 
+        in the system to bring them up to date and to check for consistency. Beefed 
+        up the introduction to show how to use the tool (simplistically).</p>
+      <p>Many thanks to Ragav Satish for suggestions on simplifying the interface.</p>
+      <p>Moved the project documentation to sourceforge.net (<a href="http://ccdoc.sourceforge.net">http://ccdoc.sourceforge.net</a>). 
+        I still need to move the source into the sourceforge CVS repository and 
+        update www.joelinoff.com/ccdoc. That should happen tomorrow.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Dec 20, 2002<br>
+      Monday </td>
+    <td bgcolor="#FFFFCC" valign="top">Mike Braca ported ccdoc to the Mac OSX 
+      platform. It is now available on the downloads page.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Dec 10, 2002<br>
+      Tuesday</td>
+    <td bgcolor="#FFFFCC" valign="top">Ccdoc was incorporated in the Debian Unix 
+      distribution in the unstable archive by Magnus Ekdahl. This was done because 
+      of the licensing change from my &quot;roll your own&quot; to the MIT License. 
+      For more information on the debian project see <a href="http://www.debian.org">http://www.debian.org</a>.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Dec 6, 2002<br>
+      Friday</td>
+    <td bgcolor="#FFFFCC"> 
+      <p>Found a bug and logged it as issue 0137. There is a workaround (that 
+        is described in the issue entry) so the fix is not urgent.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0137">0137</a> - The {@link} directive 
+          does not work @param clauses.</li>
+      </ul>
+      <p>In other news, I have moved my development environment to version 3.2.3 
+        of the gcc compiler (from cygwin).</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Nov 18, 2002<br>
+        Tuesday</p>
+    </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p align="left">Added a link on the downloads page to the ccdoc port that 
+        Dieter Habelitz did to RISC OS. Details can be found <a href="http://www.arcsite.de/hp/ccdoc/pages/english.html">here</a>. 
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC"> 
+      <p>Nov 14, 2002<br>
+        Thursday</p>
+    </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>A new version of ccdoc <b>r28</b> has been released one day after r27! 
+        This was done because a critical bug was found for nested structures/classes 
+        (issue 0136). The following issues have been fixed in r28:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0135">0135</a> - Fix the copyright 
+          notice in the code.</li>
+        <li><a href="issues/issues.html#TAG_0136">0136</a> - Ccdoc gets confused 
+          by a nested struct.</li>
+      </ul>
+      I apologize for any inconvenience this causes.</td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Nov 13, 2002<br>
+      Wednesday</td>
+    <td bgcolor="#FFFFCC" valign="top"> 
+      <p>Updated the users guide for r27 and added a new best practices document. 
+        The porting is complete and I am now running system tests. When these 
+        have been verified, ccdoc v08r27 will be released.</p>
+      <p>The systems tests have completed successfully which means that r27 will 
+        be released today with the following fixes:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0120">0120</a> - Add support for the 
+          proposed todo tag in javadoc.</li>
+        <li><a href="issues/issues.html#TAG_0123">0123</a> - {@link ...} not reported 
+          correctly in the @deprecated directive.</li>
+        <li><a href="issues/issues.html#TAG_0124">0124</a> - Scanner condition 
+          evaluates to a constant value.</li>
+        <li><a href="issues/issues.html#TAG_0125">0125</a> - Hash mark displayed 
+          for default {@link...} reference.</li>
+        <li><a href="issues/issues.html#TAG_0127">0127</a> - CcDoc does not recognize 
+          recognize template derivations.</li>
+        <li><a href="issues/issues.html#TAG_0129">0129</a> - All subdirectories 
+          are picked up on NT when the * wildcard is specified.</li>
+        <li><a href="issues/issues.html#TAG_0130">0130</a> - Code section wraps 
+          in a strange way for small browser windows.</li>
+        <li><a href="issues/issues.html#TAG_0133">0133</a> - Anonymous namespaces 
+          are not handled correctly.</li>
+        <li><a href="issues/issues.html#TAG_0134">0134</a> - Need a forward link 
+          to the contents section for classes and packages</li>
+      </ul>
+      <p>In addition the users guide has been updated to reflect the introduction 
+        of the @todo directive and the new switches -[no]rptcfuns.</p>
+      <p>After the release was finished I came across an interesting discussion 
+        about the ccdoc license in the linux.debian.legal newsgroup. I have added 
+        it as issue <a href="issues/issues.html#TAG_0135">0135</a> and have updated 
+        the source code for r28. For those of you that are interested in all things 
+        legal, the new copyright notice supercedes the previous copyright notice 
+        for all prior releases.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" nowrap bgcolor="#FFFFCC">Nov 12, 2002<br>
+      Tuesday </td>
+    <td bgcolor="#FFFFCC" valign="top"> 
+      <p>All bug fixes and enhancements are complete for r27. I am currently porting 
+        and expect to be finished by the end of the week.</p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>Nov 11, 2002<br>
+        Monday</p>
+    </td>
+    <td valign="top" bgcolor="#FFFFCC"> 
+      <p>The results of the survey are in. I will continue to fully support ccdoc. 
+        100% of the respondents, about 25, voted to NOT merge with Doxygen. Many 
+        of them (&gt;75%) use both doxygen and ccdoc (I also use both) but they 
+        liked using ccdoc as the interface documentation.</p>
+      <p>As far as supporting ccdoc goes, r27 is almost ready for release. The 
+        following bugs have been fixed.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0120">0120</a> - Add support for the 
+          proposed todo tag in javadoc.</li>
+        <li><a href="issues/issues.html#TAG_0123">0123</a> - {@link ...} not reported 
+          correctly in the @deprecated directive.</li>
+        <li><a href="issues/issues.html#TAG_0124">0124</a> - Scanner condition 
+          evaluates to a constant value.</li>
+        <li><a href="issues/issues.html#TAG_0125">0125</a> - Hash mark displayed 
+          for default {@link...} reference.</li>
+        <li><a href="issues/issues.html#TAG_0127">0127</a> - CcDoc does not recognize 
+          recognize template derivations.</li>
+        <li><a href="issues/issues.html#TAG_0129">0129</a> - All subdirectories 
+          are picked up on NT when the * wildcard is specified.</li>
+        <li><a href="issues/issues.html#TAG_0130">0130</a> - Code section wraps 
+          in a strange way for small browser windows.</li>
+        <li><a href="issues/issues.html#TAG_0134">0134</a> - Need a forward link 
+          to the contents section for classes and packages.</li>
+      </ul>
+      <p>The following bug is scheduled to be fixed before r27 is released.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0133">0133</a> - Anonymous namespaces 
+          are not handled correctly.</li>
+      </ul>
+      <p>I am actively working on it and hope to finish by the end of the week.</p>
+      <p align="left">&nbsp;</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 10, 2002<br>
+      Thursday</td>
+    <td> 
+      <p>I am back and am actively working on r27. There are a few critical bugs 
+        that must be fixed for this release. They are:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0127">0127</a>: CcDoc does not recognize 
+          recognize template derivations.</li>
+        <li> <a href="issues/issues.html#TAG_0133">0133</a>: anonymous namespaces 
+          are not handled correctly</li>
+      </ul>
+      <p>The following bugs/issues have been reported since March 15th:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0131">0131</a>: Support comma separated 
+          declarations. </li>
+        <li><a href="issues/issues.html#TAG_0132">0132</a>: support single-line 
+          prefix comments via //@+ </li>
+        <li><a href="issues/issues.html#TAG_0133">0133</a>: Anonymous namespaces 
+          are not handled correctly.</li>
+      </ul>
+      <p>I have been looking at using XML (schema) as the optional output for 
+        the backend in r28. Please feel free to let me know what you think of 
+        this approach.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 21, 2002<br>
+      Wednesday</td>
+    <td>I will be out of the country until late September and will not be working 
+      during that time.</td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 15, 2002<br>
+      Thursday</td>
+    <td> 
+      <p>I have been completely lame about updating my web pages and have received 
+        a lot of mail from folks asking whether ccdoc is still being supported. 
+        The answer yes, here is what I have been doing.</p>
+      <ul>
+        <li>Planning for the next release (r27).</li>
+        <li>Fixing some bugs.</li>
+        <li>Working on XML output.</li>
+        <li>Looking at whether doxygen can replace ccdoc.</li>
+      </ul>
+      <p>The last bullet probably requires some explanation. </p>
+      <p>A number of folks have suggested that ccdoc be combined with doxygen 
+        (a very good source code documentation and browsing system). Since I really 
+        didn't know much about doxygen I looked into it. My conclusion is that 
+        doxygen is much more that ccdoc will ever be. </p>
+      <p>The development team has done a great job of developing a tool that documents 
+        and provides source code browsing for C++ projects and I strongly recommend 
+        it. </p>
+      <p>Ccdoc is only meant to document interfaces so there is no question that 
+        doxygen is a superset of ccdoc from a functional perspective. </p>
+      <p>From a project standpoint, I am still trying to understand what ccdoc 
+        users want. A few of them have reported that they really like the interface 
+        only approach and some users even use both tools. I am still polling and 
+        have currently decided to continue to support ccdoc to the best of my 
+        ability.</p>
+      <p>Please let me know what you think. Here are the choices:</p>
+      <ol>
+        <li>Continue to support ccdoc as an interface documentation tool.</li>
+        <li>Cease work on ccdoc and work with the doxygen team to get ccdoc like 
+          output.</li>
+      </ol>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Mar 15, 2002 <br>
+      Friday</td>
+    <td> 
+      <p>Two new bugs were reported:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0129">0129</a> - All subdirectories 
+          are picked up on NT when the * wildcard is specified.</li>
+        <li><a href="issues/issues.html#TAG_0130">0130</a> - Code section wraps 
+          in a strange way for small browser windows.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Mar 01, 2002<br>
+      Friday</td>
+    <td> 
+      <p>Found another bug (and work around):</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0127">0127</a> - CcDoc does not recognize 
+          recognize template derivations.</li>
+        <li><a href="issues/issues.html#TAG_0128">0128</a> - Order class entities 
+          the same way that were ordered in v07.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Feb 26, 2002 <br>
+      Tuesday</td>
+    <td> 
+      <p>I actually took a bit more than a month off but now I am back. Here is 
+        the summary of the latest bugs:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0123">0123</a> - {@link ...} not reported 
+          correctly in the @deprecated directive.</li>
+        <li><a href="issues/issues.html#TAG_0124">0124</a> - Scanner condition 
+          evaluates to a constant value.</li>
+        <li><a href="issues/issues.html#TAG_0125">0125</a> - Hash mark displayed 
+          for default {@link...} reference.</li>
+        <li><a href="issues/issues.html#TAG_0126">0126</a> - CcDoc does not recognize 
+          ccdoc c++ short comment in a &quot;typedef struct&quot; definition.</li>
+      </ul>
+      <p>Here are some of the things that I am looking at in the near future for 
+        ccdoc:</p>
+      <ul>
+        <li>XML output (on the perennial list)</li>
+        <li>User defined directives. The idea here is that users could define 
+          their own custom directives to extend ccdoc for their environment.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Dec 12, 2001<br>
+      Wednesday</td>
+    <td> 
+      <p>I am taking a month off from ccdoc to get some rest. I will get back 
+        to it in January 2002.</p>
+      <p> Please keep sending suggestions and bug reports, I will archive them 
+        and when I get back, catalogue them as issues.</p>
+      <p> Happy Holidays.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Dec 3, 2001<br>
+      Monday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 r26 2001/11/28&quot;.</p>
+      <p>This release fixes the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0086">0086</a> - Comment form to handle 
+          single line suffix comments.</li>
+        <li><a href="issues/issues.html#TAG_0099">0099</a> - Ccdoc does not correctly 
+          follow the standard for default constructors.</li>
+        <li><a href="issues/issues.html#TAG_0101">0101</a> - Template problem.</li>
+        <li><a href="issues/issues.html#TAG_0102">0102</a> - Returned nested classes 
+          and types in namespaces are not recognized correctly.</li>
+        <li><a href="issues/issues.html#TAG_0114">0114</a> - Error processing 
+          of a operator unsigned long().</li>
+        <li><a href="issues/issues.html#TAG_0115">0115</a> - Mangled links for 
+          .\doc\ references on the command line.</li>
+        <li><a href="issues/issues.html#TAG_0116">0116</a> - The string constant 
+          &quot;\\&quot; isn't parsed correctly.</li>
+        <li><a href="issues/issues.html#TAG_0117">0117</a> - Class method reported 
+          as global function.</li>
+        <li><a href="issues/issues.html#TAG_0118">0118</a> - Resolve partially 
+          scoped references</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 29, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>Two new issues added against r25</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0121">0121</a> - Reuse namespace comments 
+          between packages.</li>
+        <li><a href="issues/issues.html#TAG_0122">0122</a> - Enhance template 
+          reporting</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 28, 2001<br>
+      Wednesday</td>
+    <td> 
+      <p>Fixed the following issues in r26:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0099">0099</a> - Ccdoc does not correctly 
+          follow the standard for default constructors.</li>
+      </ul>
+      <p>Added another new issue against r25:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0120">0120</a> - Add support for the 
+          proposed todo tag in javadoc</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 27, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>Fixed the following issues in r26:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0101">0101</a> - Template problem.</li>
+      </ul>
+      <p>Added another new issue against r25:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0119">0119</a> - Inconsistent command 
+          line syntax for -html paths under DOS</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 26, 2001<br>
+      Monday</td>
+    <td> 
+      <p>Six new issues have been reported since the r25 release.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0113">0113</a> - Merge separate ccdoc 
+          databases.</li>
+        <li><a href="issues/issues.html#TAG_0114">0114</a> - Error processing 
+          of a operator unsigned long().</li>
+        <li><a href="issues/issues.html#TAG_0115">0115</a> - Mangled links for 
+          .\doc\ references on the command line.</li>
+        <li><a href="issues/issues.html#TAG_0116">0116</a> - The string constant 
+          &quot;\\&quot; isn't parsed correctly.</li>
+        <li><a href="issues/issues.html#TAG_0117">0117</a> - Class method reported 
+          as global function.</li>
+        <li><a href="issues/issues.html#TAG_0118">0118</a> - Resolve partially 
+          scoped references.</li>
+      </ul>
+      <p>I have already fixed <a href="issues/issues.html#TAG_0114">0114</a>, 
+        <a href="issues/issues.html#TAG_0116">0116</a>, <a href="issues/issues.html#TAG_0117">0117</a> 
+        and <a href="issues/issues.html#TAG_0118">0118</a>. I will release r26 
+        with these fixes by next Monday. If you are having serious problems with 
+        any of the above issues, please send me e-mail and I will release r26 
+        sooner.</p>
+      <p>In addition, a new feature has been added (as described by <a href="issues/issues.html#TAG_0086">0086</a>). 
+        This feature was requested and implemented by Ben Zoe. It allows you to 
+        specify a C++ style, single line, suffix comments as shown in the example 
+        below:</p>
+      <blockquote> 
+        <pre align="right">class Point3D {
+public:
+  int p1; //@- The x coordinate.
+  int p2; //@- The y coordinate.
+  int p3; //@- The z coordinate.
+};</pre>
+      </blockquote>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 19, 2001<br>
+      Monday</td>
+    <td> 
+      <p>Important! I released ccdoc v0.8 r25 twice today. The first had a date 
+        of 2001/11/17 which was incorrect. The correct version has a date of 2001/11/19. 
+        Please re-download when you get the chance.</p>
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 r25 2001/11/19&quot;. 
+        The following issues were fixed.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0095">0095</a> - Comma's inserted 
+          for each line in @returns and @deprecated comments. </li>
+        <li><a href="issues/issues.html#TAG_0097">0097</a> - Private method is 
+          reported incorrectly for overloaded methods with different scopes.</li>
+        <li><a href="issues/issues.html#TAG_0100">0100</a> - If using switch -files 
+          with a wildcard expression the first file is not processed.</li>
+        <li><a href="issues/issues.html#TAG_0103">0103</a> - Invalid processing 
+          of operator~().</li>
+        <li><a href="issues/issues.html#TAG_0104">0104</a> - Invalid processing 
+          of operator&amp;().</li>
+        <li><a href="issues/issues.html#TAG_0110">0110</a> - Invalid processing 
+          of operator[]().</li>
+        <li><a href="issues/issues.html#TAG_0111">0111</a> - Multiple link file 
+          overflow problem.</li>
+        <li><a href="issues/issues.html#TAG_0112">0112</a> - Phase 3 exception 
+          for operator |.</li>
+      </ul>
+      <p>I was not able to do as much in this release as I had hoped because of 
+        other commitments but these fixes (especially 0095) generated a lot of 
+        bug reports so I wanted to get them out as soon as possible.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 12, 2001<br>
+      Monday</td>
+    <td> 
+      <p>Twelve new issues were added today.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0098">0098</a> - It would be a help 
+          if you made the reference red if the class cannot be found for @link.</li>
+        <li><a href="issues/issues.html#TAG_0099">0099</a> - Ccdoc does not correctly 
+          follow the standard for default constructors.</li>
+        <li><a href="issues/issues.html#TAG_0100">0100</a> - If using switch -files 
+          with a wildcard expression the first file is not processed.</li>
+        <li><a href="issues/issues.html#TAG_0101">0101</a> - Template problem.</li>
+        <li><a href="issues/issues.html#TAG_0102">0102</a> - Returned nested classes 
+          and types in namespaces are not recognized correctly.</li>
+        <li><a href="issues/issues.html#TAG_0103">0103</a> - Invalid processing 
+          of operator~().</li>
+        <li><a href="issues/issues.html#TAG_0104">0104</a> - Invalid processing 
+          of operator&amp;().</li>
+        <li><a href="issues/issues.html#TAG_0105">0105</a> - The javadoc @see 
+          tag defines the label part as optional.</li>
+        <li><a href="issues/issues.html#TAG_0106">0106</a> - The javadoc spec 
+          for @see allows unqualified names as well as qualified names.</li>
+        <li><a href="issues/issues.html#TAG_0107">0107</a> - javadoc # syntax 
+          is not supported int the {@link...} directive.</li>
+        <li><a href="issues/issues.html#TAG_0108">0108</a> - -rptdefasd, -rptdefsd 
+          and -rptdefv problems and suggestions</li>
+        <li><a href="issues/issues.html#TAG_0109">0109</a> - Print warnings to 
+          stderr.</li>
+        <li><a href="issues/issues.html#TAG_0110">0110</a> - Invalid processing 
+          of operator[]().</li>
+      </ul>
+      <p>I have already fixed or closed issues <a href="issues/issues.html#TAG_0095">0095</a>, 
+        <a href="issues/issues.html#TAG_0097">0097</a>, <a href="issues/issues.html#TAG_0100">0100</a>, 
+        <a href="issues/issues.html#TAG_0103">0103</a>, <a href="issues/issues.html#TAG_0104">0104</a> 
+        and <a href="issues/issues.html#TAG_0110">0110</a> for r25. I will do 
+        as much as I can to get more bug fixes in before next Monday's release 
+        of r25 but I am very busy with other stuff right now so don't expect too 
+        much.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 5, 2001<br>
+      Monday</td>
+    <td> 
+      <p>Another new issue has been added:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0097">0097</a> - Private method is 
+          reported incorrectly for overloaded methods with different scopes.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 2, 2001<br>
+      Friday</td>
+    <td> 
+      <p>Two new issues have been added:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0095">0095</a> - Comma's inserted 
+          for each line in @returns and @deprecated comments.</li>
+        <li><a href="issues/issues.html#TAG_0096">0096</a> - Provide an @repeat 
+          operator to avoid having to re-type comments.</li>
+      </ul>
+      <p>Issues <a href="issues/issues.html#TAG_0093">0093</a>, <a href="issues/issues.html#TAG_0094">0094</a> 
+        and <a href="issues/issues.html#TAG_0096">0096</a> seem to address the 
+        common theme of reducing the need to type redundant comments. I am actively 
+        looking into this.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Nov 1, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>Two interesting issues have been added:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0093">0093</a> - Add javadoc style 
+          doc comment inheritance.</li>
+        <li><a href="issues/issues.html#TAG_0094">0094</a> - Comment reuse for 
+          overloaded functions.</li>
+      </ul>
+      <p>I really like the notion of comment inheritance and will see whether 
+        it can be added in the near future.</p>
+      <p>In addition, one user reported problems with ccdocv08r24 under cygwin 
+        on windows. I have not been able to duplicate the problem and I have heard 
+        from other cygwin users that it works for them so it hasn't been entered 
+        as an issue -- yet. Please let me know if you have similar problems.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 26, 2001<br>
+      Friday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 r24 2001/10/26&quot;.</p>
+      <p>This release fixes the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0079">0079</a> -<b> </b>platform.pl 
+          cannot handle embedded parentheses.</li>
+        <li><a href="issues/issues.html#TAG_0080">0080</a> - Trim trailing spaces 
+          in path name for get_stmt_no_pkgs().</li>
+        <li><a href="issues/issues.html#TAG_0081">0081</a> - Multi-space blank 
+          lines between SHORT and LONG descriptions cause them to merge.</li>
+        <li><a href="issues/issues.html#TAG_0082">0082</a> - Add the @since directive 
+          per the javadoc 1.2 specification.</li>
+        <li><a href="issues/issues.html#TAG_0083">0083</a> - Modify ccdoc to create 
+          a separate links page (as was done in v0.7a).</li>
+        <li><a href="issues/issues.html#TAG_0084">0084</a> - Alias @exception 
+          to @throws per javadoc 1.2.</li>
+        <li><a href="issues/issues.html#TAG_0085">0085</a> - Ccdoc not recognize 
+          default constructors with member initialization.</li>
+        <li><a href="issues/issues.html#TAG_0087">0087</a> - Exceptions were not 
+          reported as links.</li>
+        <li><a href="issues/issues.html#TAG_0088">0088</a> - An extra invalid 
+          link reported for @link references to classes.</li>
+        <li><a href="issues/issues.html#TAG_0089">0089</a> - Ccdoc short description 
+          syntax is not compliant with javadoc.</li>
+        <li><a href="issues/issues.html#TAG_0090">0090</a> - Support the {@link 
+          ...} javadoc syntax.</li>
+        <li><a href="issues/issues.html#TAG_0091">0091</a> - Constant values are 
+          not hyperlinked in the documentation for function arguments.</li>
+        <li><a href="issues/issues.html#TAG_0092">0092</a> - The @link syntax 
+          does not support the # scoping operator.</li>
+      </ul>
+      <p><b>Note</b> that the fix for issue <a href="issues/issues.html#TAG_0082">0082</a> 
+        will change the database contents so you will have to re-generate your 
+        databases. This is because the comment schema was modified to accomodate 
+        the new @since directive. I consider this intrusion acceptable because 
+        all clients that I know of re-generate the databases each time they run.</p>
+      <p><b>Note </b>that the fix for issue <a href="issues/issues.html#TAG_0089">0089</a> 
+        will change your HTML output because the javadoc syntax for short descriptions 
+        is different than the old ccdoc syntax. You can use the old ccdoc style 
+        syntax by specifying the -nojdsd switch. I decided to make the javadoc 
+        syntax the default because the behavior ccdoc input syntax is supposed 
+        to conform as closely as possible to javadoc semantics. The users guide 
+        has been updated to reflect this behavior.</p>
+      <p><b>Note</b> that the users guide has been updated to reflect the new 
+        @since, @throws and {@link...} support.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 25, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>A number of new issues have been reported. The bold issues have already 
+        been fixed in r24.</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0079">0079</a> - <b>platform.pl cannot 
+          handle embedded parentheses.</b></li>
+        <li><a href="issues/issues.html#TAG_0080">0080</a> - <b>Trim trailing 
+          spaces in path name for get_stmt_no_pkgs().</b></li>
+        <li><a href="issues/issues.html#TAG_0081">0081</a> - <b>Multi-space blank 
+          lines between SHORT and LONG descriptions cause them to merge.</b></li>
+        <li><a href="issues/issues.html#TAG_0082">0082</a> - <b>Add the @since 
+          directive per the javadoc 1.2 specification.</b></li>
+        <li><a href="issues/issues.html#TAG_0083">0083</a> - Modify ccdoc to create 
+          a separate links page (as was done in v0.7a).</li>
+        <li><a href="issues/issues.html#TAG_0084">0084</a> - <b>Alias @exception 
+          to @throws per javadoc 1.2.</b></li>
+        <li><a href="issues/issues.html#TAG_0085">0085</a> - <b>Ccdoc not recognize 
+          default constructors with member initialization.</b></li>
+        <li><a href="issues/issues.html#TAG_0086">0086</a> - Comment form to handle 
+          single line suffix comments.</li>
+        <li><a href="issues/issues.html#TAG_0087">0087</a> - <b>Exceptions were 
+          not reported as links.</b></li>
+        <li><a href="issues/issues.html#TAG_0088">0088</a> - <b>An extra invalid 
+          link reported for @link references to classes.</b></li>
+        <li><a href="issues/issues.html#TAG_0089">0089</a> - <b>Ccdoc short description 
+          syntax is not compliant with javadoc.</b></li>
+        <li><a href="issues/issues.html#TAG_0090">0090</a> - Support the {@link 
+          ...} javadoc syntax.</li>
+        <li><a href="issues/issues.html#TAG_0091">0091</a> - <b>Constant values 
+          are not hyperlinked in the documentation for function arguments.</b></li>
+      </ul>
+      <p></p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 19, 2001<br>
+      Friday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 r23 2001/10/19&quot;.</p>
+      <p>This release fixes the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0075">0075</a> - Ccdoc cannot handle 
+          function typedef of the form: typedef void fct(int arg1);</li>
+        <li><a href="issues/issues.html#TAG_0076">0076</a> - Conflict between 
+          -meta switch and ccdoc defined meta variables.</li>
+        <li><a href="issues/issues.html#TAG_0077">0077</a> - Ccdoc incorrectly 
+          identifies a class attribute name.</li>
+        <li><a href="issues/issues.html#TAG_0078">0078</a> - Ccdoc incorrectly 
+          identifies a variable as a function.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 16, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>Two issues have reported against r22. These are already fixed in r23 
+        and will be released at the end of this week or early next week. Here 
+        are the details:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0075">0075</a> - Ccdoc cannot handle 
+          function typedef of the form: typedef void fct(int arg1);</li>
+        <li><a href="issues/issues.html#TAG_0076">0076</a> - Conflict between 
+          -meta switch and ccdoc defined meta variables.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 12, 2001<br>
+      Friday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r22</b> 2001/10/12&quot;.</p>
+      <p>This release fixes the following issues:</p>
+      <ul>
+        <li><a href="issues/issues.html#TAG_0069">0069</a> - Cannot handle construct: 
+          &quot;Float operator/(const Float &amp; rval)&quot;</li>
+        <li><a href="issues/issues.html#TAG_0070">0070</a> - Users guide documentation 
+          error.</li>
+        <li><a href="issues/issues.html#TAG_0071">0071</a> - Operator keyword 
+          duplicated for method operators.</li>
+        <li><a href="issues/issues.html#TAG_0072">0072</a> - New switch to turn 
+          off sorting of class entities.</li>
+        <li><a href="issues/issues.html#TAG_0073">0073</a> - Can't tell ccdoc 
+          to ignore a privately declared default constructor.</li>
+        <li><a href="issues/issues.html#TAG_0074">0074</a> - Ccdoc cannot handle 
+          international character sets.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 8, 2001<br>
+      Monday</td>
+    <td>Several new issues have been reported: <a href="issues/issues.html#TAG_0069">0069</a>, 
+      <a href="issues/issues.html#TAG_0070">0070</a> and <a href="issues/issues.html#TAG_0071">0071</a>. 
+      These have been fixed in r22 which has not yet been released. I will not 
+      release these fixes until next week (to try to catch more problems) unless 
+      someone needs them urgently.</td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Oct 1, 2001<br>
+      Monday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r21</b> 2001/10/01&quot;.</p>
+      <p>This release fixes issues <a href="issues/issues.html#TAG_0064">0064</a>, 
+        <a href="issues/issues.html#TAG_0066">0066</a> and <a href="issues/issues.html#TAG_0068">0068</a>. 
+        It was triggered by 0068 which was a critical bug fix.</p>
+      <p>No one responded to my request to keep the solaris 2.4 port so it has 
+        been dropped from this release.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 24, 2001<br>
+      Monday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r20</b> 2001/09/24&quot;.</p>
+      <p>This release fixes issues <a href="issues/issues.html#TAG_0063">0063</a>.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 21, 2001<br>
+      Friday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r19</b> 2001/09/21&quot;.</p>
+      <p>This release fixes issues <a href="issues/issues.html#TAG_0053">0053</a>, 
+        <a href="issues/issues.html#TAG_0054">0054</a> and <a href="issues/issues.html#TAG_0059">0059</a>.</p>
+      <p>Issues <a href="issues/issues.html#TAG_0055">0055</a>, <a href="issues/issues.html#TAG_0057">0057</a> 
+        and <a href="issues/issues.html#TAG_0058">0058</a> have been closed.</p>
+      <p>The ccdoc generated web pages are now compliant with the HTML 4.01 Transitional 
+        specification.</p>
+      <p>The Solaris 2.4 port will be dropped in the next release because no-one 
+        seems to be using it. If you want me to continue to support this version, 
+        please send me <a href="mailto:joe@joelinoff.com,jdl@xilinx.com?Subject=keep%20bin_opt_suncc_solaris-2.4&body=Please%20continue%20porting%20to%20solaris%202.4.">e-mail</a> 
+        as soon as possible.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 20, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>Added issues <a href="issues/issues.html#TAG_0054">0054</a>, <a href="issues/issues.html#TAG_0055">0055</a>, 
+        <a href="issues/issues.html#TAG_0056">0056</a>, <a href="issues/issues.html#TAG_0057">0057</a>, 
+        <a href="issues/issues.html#TAG_0058">0058</a>, <a href="issues/issues.html#TAG_0059">0059</a> 
+        and <a href="issues/issues.html#TAG_0060">0060</a>.</p>
+      <p>Also validated the issues pages to make sure that they are HTML 3.2 compliant 
+        using the verifier described in issue 0059.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 19, 2001<br>
+      Wednesday</td>
+    <td>Web hosting problems have been fixed. The ccdoc web site was down for 
+      more than a day because of problems associated with the nimda worm.</td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 18, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r18</b> 2001/09/18&quot;.</p>
+      <p>This release fixes issues <a href="issues/issues.html#TAG_0052">0052</a> 
+        and is the first release that contains the linux port.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 11, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r17</b> 2001/09/11&quot;.</p>
+      <p>This release fixes issues <a href="issues/issues.html#TAG_0047">0047</a>, 
+        <a href="issues/issues.html#TAG_0048">0048</a>, <a href="issues/issues.html#TAG_0050">0050</a> 
+        and re-fixes issue <a href="issues/issues.html#TAG_0047">0045</a>.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 10, 2001<br>
+      Monday</td>
+    <td> 
+      <p>There were two new releases of ccdoc today: &quot;ccdoc v0.8 <b>r16</b> 
+        2001/09/10&quot; and &quot;ccdoc v0.8 <b>r15</b> 2001/09/10&quot;. </p>
+      <p>The reason for r16 is that a bug (<a href="issues/issues.html#TAG_0046">0046</a>) 
+        that was easy to fix was reported about half an hour after r15 was published. 
+        This bug fix was important for the user so I decided to re-release quickly.</p>
+      <p>The r15 release fixes issues <a href="issues/issues.html#TAG_0041">0041</a>, 
+        <a href="issues/issues.html#TAG_0041">0042</a>, <a href="issues/issues.html#TAG_0041">0043</a>, 
+        <a href="issues/issues.html#TAG_0041">0044</a>, and <a href="issues/issues.html#TAG_0042">0045</a>. 
+        Updated the users guide to reflect changes that occurred as the result 
+        of these fixes.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 7, 2001<br>
+      Friday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r14</b> 2001/09/07&quot;.</p>
+      <p>This release fixes issue <a href="issues/issues.html#TAG_0039">0039</a>. 
+        This fix significantly improves ccdoc run time in phases 2 and 3. It has 
+        no other affect.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 6, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r13</b> 2001/09/06&quot;.</p>
+      <p>This release fixes the following issues: <a href="issues/issues.html#TAG_0037">0037</a>, 
+        <a href="issues/issues.html#TAG_0038">0038</a> and <a href="issues/issues.html#TAG_0040">0040</a>.</p>
+      <p>Issue <a href="issues/issues.html#TAG_0039">0039</a> is still being worked 
+        on.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 4, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>The new release of ccdoc is available: &quot;ccdoc v0.8 <b>r12</b> 2001/09/04&quot;.</p>
+      <p>This version adds a quick reference guide was added (issue <a href="issues/issues.html#TAG_0035">0035</a>) 
+        to provide highlights of new features in v0.8 that will be of interest 
+        to users of 0.7a and it fixes issue <a href="issues/issues.html#TAG_0036">0036</a>.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Sep 2, 2001<br>
+      Sunday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 <b>r11</b> 2001/09/02&quot;.</p>
+      <p>It provides a fix for issue <a href="issues/issues.html#TAG_0034">0034</a> 
+        (the -rpthpc switch was too verbose). This fix won't be available for 
+        Solaris until next Tuesday.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 30, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 <b>r10</b> 2001/08/30&quot;.</p>
+      <p>It supports the resolution of issue <a href="issues/issues.html#TAG_0007">0007</a>, 
+        support for wildcards under MS windows in the MS-DOS command interpreter.</p>
+      <p>It also provides fixes for the following issues: <a href="issues/issues.html#TAG_0026">0026</a>, 
+        <a href="issues/issues.html#TAG_0027">0027</a>, <a href="issues/issues.html#TAG_0028">0028</a>, 
+        <a href="issues/issues.html#TAG_0029">0029</a>, <a href="issues/issues.html#TAG_0030">0030</a>, 
+        <a href="issues/issues.html#TAG_0031">0031</a>, <a href="issues/issues.html#TAG_0032">0032</a> 
+        and <a href="issues/issues.html#TAG_0033">0033</a>.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 29, 2001<br>
+      Wednesday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 <b>r9</b> 2001/08/29&quot;.</p>
+      <p>Issues <a href="issues/issues.html#TAG_0024">0024</a> and <a href="issues/issues.html#TAG_0025">0025</a> 
+        were fixed in r9.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 28, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>A new release of ccdoc is available: &quot;ccdoc v0.8 <b>r8</b> 2001/08/28&quot;.</p>
+      <p>Issues <a href="issues/issues.html#TAG_0020">0020</a>, <a href="issues/issues.html#TAG_0021">0021</a> 
+        and <a href="issues/issues.html#TAG_0022">0022</a> were fixed in r8.</p>
+      <p>Added issues <a href="issues/issues.html#TAG_0015">0015</a>, <a href="issues/issues.html#TAG_0016">0016</a>, 
+        <a href="issues/issues.html#TAG_0017">0017</a>, <a href="issues/issues.html#TAG_0018">0018</a>, 
+        <a href="issues/issues.html#TAG_0019">0019</a>, <a href="issues/issues.html#TAG_0020">0020</a>, 
+        <a href="issues/issues.html#TAG_0021">0021</a> and <a href="issues/issues.html#TAG_0022">0022</a>.</p>
+      <p>A -version switch was added to make it easier to determine which release 
+        of v0.8 you have (issue 0017).</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 24, 2001<br>
+      Friday </td>
+    <td> 
+      <p>Added issues <a href="issues/issues.html#TAG_0011">0011</a>, <a href="issues/issues.html#TAG_0012">0012</a>, 
+        <a href="issues/issues.html#TAG_0013">0013 </a>and <a href="issues/issues.html#TAG_0014">0014</a>.</p>
+      <p>Issue 0013: I am in the processing of adding ccdoc to source forge (<a href="http://sourceforge.net">http://sourceforge.net</a>). 
+        Today they approved the project!</p>
+      <p>Fixed issue 0014 and re-released 0.8.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 23, 2001<br>
+      Thursday</td>
+    <td> 
+      <p>Added some new issues.</p>
+      <p>Updated the users guide to document the new -meta switch and the -[no]cdsm 
+        switches. </p>
+      <p>Fixed issue <a href="issues/issues.html#TAG_0004">0004</a> by renaming 
+        the download files.</p>
+      <p>Closed issue <a href="issues/issues.html#TAG_0007">0007</a>. This is 
+        a known problem with a workaround.</p>
+      <p>Fixed issue <a href="issues/issues.html#TAG_0008">0008</a>. Added a new 
+        switch to phase 1 called -[no]cdsm to turn on or off the default creation 
+        of special members that are not explicitly defined by the class.</p>
+      <p>Fixed issue <a href="issues/issues.html#TAG_0009">0009</a>.</p>
+      <p>Fixed issue <a href="issues/issues.html#TAG_0010">0010</a>.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 22, 2001<br>
+      Wednesday </td>
+    <td> 
+      <p>Created the <a href="issues/issues.html">issues</a> section for the newly 
+        reported bugs and enhancement requests.</p>
+      <p>Fixed issues <a href="issues/issues.html#TAG_0001">0001</a>, <a href="issues/issues.html#TAG_0002">0002</a>, 
+        <a href="issues/issues.html#TAG_0003">0003</a>, <a href="issues/issues.html#TAG_0005">0005</a> 
+        and <a href="issues/issues.html#TAG_0006">0006</a>.</p>
+      <p>Released new versions of the executables with these fixes.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 21, 2001<br>
+      Tuesday</td>
+    <td> 
+      <p>The following switches were not implemented due to an oversight:</p>
+      <ul>
+        <li>-[no]rptmac</li>
+        <li>-[no]rpttype</li>
+        <li>-[no]rptun</li>
+      </ul>
+      <p>Many thanks to D&aacute;niel D&eacute;k&aacute;ny for promptly pointing 
+        out the problem.</p>
+      <p>I have fixed the problem and have released the updated version of ccdoc.</p>
+      <p>To determine whether you have a broken version specify -rptmac on the 
+        command line. If you get an error about a missing file, you have the old 
+        version. You can workaround this problem by specifying -macros or -no 
+        macros or you can fix the problem by downloading the most recent version 
+        of the release.</p>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFCC" valign="top"> 
+    <td>Aug 20, 2001<br>
+      Monday </td>
+    <td> 
+      <p>CcDoc version 0.8 has been released on the following platforms:</p>
+      <ul>
+        <li>Windows</li>
+        <li>SunOs 5.6</li>
+        <li>SunOs 5.8</li>
+        <li>HP UX</li>
+        <li>Linux</li>
+      </ul>
+      <p>Here is a brief overview of some of the new features:</p>
+      <ul>
+        <li>The HTML files names do not change between runs so you can now link 
+          to them safely.</li>
+        <li>Namespaces are supported.</li>
+        <li>Inherited methods are reported.</li>
+        <li>Pre-processing expressions are now fully supported.</li>
+        <li>A hierarchical class summary is generated.</li>
+        <li>The output format has changed. It is much simpler.</li>
+        <li>The program has been completely rewritten to take advantage of STL.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+</body>
+</html>

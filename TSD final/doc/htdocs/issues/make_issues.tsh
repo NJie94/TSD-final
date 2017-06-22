@@ -1,0 +1,4 @@
+#!tcsh
+\rm -f *~
+perl make_issues.pl -i issues.txt -o issues.html
+

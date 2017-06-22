@@ -1,0 +1,2498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>CcDoc Users Guide v08</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center"> 
+  <h2><font size="5"><a name="top"></a></font><font size="2"><a href="../../index.html">ccdoc 
+    home page</a></font><br>
+    <font size="5">CcDoc Users Guide</font> for v08<br>
+    <font size="2">Joe Linoff<br>
+    $Revision: 1.10 $<br>
+    $Date: 2003/02/27 05:02:53 $ </font></h2>
+  <div align="left"><a name="contents"></a> </div>
+  <hr>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Contents</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#top">&lt;</a> <a href="#introduction">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<ol>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#using_ccdoc">Using Ccdoc</a> 
+    <ol>
+      <li><a href="#example1">Use Case 1</a>: Document a simple C++ header file.</li>
+      <li><a href="#example2">Use Case 2</a>: Document a simple C++ header file 
+        with custom colors.</li>
+      <li><a href="#example3">Use Case 3</a>: Document a simple C++ header file 
+        with a link to a custom page and custom header and trailer info.</li>
+      <li><a href="#example4">Use Case 4</a>: Document a simple C++ header file 
+        with a different name for @root.</li>
+      <li><a href="#example5">Use Case 5</a>: Document the root package.</li>
+      <li><a href="#example6">Use Case 6</a>: Where is ccdoc.index.html?</li>
+      <li><a href="#example7">Use Case 7</a>: Document multiple C++ header files 
+        in a single directory.</li>
+      <li> <a href="#example8">Use Case 8</a>: Document multiple C++ header files 
+        in multiple directories.</li>
+      <li><a href="#example9">Use Case 9</a>: Document namespaces.</li>
+      <li><a href="#example10">Use Case 10</a>: Document a class.</li>
+      <li><a href="#example11">Use Case 11</a>: Capture the on-line help in a 
+        log file.</li>
+      <li><a href="#example12">Use Case 12</a>: Tell ccdoc to ignore sections 
+        of code.</li>
+      <li><a href="#example13">Use Case 13</a>: Tell ccdoc to link to the related 
+        source cosde.</li>
+      <li><a href="#example14">Use Case 14</a>: Run ccdoc from an MS-DOS command 
+        prompt.</li>
+      <li><a href="#example15">Use Case 15</a>: How do I expand wildcards in MS-DOS?</li>
+      <li><a href="#example16">Use Case 16</a>: How do I determine which version/release 
+        of ccdoc I have?</li>
+      <li><a href="#example17">Use Case 17</a>: How do I add custom hyperlinks 
+        to the @see directive?</li>
+      <li><a href="#example18">Use Case 18</a>: What does the -rpthpc switch do?</li>
+      <li><a href="#example19">Use Case 19</a>: How can I change the indent level 
+        on the class summary page?</li>
+      <li><a href="#example20">Use Case 20</a>: How can I change variable width 
+        font in the code section to a fixed width font?</li>
+      <li><a href="#example21">Use Case 21</a>: How can I fix mangled links to 
+        my HTML directory under DOS?</li>
+      <li><a href="#example22">Use Case 22</a>: How can I specify a C++ style, 
+        single line, suffix comment in ccdoc?</li>
+      <li><a href="#example23">Use Case 23</a>: How do I specify a link to an 
+        operator in the{@link ..} and @see directives?</li>
+    </ol>
+  </li>
+  <li><a href="#comment_syntax">Comment Syntax </a> 
+    <ol>
+      <li><a href="#format">Format</a></li>
+      <li><a href="#directives">Directives</a> 
+        <ol>
+          <li><a href="#at_java_style">/**, */</a></li>
+          <li><a href="#at_java_dox_suffix_style"> /**&lt;,*/, /*!&lt;,*/</a></li>
+          <li><a href="#at_off_on">/**@#-*/, /**@#+*/</a></li>
+          <li><a href="#at_insert_ch">/**@#=&lt;ch&gt;*/</a></li>
+          <li><a href="#at_cxx_style">//@{, //@}</a></li>
+          <li><a href="#at_cxx_single_line_style">//@-, ///&lt;, //!&lt;</a></li>
+          <li><a href="#at_at">@@</a></li>
+          <li><a href="#at_author">@author</a></li>
+          <li><a href="#at_deprecated">@deprecated</a></li>
+          <li><a href="#at_exception">@exception</a></li>
+          <li><a href="#at_link">@link, @endlink</a></li>
+          <li><a href="#at_param">@param</a></li>
+          <li><a href="#at_pkg">@pkg</a></li>
+          <li><a href="#at_pkgdoc">@pkgdoc</a></li>
+          <li><a href="#at_pkgdoctid">@pkgdoctid</a></li>
+          <li><a href="#at_returns">@returns</a></li>
+          <li><a href="#at_see">@see</a></li>
+          <li><a href="#at_since">@since</a></li>
+          <li><a href="#at_suffix">@suffix</a></li>
+          <li><a href="#at_throws">@throws</a></li>
+          <li><a href="#at_todo">@todo</a></li>
+          <li><a href="#at_version">@version</a></li>
+          <li><a href="#at_inline_link">{@link...}</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li> <a href="#phases">Program Phases </a> 
+    <ol>
+      <li><a href="#phase0">Phase Independent Switches</a></li>
+      <li><a href="#phase1">Phase 1</a>: Parsing</li>
+      <li><a href="#phase2">Phase 2</a>: Indexing</li>
+      <li><a href="#phase3">Phase 3</a>: HTML generation</li>
+    </ol>
+  </li>
+  <li><a href="#database_details">Database Details</a> 
+    <ol>
+      <li><a href="#db_vf">Verbose Format</a></li>
+      <li><a href="#db_novf">Terse Format</a></li>
+    </ol>
+  </li>
+  <li><a href="#release_notes">Release Notes</a></li>
+</ol>
+<div align="left"><a name="introduction"></a></div>
+<hr align="left">
+<div align="left">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Introduction</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#contents">&lt;</a> <a href="#using_ccdoc">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+<blockquote> 
+  <div align="left"> 
+    <div align="left">
+      <p>Ccdoc is a free <a
+    href="http://java.sun.com/products/jdk/javadoc/index.html">javadoc</a> inspired 
+        tool that automatically generates HTML web documentation from C++ programs 
+        by parsing the source file headers. It was designed to aid collaboration 
+        between package users and package developers by documenting the interface. 
+        Although I tried very hard to stay true to the javadoc syntax and tool 
+        flow, I was forced to change (or add) a few things because of language 
+        differences like pre-processing directives, templates and namespaces.</p>
+      <p>Here are the design goals of ccdoc and some of the design decisions that 
+        were influenced by the goals.</p>
+      <ul>
+        <li>It should be easy to use. 
+          <ul>
+            <li>There is no setup</li>
+            <li>You cannot specify include paths, although you may have to specify 
+              macro definitions.</li>
+            <li>It is easy to run. A simple command line invocation is all that 
+              is needed to document an entire system (in many cases).</li>
+          </ul>
+        </li>
+        <li>Controllable 
+          <ul>
+            <li>You can control which sections of code that ccdoc processes.</li>
+            <li>You can generate your own output format by parsing the database 
+              format.</li>
+            <li>You can modify the source code to add or remove your features.</li>
+          </ul>
+        </li>
+        <li>Robust 
+          <ul>
+            <li>A number of regression tests have been added to verify the operation 
+              of this program.</li>
+            <li>Uses STL extensively</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <blockquote> 
+      <div align="left"></div>
+    </blockquote>
+    <div align="left"> 
+      <p>For more information about ccdoc, see the official ccdoc website: <a href="http://ccdoc.sourceforge.net">http://ccdoc.sourceforge.net</a>.</p>
+    </div>
+    </div>
+</blockquote>
+<div align="left">
+  <div align="left"><a name="using_ccdoc"></a></div>
+</div>
+<hr align="left">
+<div align="left">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Using Ccdoc</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#downloading">&lt;</a> <a href="#comment_syntax">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+<blockquote> 
+  <p align="left">This section describes how to use ccdoc in different environments. 
+    It is organized as a series of successively more complex examples.</p>
+  <h3 align="left"><a name="example1"></a>Use Case 1: Document a simple C++ header 
+    file.</h3>
+  <p align="left">This example shows how to generate documentation for a single 
+    package with a single source file.</p>
+  <blockquote> 
+    <pre>% mkdir webdocs
+% ccdoc -db simple.db simple.h -html webdocs/
+</pre>
+  </blockquote>
+  <p>Here is what simple.h looks like:</p>
+  <blockquote> 
+    <pre>// ================================================
+//@{
+// This is the brief description of the simple function.
+//
+// The simple function takes in two integer arguments,
+// adds them together and then returns the result.<br>// @param x The x value.
+// @param y The y value.
+// @returns The sum of x and y.
+//@}
+// ================================================
+extern &quot;C&quot; unsigned simple(unsigned x,unsigned y);
+</pre>
+  </blockquote>
+  <p>Here are the files that are generated:</p>
+  <ul>
+    <li>ccdoc.class_summary.html</li>
+    <li>ccdoc.root.pkg</li>
+    <li>ccdoc.root.simple.-22C-22.unsigned.simple.-28.unsigned.x.-2c.unsigned.y.-29.fct.html</li>
+  </ul>
+  <p>Here is what the ccdoc documentation looks like for ccdoc.class_summary.html. 
+    This is the documentation for all of the classes in the system. Since there 
+    aren't any in this example, it is empty.</p>
+  <blockquote> 
+    <p><img src="example1-1.gif" width="426" height="274"></p>
+  </blockquote>
+  <p>Here is what the ccdoc documentation looks like for ccdoc.root.pkg. This 
+    is the documentation for the root level package. In this case, the user did 
+    not specify any documention and didn't change the name.</p>
+  <blockquote> 
+    <p><img src="example1-2.gif" width="536" height="594"></p>
+  </blockquote>
+  <p>Here is what the documentation looks like for the function.</p>
+  <blockquote> 
+    <p><img src="example1-3.gif" width="481" height="683"></p>
+  </blockquote>
+  <p>There are three sections: the header, the body and the trailer.</p>
+  <p>The header has a single link called &quot;@root&quot; on the left side. This 
+    is the top level ccdoc package. The name can be changed using the -root switch 
+    and you can add your own link with the -rooturl switch. In addition, you can 
+    add customized HTML with the -header switch.</p>
+  <p>The header has a single link called &quot;classes&quot; on the right side. 
+    This is the link to the class summary.</p>
+  <p>The body describes the contents of the page. In this case it is a single, 
+    standalone function called simple.</p>
+  <p>The trailer describes the date/time the page was created, the version of 
+    ccdoc, etc. You can specify your own custom HTML here with -trailer switch.</p>
+  <h3 align="left"><a name="example2"></a>Use Case 2: Document a simple C++ header 
+    file with custom colors.</h3>
+  <p align="left">This example shows how to generate documentation for a single 
+    package with a single source file in different colors.</p>
+  <blockquote> 
+    <pre>
+% ccdoc -db simple.db simple.h -html webdocs/ \
+	-bg black -fgtext yellow -fglink blue -fgvlink red</pre>
+  </blockquote>
+  <p>Here is what the ccdoc documentation looks like.</p>
+  <blockquote> 
+    <p><img src="example2.gif" width="481" height="704"></p>
+  </blockquote>
+  <h3><a name="example3"></a> Use Case 3: Document a simple C++ header file with 
+    a link to a custom page and custom header and trailer info.</h3>
+  <p align="left">This example shows how to generate documentation for a single 
+    package with a single source file with a custom header, trailer and a rooturl.</p>
+  <blockquote> 
+    <pre>
+% ccdoc -db simple.db simple.h -html webdocs/ \
+	-header header.txt -trailer trailer.txt \
+    -rooturl http://www.mystuff.com/htdocs/</pre>
+  </blockquote>
+  <p>Here is what the custom header looks like:</p>
+  <blockquote> 
+    <pre>&lt;center&gt;
+&lt;h3&gt;Header for example 3&lt;/h3&gt;<br>&lt;/center&gt;</pre>
+  </blockquote>
+  <p>Here is what the custom trailer looks like:</p>
+  <blockquote> 
+    <pre>&lt;center&gt;
+&lt;font size=2&gt;Trailer for example 3&lt;/font&gt;
+&lt;/center&gt;</pre>
+  </blockquote>
+  <p>Here is what the ccdoc documentation looks like.</p>
+  <blockquote> 
+    <p><img src="example3.gif" width="481" height="672"></p>
+  </blockquote>
+  <p>As you can see, the custom headers and trailers have been added. In addition, 
+    there is now a Home link in the upper left hand corner. This link points to 
+    http://www.mystuff.com/htdocs/. This capability allows you to link ccdoc generated 
+    documents to other documents in your system.</p>
+  <h3><a name="example4"></a> Use Case 4: Document a simple C++ header file with 
+    a different name for @root.</h3>
+  <p>In the previous examples, the root level package was always called @root. 
+    This may not be desirable for many systems. This example shows how to change 
+    it.</p>
+  <blockquote> 
+    <pre>
+% ccdoc -db simple.db simple.h -html webdocs/ \
+	-root example4
+</pre>
+  </blockquote>
+  <p>Here is what the ccdoc documentation looks like:</p>
+  <blockquote> 
+    <p><img src="example4.gif" width="481" height="611"></p>
+  </blockquote>
+  <p>As you can see, the &quot;@root&quot; in the upper left hand corner has been 
+    replaced by example4.</p>
+  <h3><a name="example5"></a> Use Case 5: Document the root package.</h3>
+  <p>In the previous examples, the root level package was not shown but it was 
+    there.</p>
+  <p>In examples 1-3 the root level package file ccdoc.root.pkg.html. In example 
+    4 the root level package was ccdoc.example4.pkg.html. In general, the root 
+    package name is ccdoc.&lt;root&gt;.pkg.html.</p>
+  <p> To document a root level package you create a ccdoc comment with the @pkgdoc 
+    directive using an @root target as shown in the example below:</p>
+  <blockquote> 
+    <pre>% cat root.txt<br>// ================================================
+//@{
+// This is the root documentation for example 5.
+//
+// All of the files in this example do neat stuff.
+// @author Joe Linoff
+// @version 1.0
+// <b>@pkgdoc @root</b>
+//@}<br>// ================================================</pre>
+  </blockquote>
+  <p>The @root target specifies that this comment is associated with the root 
+    package, not with anything else.</p>
+  <p>Here is how you run the command:</p>
+  <blockquote> 
+    <pre>
+% ccdoc -db simple.db simple.h root.txt -html webdocs/ \
+	-root example5</pre>
+  </blockquote>
+  <p>Here is what the ccdoc documentation looks like for the root page:</p>
+  <blockquote> 
+    <p><img src="example5.gif" width="528" height="601"></p>
+  </blockquote>
+  <h3><a name="example6"></a> Use Case 6: Where is ccdoc.index.html?</h3>
+  <p>In previous versions of ccdoc, the root package was always named ccdoc.index.html. 
+    In this version this convention was changed because the root package was the 
+    same as any other package and I wanted the output to be consistent. Unfortunately, 
+    this means that many users might be stranded because they have already built 
+    systems that expect to find ccdoc.index.html. </p>
+  <p>This example shows how to create a root package file with the name ccdoc.index.html.</p>
+  <blockquote> 
+    <pre>
+% ccdoc -db simple.db simple.h -html webdocs/ \
+	-rootfile ccdoc.index.html</pre>
+  </blockquote>
+  <p>There is no interesting ccdoc documentation in this example.</p>
+  <h3><a name="example7"></a> Use Case 7: Document multiple C++ header files in 
+    a single directory.</h3>
+  <p>This example shows how to document multiple C++ headers files in a single 
+    directory. </p>
+  <p></p>
+  <blockquote> 
+    <pre>% ccdoc -db example7.db -html webdocs/ i/*.h</pre>
+  </blockquote>
+  <h3><a name="example8"></a> Use Case 8: Document multiple C++ header files in 
+    multiple directories.</h3>
+  <p>This example shows how to document multiple C++ header files in multiple 
+    directories. It shows how to use packages to differentiate them. Packages 
+    are very powerful concept because they allow you to group the documentation 
+    for related files.</p>
+  <p>Unlike the earlier examples, this one requires multiple invocations of ccdoc 
+    in three general phases: parsing, indexing and HTML generation.</p>
+  <p>The first phase parses the sources file and assigns the statement entities 
+    to the specified packages as shown below.</p>
+  <blockquote> 
+    <pre>% # PHASE 1
+% ccdoc -db example8.db -pkg Utils Utils/i/*.h
+% ccdoc -db example8.db -pkg Core Core/i/*.h
+% ccdoc -db example8.db -pkg Algorithms Algorithms/i/*.h
+% ccdoc -db example8.db root.txt</pre>
+  </blockquote>
+  <p>The second phase does internal processing to associate related statements.</p>
+  <blockquote> 
+    <pre>% # PHASE 2
+% ccdoc -db example8.db -index</pre>
+  </blockquote>
+  <p>The third phase generates the HTML files.</p>
+  <blockquote> 
+    <pre>% # PHASE 3
+% ccdoc -db example8.db -html webdocs/ -root example8</pre>
+  </blockquote>
+  <h3><a name="example9"></a> Use Case 9: Document namespaces</h3>
+  <p>This example shows how to document namespaces.</p>
+  <p>Namespaces are documented just like any other C++ entity but, since a single 
+    namespace declaration can appear in multiple files, ccdoc uses a comment on 
+    any one of them. This is shown in the contrived example below:</p>
+  <blockquote> 
+    <pre>% cat example9.h
+// ================================================
+//@{
+// This namespace declares the group of classes
+// that perform utility functions for this system.
+//@}
+// ================================================
+namespace Utilities {
+  void Read();
+  void Write();
+}
+
+namespace Utilities {
+  void Status();
+}</pre>
+  </blockquote>
+  <p>Ccdoc will group all of the entities in the namespace together before reporting 
+    them. </p>
+  <p>The ccdoc documentation for the namespace is shown below:</p>
+  <blockquote> 
+    <p><img src="example9.gif" width="481" height="525"></p>
+  </blockquote>
+  <h3><a name="example10"></a> Use Case 10: Document a class.</h3>
+  <p>This example shows how to document a class. Here is the sample code:</p>
+  <blockquote> 
+    <pre>// ================================================
+//@{
+// This class manages a point in 2D space.
+
+//
+// A point consists of two coordinates: x and y.
+// The code fragment below shows how to use this class.
+
+// &lt;pre&gt;
+//@@ #include &quot;point.h&quot;
+//@@ #include &lt;iostream&gt;
+//@@  
+//@@ using namespace std;
+//@@  
+//@@ int main() {
+//@@    Point p1;
+//@@    Point p2;
+//@@    p1.x = 1;
+//@@    p1.y = 1;
+//@@    p2.x = 2;
+//@@    p2.y = 2;
+//@@    Point p3 = p1;
+//@@    p3 += p2;
+//@@    return 0;
+//@@ }
+// &lt;/pre&gt;
+// @author The Project Team
+// @version 1.0
+// @see Database::Record
+//@}
+// ================================================
+class Point {
+public:
+  //@{
+  // Default constructor.
+  // Initializes x and y to zero.
+  //@}
+  Point() : x(0), y(0) {}
+public:
+  //@{
+  // Copy constructor.
+  // @param p The point to copy.
+  //@}
+  Point(const Point&amp; p) : x(p.x), y(p.y) {}
+public:
+  //@{
+  // Assignment operator.
+  // @param p The point to assign.
+  // @returns The updated point.
+  //@}
+  Point&amp; operator = (const Point&amp; p) {x=p.x;y=p.y;return *this;}
+public:
+  //@{
+  // Addition operator.
+  // @param p The point to add from.
+  // @returns The updated point.
+  //@}
+  Point&amp; operator += (const Point&amp; p) {x+=p.x;y+=p.y;return *this;}
+public:
+  //@{
+  //  The x coordinate. Note that this attribute is public
+  //  because any value is valid and no state has to be
+  // preserved.
+  //@}
+  int x;
+  //@{
+  //  The y coordinate. Note that this attribute is public
+  //  because any value is valid and no state has to be
+  // preserved.
+  //@}
+  int y;
+};</pre>
+  </blockquote>
+  <p>The methods and attributes in this class show up on the HTML page because 
+    they are part of the class as shown below:</p>
+  <blockquote> 
+    <p><img src="example10-1.gif" width="481" height="682"></p>
+    <p><img src="example10-2.gif" width="481" height="597"></p>
+    <p><img src="example10-3.gif" width="481" height="707"></p>
+    <p><img src="example10-4.gif" width="481" height="664"></p>
+    <p><img src="example10-5.gif" width="481" height="580"></p>
+  </blockquote>
+  <h3><a name="example11"></a>Use Case 11: Capture the on-line help in a log file.</h3>
+  <p>There is a lot of interactive help available from ccdoc. In fact there is 
+    to much to capture conveniently on a screen. This use case shows how to capture 
+    the on-line help in a log file so that you can view it with your favorite 
+    text editor.</p>
+  <blockquote> 
+    <pre>% ccdoc -log help.txt -help
+
+
+</pre>
+  </blockquote>
+  <h3><a name="example12"></a>Use Case 12: Tell ccdoc to ignore sections of code.</h3>
+  <p>Ccdoc defines a pragma called &quot;__ccdoc__&quot; that can be used to insert 
+    or ignore sections of code when ccdoc is running. The example below shows 
+    how to use this pragma to ignore include guards:</p>
+  <blockquote> 
+    <pre>#ifndef include_guard
+#if !defined(__ccdoc__)
+
+#define include_guard
+#endif
+
+
+.
+.
+.
+
+
+#endif
+</pre>
+  </blockquote>
+  <p>This tells ccdoc to ignore the include_macro definition.</p>
+  <h3><a name="example13"></a>Use Case 13: Tell ccdoc to link to the related source 
+    code.</h3>
+  <p>By default ccdoc puts a passive reference to the source code in the comment. 
+    If you would like to actually link to the real code you need to provide ccdoc 
+    with a URL that it can link to. You use the -srcurl switch for this.</p>
+  <p>Consider the case of file mytest.h that lives in a directory called /group/work/src 
+    which can be accessed from the web by the URL http://internal/group/work/src. 
+    To specify to ccdoc that you want to be able to access the file use the following 
+    command line:</p>
+  <blockquote> 
+    <pre>% cd /group/work
+% mdir webdocs
+% ccdoc -db mytest.db src/mytest.h \
+	-html webdocs/ \
+	-srcurl http://internal/group/work
+</pre>
+  </blockquote>
+  <p>Here is what the source file looks like:</p>
+  <blockquote> 
+    <pre>% cat src/mytest.h
+extern int mytest_function();</pre>
+  </blockquote>
+  <p>When ccdoc runs, it will recognize prefix references to the &quot;src/mytest.h&quot; 
+    with &quot;http://internal/group/work&quot; and create a link in the source 
+    statement which will look like this:</p>
+  <blockquote> 
+    <p><img src="example13.gif" width="372" height="379"></p>
+  </blockquote>
+  <h3><a name="example14"></a>Use Case 14: Run ccdoc from an MS-DOS command prompt.</h3>
+  <p>Running ccdoc from an MS-DOS command prompt is a bit tricky because cmd.exe 
+    uses forward slash '/' to denote switches and a backward slash as a directory 
+    separator. The -dospath switch is provided to allow you to specify that you 
+    are running in the cmd.exe interpreter.</p>
+  <p>This switch was added because lots of folks use other shells, like rsh and 
+    tcsh under windows so ccdoc can't differentiate by the platform.</p>
+  <p>The MS-DOS command prompt is also challenging because it does not expand 
+    wildcards. This means that you must explicitly list each file.</p>
+  <p>Here is a sample run to create some ccdoc documentation under MS-DOS:</p>
+  <blockquote> 
+    <div align="center"> 
+      <div align="left"> 
+        <pre>C:&gt; dir /b i\*.h &gt; hfiles.txt
+C:&gt; ccdoc -db db\test.db -files hfiles.txt
+C:&gt; ccdoc -db db\test.db -index
+C:&gt; ccdoc -db db\test.db -dospaths -html webdocs\
+</pre>
+      </div>
+    </div>
+  </blockquote>
+  <div align="center"> 
+    <div align="left"> 
+      <h3><a name="example15"></a>Use Case 15: How do I expand wildcards in MS-DOS?</h3>
+      <p>This use case tells you how to expand wildcards in MS-DOS. </p>
+      <p>Wildcards are expanded automatically by ccdoc since r10 as shown below:</p>
+    </div>
+  </div>
+  <blockquote> 
+    <div align="center"> 
+      <div align="left"> 
+        <pre>C:&gt; ccdoc -db test.db -files *.h</pre>
+      </div>
+    </div>
+  </blockquote>
+  <div align="center"> 
+    <div align="left"> 
+      <p> If you have an earlier version, you can use the -files switch to specify 
+        a file that contains a list of files.</p>
+      <p>The way it works is that you must create a file that contains the list 
+        of files that you want to process and then you specify the -files &lt;list&gt; 
+        switch. The following example shows how this works:</p>
+    </div>
+  </div>
+  <blockquote> 
+    <div align="center"> 
+      <div align="left"> 
+        <pre>C:&gt; dir /b i\*.h &gt; hfiles
+C:&gt; ccdoc -db test.db -files hfiles
+</pre>
+      </div>
+    </div>
+  </blockquote>
+  <div align="center"> 
+    <div align="left"> 
+      <p>Later on when you create the HTML, you must specify the dospaths switch 
+        so that ccdoc knows that it has to convert the backslashes to forward 
+        slashes for HTML references.</p>
+      <p>The follow example shows how this works:</p>
+    </div>
+  </div>
+  <blockquote> 
+    <div align="center"> 
+      <div align="left"> 
+        <pre>C:&gt; ccdoc -db test.db -dospaths -html webdocs\
+</pre>
+      </div>
+    </div>
+  </blockquote>
+  <div align="left"> 
+    <h3><a name="example16"></a>Use Case 16: How do I determine which version/release 
+      of ccdoc I have?</h3>
+    <p>This use case describes how to determine which release of ccdoc you have. 
+      In all versions of ccdoc released on or after August 27, 2001 you can use 
+      the -version switch as follows:</p>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <pre>% ccdoc -version
+ccdoc v0.8 r5 2001/08/27 bin_opt_msvc_MSWin32-4.0
+^     ^    ^  ^          ^   ^   ^    ^
+|     |    |  |          |   |   |    +---- os/version
+|     |    |  |          |   |   +--------- compiler id
+|     |    |  |          |   +------------- build type (opt or dbg)
+|     |    |  |          +----------------- keyword
+|     |    |  +---------------------------- build date
+|     |    +------------------------------- revision
+|     +------------------------------------ major version
++------------------------------------------ program id
+</pre>
+    </div>
+  </blockquote>
+  <div align="left"> 
+    <p>If this doesn't work you have an older version. You should look at the 
+      first two lines of the help output to determine the release date of the 
+      help. You should also download the latest release.</p>
+    <h3><a name="example17"></a>Use Case 17: How do I add custom hyperlinks to 
+      the @see directive?</h3>
+    <p>This use case shows how you can add your own hyperlinks to the @see directive. 
+      Ccdoc will not translate @see input that begins with a '&lt;' character 
+      and it will output exactly as it was input. You can use this capability 
+      to create your own custom links as shown in the example below:</p>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <pre>% cat example17.h
+/**
+ * This example shows how you can add custom hyperlinks
+ * to the @see directive.
+ * @see &lt;a href=mydoc.html&gt;Other Stuff&lt;/a&gt;
+ */
+int example17;
+</pre>
+    </div>
+  </blockquote>
+  <div align="left"> 
+    <h3><br>
+      <a name="example18"></a>Use Case 18: What does the -rpthpc switch do?</h3>
+    <p>The rpthpc defines a different output format for package information. It 
+      represents the hierarchical information using indenting rather than scoped 
+      names.</p>
+  </div>
+  <div align="left"> 
+    <h3><a name="example19"></a>Use Case 19: How can I change the indent level 
+      on the class summary page?</h3>
+    <p>Use the -rptcsi switch.</p>
+  </div>
+  <div align="left"> 
+    <h3><a name="example20"></a>Use Case 20: How can I change variable width font 
+      in the code section to a fixed width font?</h3>
+    <p>Use the -rptfwcf switch.</p>
+    <h3><a name="example21"></a>Use Case 21: How can I fix mangled links to my 
+      HTML directory under DOS?</h3>
+    <p>In most cases, mangled links occur because you specified one or more backslashes 
+      in the -html path as follows:</p>
+  </div>
+  <blockquote> 
+    <div align="left">C\:&gt; ccdoc -db foo.db -html mystuff\ *.h</div>
+  </blockquote>
+  <p> This causes problems for the HTTP resolver because backslash is not a valid 
+    path separator. Change the backslashes to forward slashes to fix the problem.</p>
+  <blockquote> 
+    <pre>C\:&gt; ccdoc -db foo.db -html mystuff/ *.h</pre>
+  </blockquote>
+  <h3><a name="example22"></a>Use Case 22: How can I specify a C++ style, single 
+    line, suffix comment in ccdoc?</h3>
+  <p>It is sometimes to useful to only add a short comment to items. Ccdoc provides 
+    a C++ style, single line, suffx comment form to do this. The syntax is '//@-'. 
+    An example usage is shown below:</p>
+  <blockquote> 
+    <pre>class Point3D {
+public:
+  int p1; //@- The x coordinate.
+  int p2; //@- The y coordinate.
+  int p3; //@- The z coordinate.
+};</pre>
+    <div align="left"></div>
+  </blockquote>
+</blockquote>
+<div align="left"> 
+  <blockquote> 
+    <div align="left"> 
+      <h3><a name="example23"></a>Use Case 23: How do I specify a link to an operator 
+        in the{@link ..} and @see directives?</h3>
+    </div>
+  </blockquote>
+</div>
+<div align="left"> 
+  <blockquote> 
+    <div align="left"> 
+      <p>There is a special case for operators. The example below shows how to 
+        specify both directives for an operator.</p>
+      <blockquote> 
+        <pre>/**
+ * This is the same as the {@link #operator== equals operator}
+ * for this class.
+ * @param obj The object to compare to for equality.
+ * @returns True if they are equal or false otherwise.
+ * @see #operator==
+ */
+bool is_equal(const Class&amp; obj) const;</pre>
+      </blockquote>
+    </div>
+    <p>Note that there are no spaces between the operator keyword and the operator 
+      tokens.</p>
+  </blockquote>
+  <p><a name="comment_syntax"></a> </p>
+</div>
+<hr align="left">
+<div align="left"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Comment Syntax</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#using_ccdoc">&lt;</a> <a href="#phases">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<blockquote> 
+  <div align="left"> 
+    <p>This section describes the syntax of ccdoc comments.</p>
+    <h3><a name="format"></a>Format</h3>
+    <p>Ccdoc comments are organized into three parts: the short description, the 
+      long description and the directives.</p>
+    <p>The short description provides a relatively brief summary that shows up 
+      in the table of contents.</p>
+    <p>The long description provides a more detail description of the entity. 
+      It only shows up at the point where the entity is documented. Long descriptions 
+      are separated from short descriptions by a ccdoc directive or by period 
+      followed by a space, tab or newline. Actually there are two forms of short 
+      descriptions in ccdoc. The previous sentence described the default behavior. 
+      Here are the down and dirty details of the differences.</p>
+  </div>
+  <div align="left"> 
+    <blockquote> 
+      <div align="left"> 
+        <div align="left"><i>There are two forms of short descriptions allowed 
+          in ccdoc. The default form conforms to the javadoc specification in 
+          which the short description is terminated by a tag (directive) or by 
+          period that is followed by a space, tab or newline. As shown in the 
+          following example. </i></div>
+      </div>
+      <blockquote> 
+        <div align="left"> 
+          <pre><i>/**
+ * The default (-jdsds) short description terminates
+ * with a directive or period followed by space, tab
+ * or new line. <b>This is the start of the long description.</b>
+ *
+ * <b>This is more of the long description.</b>
+ */</i></pre>
+        </div>
+      </blockquote>
+      <div align="left"> 
+        <div align="left"><i>The bold entries are the long description. The non-bold 
+          entries are the short description. </i></div>
+      </div>
+    </blockquote>
+  </div>
+  <div align="left"> 
+    <blockquote> 
+      <div align="left"> 
+        <div align="left"><i>The other form is the old ccdoc style syntax that 
+          allows you specify short description until the end of the paragraph 
+          (a blank line). To use the old for specify the -nojdsds switch in phase1 
+          processing. The example below shows the old form. </i></div>
+      </div>
+      <blockquote> 
+        <div align="left"> 
+          <pre><i>/**
+ * The -nojdsds short description terminates
+ * with a blank line. This is the NOT the start of the long
+ * description.
+ *
+ * <b>This is the start of the long description.</b>
+ */</i></pre>
+        </div>
+      </blockquote>
+      <div align="left"> 
+        <div align="left"><i>The bold entries are the long description. The non-bold 
+          entries are the short description. </i></div>
+      </div>
+    </blockquote>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <div align="left"><i>If you compare the two examples, you will see that 
+        the behavior is substantially different. </i></div>
+    </div>
+  </blockquote>
+  <div align="left"> 
+    <p><b>Note</b> the default behavior of ccdoc with respect to short descriptions 
+      changed in r24. Prior to r24 -nojdsds was the default. After r24, -jdsds 
+      was the default.</p>
+    <p>Directives describe certain attributes of the comment. The @@, @link and 
+      @$ directives can be embedded anywhere. All of the other directives should 
+      appear at the end of the comment. Their order is not significant.</p>
+    <p>Ccdoc comments are attached to the next C++ entity unless the @pkgdoc or 
+      @suffix directives are specified. If @pkgdoc is specified, the comment is 
+      attached to a package. If the @suffix directive is specified, the comment 
+      is attached to the previous entity.</p>
+    <p>The example below shows a ccdoc comment with annotations designating the 
+      sections.</p>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <pre>// ================================================
+//@{                             <i>&lt;---- start of ccdoc scomment</i>
+// Short description.            <i>&lt;---- short description</i>
+// Long description paragraph 1. <i>&lt;---- long description</i>
+//                               <i>&lt;---- long description</i>
+// Long description paragraph 2. <i>&lt;---- long description </i>
+// @author The Project Team      <i>&lt;---- directive</i>
+// @version 1.0                  <i>&lt;---- directive</i>
+// @see Database::Record         <i>&lt;---- directive</i>
+//@}                             <i>&lt;---- end of ccdoc comment</i>
+// ================================================
+</pre>
+    </div>
+  </blockquote>
+  <div align="left"> 
+    <p>The example below shows a new form of abbreviated comment that allows you 
+      to specify single line, suffix style comments:</p>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <pre>class Point5 {
+public:
+  int p1; //@- The v coordinate.
+  int p2; ///&lt; The w coordinate.
+  int p3; //!&lt; The x coordinate.
+  int p4; /**&lt; The y coordinate. */
+  int p5; /*!&lt; The z coordinate. */
+};</pre>
+    </div>
+    <div align="left"></div>
+  </blockquote>
+  <div align="left"> 
+    <p>Of course the old javadoc style comments are still supported:</p>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <pre>
+/**                              <i>&lt;---- start of ccdoc scomment</i>
+ * Short description.           <i> &lt;---- short description</i>
+ *                               <i>&lt;---- separator</i>
+ * Long description paragraph 1. <i>&lt;---- long description</i>
+ *                               <i>&lt;---- long description</i>
+ * Long description paragraph 2. <i>&lt;---- long description </i>
+ * @author The Project Team      <i>&lt;---- directive</i>
+ * @version 1.0                  <i>&lt;---- directive</i>
+ * @see Database::Record         <i>&lt;---- directive</i>
+ */                              <i>&lt;---- end of ccdoc comment</i>
+</pre>
+    </div>
+  </blockquote>
+  <div align="left"> 
+    <p>The next section describes each of the directives in detail. 
+    <h3><a name="directives"></a>Directives</h3>
+    <p>Before describing each directive in detail, a quick reference table is 
+      provided.</p>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <table width="90%" border="1" cellspacing="0" cellpadding="4">
+        <tr> 
+          <td width="25%"><b><font size="4">Directive</font></b></td>
+          <td width="75%"><b><font size="4">Description</font></b></td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_java_style"><font size="4">/** .. */</font></a></td>
+          <td width="75%">Encloses a javadoc style ccdoc comment.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_java_dox_suffix_style"><font size="4">/**&lt;, 
+            /*!&lt; .. */</font></a></td>
+          <td width="75%">Encloses a doxygen style suffix ccdoc comment.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_off_on"><font size="4">/**@#-*/, /**@#+*/</font></a></td>
+          <td width="75%">Turn ccdoc token parsing off and on. It is used to turn 
+            off sections code.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_insert_ch"><font size="4">/**@#=&lt;ch&gt;*/</font></a></td>
+          <td width="75%">Insert &lt;ch&gt; into the input stream. This is useful 
+            for inserting characters that only ccdoc can see.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_cxx_style"><font size="4">//@{, //@}</font></a></td>
+          <td width="75%">Encloses a C++ style ccdoc comment.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_cxx_single_line_style"><font size="4">//@-</font></a></td>
+          <td width="75%">Defines a single line, suffix, C++ style comment.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_at"><font size="4">@@</font></a></td>
+          <td width="75%">Translate HTML special characters &lt;,&gt; and &amp; 
+            into &amp;lt;, &amp;gt; and &amp;amp; for code fragments.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_author"><font size="4">@author</font></a></td>
+          <td width="75%">Specify an author. This directive can be specified multiple 
+            times to denote multiple authors. The first entry should be the original 
+            author.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_deprecated"><font size="4">@deprecated</font></a></td>
+          <td width="75%">Specifies that this entity has been deprecated and describes 
+            the alternatives to use.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_exception"><font size="4">@exception</font></a></td>
+          <td width="75%">Deprecated, same as <a href="#at_throws">@throws</a>.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_link"><font size="4">@link,@endlink</font></a></td>
+          <td width="75%">Generate a hyperlink to a ccdoc entity.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_param"><font size="4">@param</font></a></td>
+          <td width="75%">Document a parameter to a function or class method.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_pkg"><font size="4">@pkg</font></a></td>
+          <td width="75%">Specifies the name of a package in a file. The -pkg 
+            switch is preferred.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_pkgdoc"><font size="4">@pkgdoc</font></a></td>
+          <td width="75%">The comment that contains this directive documents a 
+            specific package not the following C++ entity.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_pkgdoctid"><font size="4">@pkgdoctid</font></a></td>
+          <td width="75%">Redefine the output title id for a pkgdoc.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_returns"><font size="4">@returns, @return</font></a></td>
+          <td width="75%">Documents the return value from a function.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_see"><font size="4">@see</font></a></td>
+          <td width="75%">Add a hyperlink entry to the See section.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_since"><font size="4">@since</font></a></td>
+          <td width="75%">This entity has only been available since the specified 
+            version.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_suffix"><font size="4">@suffix</font></a></td>
+          <td width="75%">This is a suffix comment which means this comment is 
+            associated with the previous C++ entity.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_throws"><font size="4">@throws</font></a></td>
+          <td width="75%">Document an exception. Same as <a href="#at_exception">@exception</a>.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_todo"><font size="4">@todo</font></a></td>
+          <td width="75%">Specifies that there are additional things things to 
+            be done to this interface or its implementation.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_version"><font size="4">@version</font></a></td>
+          <td width="75%">The version.</td>
+        </tr>
+        <tr> 
+          <td width="25%"><a href="#at_inline_link"><font size="4">{@link .. }</font></a></td>
+          <td width="75%">Generate a hyperlink to a ccdoc entity.</td>
+        </tr>
+      </table>
+    </div>
+  </blockquote>
+  <h4>&nbsp;</h4>
+  <h4><a name="at_java_style"></a>Directive: /** .. */</h4>
+  <blockquote> 
+    <p>These directives designate the beginning and ending of java style ccdoc 
+      comment that is associated with the next statement (a prefix comment). It 
+      is convenient and familiar but has the drawback of all multi-line comment 
+      styles in that runaway comments are hard to detect.</p>
+    <p>A simple example is shown below:</p>
+    <blockquote> 
+      <pre>/**
+ * This is the brief description that shows up in the table
+ * that shows up in the table of contents.
+ * This is where the longer description starts.
+ * @author A. Programmer
+ * @version 1.0
+ */
+void function(int a);</pre>
+    </blockquote>
+    <p>The leading asterisk on the lines in between is optional but recommended 
+      for readability.</p>
+  </blockquote>
+</blockquote>
+<div align="left"> 
+  <blockquote> 
+    <h4><a name="at_java_dox_suffix_style"></a>Directive: /**&lt; or /*!&lt; .. 
+      */</h4>
+    <blockquote> 
+      <p>These directives designate the beginning and ending of doxygen style 
+        ccdoc comment that is associated with the previous statement (a suffix 
+        comment). It is convenient and familiar but has the drawback of all multi-line 
+        comment styles in that runaway comments are hard to detect.</p>
+      <blockquote> 
+        <pre>void function(int a);
+  /**&lt;
+   * that shows up in the table of contents.
+   * This is where the longer description starts.
+   * @author A. Programmer
+   * @version 1.0
+   */</pre>
+      </blockquote>
+      <p></p>
+    </blockquote>
+    <h4><a name="at_off_on"></a>Directive: /**@#-*/, /**@#+*/</h4>
+    <blockquote> 
+      <p>Turns ccdoc token processing off and on. They are useful for turning 
+        off processing for tokens on a line. For whole lines, use the __ccdoc__ 
+        compiler pragma as shown in the example below:</p>
+      <blockquote> 
+        <pre>// Turn off sections of code using __ccdoc__
+#if !defined(__ccdoc__)
+// Ignore stuff until the end
+#endif
+
+
+// Turn off scanning to avoid the @ token. This
+// token is supported by this special purpose
+// compiler but not by the C++ language.
+int Foo ( /**@#-*/ @ /**@#+*/ x );</pre>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_insert_ch"></a>Directive: /**@#=&lt;ch&gt;*/</h4>
+    <blockquote> 
+      <p> Insert a token into the ccdoc input stream to make parsing easier without 
+        affecting the source code. This directive is typically used to &quot;fix&quot; 
+        macro instantiations that are not terminated by semi-colons as shown in 
+        the following example:</p>
+      <p>This will confuse ccdoc.<br>
+      </p>
+      <blockquote> 
+        <pre>#define M(a) a=1;
+M
+M
+class XX;</pre>
+      </blockquote>
+      <p> This will not confuse ccdoc because we insert semi-colons.</p>
+      <blockquote> 
+        <pre>#define M(a) a=1;
+M /**@#=;*/
+M /**@#=;*/
+class XX;</pre>
+      </blockquote>
+      <p> Neither will this because we prep it out.</p>
+      <blockquote> 
+        <pre>#define M(a) a=1;
+#ifdef __ccdoc__
+M
+M
+#endif
+class XX;</pre>
+      </blockquote>
+      <p> Or this because we put in redundant semi-colons.<br>
+      </p>
+      <blockquote> 
+        <pre>#define M(a) a=1;
+M;
+M;
+class XX;</pre>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_cxx_style"></a>Directive: //@{, //@}</h4>
+    <blockquote> 
+      <p>These directives designate the beginning and ending of C++ style ccdoc 
+        comment. This style avoids the problems of runaway comments. Here is an 
+        example of this style:</p>
+      <blockquote> 
+        <pre>// ================================================
+//@{                             <i>&lt;---- start of ccdoc scomment</i>
+// Short description.            <i>&lt;---- short description</i>
+// Long description paragraph 1. <i>&lt;---- long description</i>
+//                               <i>&lt;---- long description</i>
+// Long description paragraph 2. <i>&lt;---- long description </i>
+// @author The Project Team      <i>&lt;---- directive</i>
+// @version 1.0                  <i>&lt;---- directive</i>
+// @see Database::Record         <i>&lt;---- directive</i>
+//@}                             <i>&lt;---- end of ccdoc comment</i>
+// ================================================</pre>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_cxx_single_line_style"></a>Directive: //@-, ///&lt;, //!&lt;</h4>
+    <blockquote> 
+      <p><i>The //@- directive is only supported in r26 or later.</i></p>
+      <p><i>The doxygen compatible forms: ///&lt; and //!&lt; are only supported 
+        in r37 or later.</i></p>
+      <p>Specifies the single line suffix C++ style comment form. This for is 
+        useful for abbreviated comments. Here is an example:</p>
+      <blockquote> 
+        <pre>class Point3D {
+public:
+  int p1; //@- The x coordinate.
+  int p2; ///&lt;- The y coordinate.
+  int p3; //!&lt;- The z coordinate.
+};</pre>
+      </blockquote>
+      <p> You can only specify a single line so directives other than <a href="#at_inline_link">{@link 
+        .. }</a> and <a href="#at_link">@link .. @endlink</a> are not supported.</p>
+    </blockquote>
+    <h4><a name="at_at"></a>Directive: @@ &lt;line&gt;</h4>
+    <blockquote> 
+      <p>Translate HTML special characters for creating code fragments.</p>
+      <p> Convert '&lt;' to &quot;&amp;lt;&quot; , '&gt;' to &quot;&amp;gt;&quot; 
+        and '&amp;' to &quot;&amp;amp;&quot;. This is useful for inserting code 
+        fragments.</p>
+      <p>Here is an example of how you would use this directive in a comment:</p>
+      <blockquote> 
+        <pre>/**
+ * Here is an example of how to use this directive.
+ *&lt;pre&gt;
+ *@@ for(int i=0;i&lt;10 &amp;&amp; j&gt;3;++i,--j) {
+ *@@   cout &lt;&lt; j &lt;&lt; \&quot; \&quot; &lt;&lt; i &lt;&lt; endl;
+ *@@ }
+ *&lt;/dir&gt;
+ */
+int dir_at_at();
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc output looks like. As you can see the &lt;, &gt; 
+        and &amp;&amp; tokens are displayed correctly.</p>
+      <blockquote> 
+        <p><img src="dir_at_at.gif" width="421" height="438"><br>
+        </p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_author"></a>Directive: @author &lt;name&gt;</h4>
+    <blockquote> 
+      <p>Specifies the author. To specify multiple authors add multiple directives 
+        as shown below.</p>
+      <blockquote> 
+        <pre>/**
+ * There are numerous authors.
+ * @author Foo Bar
+ * @author Spam Wombat
+ */
+int at_author();</pre>
+      </blockquote>
+      <p> Here is what the ccdoc output looks like.</p>
+      <blockquote> 
+        <p><img src="dir_at_author.gif" width="421" height="371"></p>
+      </blockquote>
+      <p>If an author is not specified for a package, namespace, class, global 
+        function, global variable or global enum, an entry is generated to an 
+        \&quot;unascribed\&quot; author.</p>
+      <p>May folks like to include their e-mail address or links to their home 
+        page. The following example shows how to include e-mail links for the 
+        authors:</p>
+      <blockquote> 
+        <pre>/**
+ * Add a link to the authors e-mail:
+ * @author &lt;a href=&quot;mailto:joe@joelinoff.com&quot;&gt;Joe Linoff&lt;/a&gt;
+
+ */
+int at_author1();</pre>
+      </blockquote>
+      <p>Here is what it looks like in ccdoc:</p>
+      <blockquote> 
+        <p><img src="dir_at_author1.gif" width="421" height="371"></p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_deprecated"></a>Directive: @deprecated &lt;description&gt;</h4>
+    <blockquote> 
+      <p> Specifies that this interface has been deprecated. You should specify 
+        what to use as an alternative. Here is an example of its use:</p>
+      <blockquote> 
+        <pre>/**
+ * Get something.
+ * @deprecated Use this
+ * @link Better::Function new function
+ * to get better results.
+ */
+Something at_deprecated();</pre>
+      </blockquote>
+      <p>Here is what it looks like in ccdoc:</p>
+      <blockquote> 
+        <p><img src="dir_at_deprecated.gif" width="381" height="433"></p>
+      </blockquote>
+      <p>Note how the @link directive is embedded to create the link. Also note 
+        that the link is in red because ccdoc could not resolve it.</p>
+    </blockquote>
+    <h4><a name="at_exception"></a>Directive: @exception &lt;name&gt; &lt;description&gt;</h4>
+    <blockquote> 
+      <p><i>This directive was deprecated in favor of <a href="#at_throws">@throws</a> 
+        in r23</i>. </p>
+    </blockquote>
+    <h4><a name="at_link"></a>Directive: @link or @$ &lt;entity&gt; [&lt;name&gt;] 
+      .. [@endlink]</h4>
+    <blockquote> 
+      <p>Generate a hyperlink to a ccdoc entity anywhere in the the code without 
+        generating an entry in the See section.</p>
+      <p><i>The @endlink directive is only supported in r37 or later for doxygen 
+        compatibility.</i></p>
+      <p>The &lt;entity&gt; is the ccdoc entity to link to. The &lt;name&gt; is 
+        the user name of the link. It can consist of one or more tokens. Leading 
+        white space is ignored.</p>
+      <p>If the name is not specified, the &lt;entity&gt; name is used.</p>
+      <p>The @endlink is optional. If it is not specified, the link specification 
+        terminates at the end of the line.</p>
+      <p>Here is an example of how it is used:</p>
+      <blockquote> 
+        <pre>/**
+ * This function is closely associated with
+ * @link at_link2 the at_link1 function. @endlink
+ */
+void at_link1();
+/**
+ * This example shows how the &amp;nbps;@link uses the
+ * default name.
+ * This function is closely associated with
+ * @link at_link2 @endlink .
+ */
+void at_link2();
+</pre>
+      </blockquote>
+      <p>Here is what ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_link1.gif" width="381" height="395"> </p>
+        <p><img src="dir_at_link2.gif" width="381" height="415"></p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_param"></a>Directive: @param &lt;name&gt; &lt;description&gt;</h4>
+    <blockquote> 
+      <p>Describes a parameter to a function. There should be one @param directive 
+        for each argument.</p>
+      <p> Beware! Ccdoc does not verify that the parameters are valid so it is 
+        possible to input invalid parameters. Ccdoc does not verify that the parameter 
+        names are the same either as in the example above: aname should be x (or 
+        vice-versa).</p>
+      <p> The contents of an @param directive can span multiple lines. All lines 
+        following an @param directive are included until another ccdoc directive 
+        (other than @link and @@) is encountered.</p>
+      <p> The example below shows how to use this directive.</p>
+      <blockquote> 
+        <pre>/**
+ * This function does stuff.
+ * @param name The name of the object. The description
+ * will span multiple lines until another directive or
+ * the end of the comment is found.
+ * @param aname Another name.
+ */
+void at_param(const char* name,const char* x);
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote><img src="dir_at_param.gif" width="469" height="527"></blockquote>
+    </blockquote>
+    <h4><a name="at_pkg"></a>Directive: @pkg &lt;path&gt;</h4>
+    <blockquote> 
+      <p>Specifies the name of the current package. All entities in the file from 
+        the directive onward are associated with the package. This pragma can 
+        be overridden from the command line by the -pkg switch.</p>
+      <p> There is a special package called -null- that can be used to to specify 
+        that the contents of a file are not associated with any package. This 
+        is typically used in the file (or files) that contain the package documentation. 
+        Typically these are not C++<br>
+        files.</p>
+      <p> The example below shows how to define the package directive.</p>
+      <blockquote> 
+        <p> /**@pkg Stuff.Utils */</p>
+        <p> /**@pkg Stuff::Utils */</p>
+      </blockquote>
+      <p> Dots '.' or double colons '::' are used to separate hierarchical sub-packages.</p>
+      <p> Package documentation is generated using the @pkgdoc directive as shown 
+        in the next entry.</p>
+    </blockquote>
+    <h4><a name="at_pkgdoc"></a>Directive: @pkgdoc &lt;path&gt; [&lt;url&gt;]</h4>
+    <blockquote> 
+      <p>Specifies that the current ccdoc comment is associated with a package 
+        NOT a C++ entity.</p>
+      <p> This directive can be used to define the documentation in the top package 
+        by specifying '@top' as the &lt;name&gt;. The old form: [ROOT] is still 
+        accepted.</p>
+      <p> Dots '.' or double colons '::' are used to separate hierarchical sub-packages.</p>
+      <p> If the &lt;url&gt; argument is specified, ccdoc uses that as the link. 
+        This is useful for inserting custom pages into the ccdoc document hierarchy 
+        but it puts a significant burden on the user to make sure that links to 
+        other ccdoc generated files are valid.<br>
+      </p>
+      <p> The following example shows how to document several packages.</p>
+      <blockquote> 
+        <pre> // This file is not part of any package.
+ /**@pkg @null*/</pre>
+        <pre> /**
+  * This is the documentation for the top of
+  * the documentation tree.
+  * @author The Build Team
+  * @version 1.1
+  * @pkg @top
+  */</pre>
+        <pre> /**
+  * This is the top level package for MyProject.
+  *
+  * It does lots of useful things and contains
+  * many other packages.
+  * @author Ms. MyProject
+  * @version 1.0
+  * @pkgdoc MyProject
+  */</pre>
+        <pre> /**
+  * This package contains the I/O utilities for
+  * MyProject.
+  *
+  * This is the detailed information about the
+  * I/O utilities package.
+  * @author Mr. IO_Utilities
+  * @version 1.1
+  * @pkgdoc MyProject::IO_Utilities
+  */</pre>
+        <pre> /**
+  * This package contains the string utilities for
+  * MyProject.
+  *
+  * This is the detailed information about the
+  * string utilities package.
+  * @author Mr. String_Utilities
+  * @version 1.2
+  * @pkgdoc MyProject.String_Utilities ../doc/String_Utilities.html
+
+  */</pre>
+      </blockquote>
+      <p> It is important to note that the implicit top level package is implied 
+        for @pkgdoc paths.</p>
+    </blockquote>
+    <h4><a name="at_pkgdoctid"></a>Directive: @pkgdoctid &lt;name&gt;</h4>
+    <blockquote> 
+      <p>This directive must be specified after @pkgdoc. If it isn't a warning 
+        will be generated and the directive will be ignored.</p>
+      <p> It allows you to redefine the pkgdoc title id. Normally when a package 
+        name is specified the title on the page is &quot;package &lt;name&gt;&quot;. 
+        With this directive you can change the &quot;package&quot; string to anything 
+        you like.</p>
+      <p> It was added because some users would like to define different semantics 
+        for different packages, for example: some package might be subsystems, 
+        others might be modules and still others might really be packages. With 
+        this directive you can change the name in the generated HTML file to better 
+        reflect package semantics in your environment.</p>
+      <p> The example below shows how to define three packages: A, B and C. A 
+        is the top level, B and C are children. A will be reported as a &quot;system&quot;, 
+        B will be reported as a &quot;module&quot; and C will be reported as a 
+        &quot;subsystem&quot;.</p>
+      <blockquote> 
+        <pre>/**<br> * @pkgdoc A ../doc/A.html<br> * @pkgdoctid system<br> */<br>/**<br> * @pkgdoc A::B ../doc/A.B.html<br> * @pkgdoctid module<br> */<br>/**<br> * @pkgdoc A::C ../doc/A.C.html<br> * @pkgdoctid subsystem<br> */</pre>
+        <p>The output HTML for these packages looks like this.</p>
+        <blockquote> 
+          <p><img src="dir_at_pkgdoctid.gif" width="379" height="248"></p>
+        </blockquote>
+        <p>Note that I used the -rpthpc switch to generate this output.</p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_returns"></a>Directive: @returns &lt;description&gt;</h4>
+    <blockquote> 
+      <p>Describes the return value from a function. If there is no return value, 
+        do not use @returns. Ccdoc does not verify that you documented the return 
+        value correctly. </p>
+      <p>The contents of an @returns directive can span multiple lines. All lines 
+        following an @returns directive are included until another ccdoc directive 
+        (other than @link and @@) is encountered. </p>
+      <p>Here is an example of how it is used.</p>
+      <blockquote> 
+        <pre>/**
+ * Get the global value.
+ * @returns The global value.
+ * The value will always be between 1 and 100.
+ */
+static unsigned at_returns();
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_returns.gif" width="384" height="453"></p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_see"></a>Directive: @see &lt;entity&gt; [&lt;number&gt;]</h4>
+    <blockquote> 
+      <p> Associate an entity in the ccdoc database with the entity currently 
+        being described.</p>
+      <p> It tells ccdoc to generate a hyperlink to a named entity in the database. 
+        If there are multiple entities with the same name, as is the case with 
+        overloaded functions, specify the number of the one that you want ccdoc 
+        to use. The number should be between 0 and the number of duplicate entities 
+        minus 1. If no number is specified, the first occurrence is used. </p>
+      <p>There is an alternate form that allows the user to specify a url for 
+        the entity. This allows hyperlinks to objects that ccdoc doesn't know 
+        about. It is useful for adding links to documents.</p>
+      <p>There is another alternate form that allows the user to specify an entity 
+        in the current scope using a '#' prefix. This is convenient for describing 
+        method relations within a class.</p>
+      <p> Packages are not specified in the @see &lt;entity&gt; specification 
+        because they can be changed at run-time. Ccdoc searchs for all C++ entities 
+        that match the specification in all packages.</p>
+      <p>The example below shows how to use this directive.</p>
+      <blockquote> 
+        <pre>/**
+  * Generate three links, one to the class named Foo
+  * the second to the second overloaded method
+  * Spam in the Bar class and the third to a document
+  * called wombat.
+  * @see Foo
+  * @see Spam::Bar
+  * @see &lt;a href=wombat.html&gt;wombat&lt;/a&gt;
+  */
+void at_see3();
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_see.gif" width="442" height="474"></p>
+      </blockquote>
+      <p> There is a special case for operators. The example below shows how to 
+        specify an @see link to an operator.</p>
+      <blockquote> 
+        <pre>/**
+ * This is the same as the {@link #operator== equals operator}
+ * for this class.
+ * @param obj The object to compare to for equality.
+ * @returns True if they are equal or false otherwise.
+ * @see #operator==
+ */
+bool is_equal(const Class&amp; obj) const;</pre>
+      </blockquote>
+      <p> Note that there are no spaces between the operator keyword and the operator 
+        tokens.<br>
+      </p>
+    </blockquote>
+    <h4><a name="at_since"></a>Directive: @since</h4>
+    <blockquote> 
+      <p> This is entity has only been available since the specified version. 
+        Ccdoc does not impose any syntax requirements on the version string so 
+        you can use anything you want.</p>
+      <p>The example below shows how to use this directive.</p>
+      <blockquote> 
+        <pre>class A {
+public:
+  /**
+   * Get the name of the object.
+   * @returns The name of the object as a &quot;C&quot; string.
+   * @deprecated This function will go away in build 12.
+   */
+  const char* get_name() const;
+  /**
+   * Get the name of the object.
+   * @param name The string to return the name to.s
+   * @since v1.2 Built 2001/10/10.
+   */
+  void get_name(string&amp; name) const;
+};
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_since.gif" width="458" height="403"></p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_suffix"></a>Directive: @suffix</h4>
+    <blockquote> 
+      <p> This is a suffix style comment, that is, it is attached to the preceding 
+        statement rather than the following statement as shown in the example 
+        below:</p>
+      <blockquote> 
+        <pre>void at_suffix();
+  //@{
+  // This is the C++ style suffix comment
+  // form that some folks have requested.
+  // @suffix
+  //@}
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_suffix.gif" width="405" height="392"></p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_throws"></a>Directive: @throws &lt;name&gt; &lt;description&gt;</h4>
+    <blockquote> 
+      <p> <i>This directive is supported in r23 or later</i>. </p>
+      <p>It is synonymous with <a href="#at_exception">@exception</a>.</p>
+      <p>Specifies that this exception can be thrown by the method. If the &lt;name&gt; 
+        specifies a class in the ccdoc database, a hyperlink is added. The example 
+        below shows hows to specify this directive.</p>
+      <blockquote> 
+        <pre>/**
+ * This function does stuff.
+ *<br> * Here is more detail about the stuff<br> * it does.<br> * @param name The name of the object.<br> * @returns The object.<br> * @throws Exception_NullParameter
+ *         Is thrown if name is NULL.<br> */
+Object* at_exception(string name);</pre>
+      </blockquote>
+      <p>Here is what it looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_exception.gif" width="421" height="590"></p>
+      </blockquote>
+      <p>As you can see in the example above, the contents of an @throws directive 
+        can span multiple lines. All lines following an @throws directive are 
+        included until another ccdoc directive (other than @link and @@) is encountered.</p>
+    </blockquote>
+    <h4><a name="at_todo"></a>Directive: @todo &lt;description&gt;</h4>
+    <blockquote> 
+      <p> <i>This directive is supported in r27 or later</i>. </p>
+      <p>Specifies that there are additional things things to be done to this 
+        interface or its implementation.</p>
+    </blockquote>
+    <h4></h4>
+    <h4><a name="at_version"></a>Directive: @version &lt;id&gt;</h4>
+    <blockquote> 
+      <p> Specifies the version of the entity. If this directive is not specified 
+        for classes or packages, \&quot;unknown\&quot; is reported.</p>
+      <p>The example below shows how to use this directive:</p>
+      <blockquote> 
+        <pre>//@{
+// This function is global so it requires an author
+// and a version.
+// @author Foo
+// @version 1.0
+//@}
+void at_version();
+</pre>
+      </blockquote>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_version.gif" width="405" height="392"><br>
+        </p>
+      </blockquote>
+    </blockquote>
+    <h4><a name="at_inline_link"></a>Directive: {@link &lt;entity&gt; &lt;name&gt;}</h4>
+    <blockquote> 
+      <p> <i>This directive is supported in r24 or later</i>. </p>
+      <p>It is very similar to the <a href="#at_link">@link</a> directive except 
+        that it can be embedded inside comment lines. Like @link, it tells ccdoc 
+        to generate a hyperlink to a ccdoc entity. Unlike @link the arguments 
+        are not optional.</p>
+      <p>You must specify both the entity and the link name.</p>
+      <p> You must not embed white space in the '{@link' specification. For example, 
+        '{ @ link' is not valid.</p>
+      <p> Any number of link specifications are allowed on a single line.</p>
+      <p> Invalid {@link...} specifications are output as simple text.</p>
+      <p> The example below shows how it is used:</p>
+      <blockquote> 
+        <pre>class A {
+public:
+  void fct1();
+  void fct2();
+  void fct3();
+  /**
+   * See {@link #fct1 x}, {@link #fct2 y} or {@link #fct3 x} to
+   * figure out how this stuff works.
+   */
+  void fct4();
+};</pre>
+      </blockquote>
+      <p>The &lt;entity&gt; is the ccdoc entity to link to. The &lt;name&gt; is 
+        the user name of the link. It can consist of one or more tokens. Leading 
+        white space is ignored.</p>
+      <p>Here is what the ccdoc documentation looks like:</p>
+      <blockquote> 
+        <p><img src="dir_at_inline_link.gif" width="428" height="318"></p>
+      </blockquote>
+      <p>As you can see, the in-line link names are x, y and z. They link to fct1, 
+        fct2 and fct3 respectively.</p>
+      <p>To generate references to other classes you would use the fully qualified 
+        path name as shown in the example below:</p>
+      <blockquote> 
+        <pre>namespace N1 {
+  namespace N2 {
+    class A { ... };
+
+  }
+}
+
+/**
+ * This function uses global objects from
+ * class {@link N1::N2::A A} to
+ * do stuff.
+ */
+void fct();</pre>
+      </blockquote>
+      <p> There is a special case for operators. The example below shows how to 
+        specify an {@link ..} directive for an operator.</p>
+      <blockquote> 
+        <pre>/**
+ * This is the same as the {@link #operator== equals operator}
+ * for this class.
+ * @param obj The object to compare to for equality.
+ * @returns True if they are equal or false otherwise.
+ * @see #operator==
+ */
+bool is_equal(const Class&amp; obj) const;</pre>
+      </blockquote>
+      <p> Note that there are no spaces between the operator keyword and the operator 
+        tokens.</p>
+    </blockquote>
+  </blockquote>
+</div>
+<div align="left"></div>
+<a name="phases"></a>
+<hr align="left">
+<div align="left">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Program Phases</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#tips">&lt;</a> <a href="#database_details">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<blockquote>
+  <p>This section describes the three phases of ccdoc.</p>
+  <h3><a name="phase0"></a>Phase Independent Switches</h3>
+  <p>This section presents the switches that can be used in any phase or,<br>
+    as is the case with -h, no phase.</p>
+  <table width="90%" border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="33%"><b>Switch</b></td>
+      <td width="67%"><b>Description</b></td>
+    </tr>
+    <tr> 
+      <td width="33%">-args</td>
+      <td width="67%">Dump the command line arguments. This is enabled automatically 
+        in verbose (-v) mode.</td>
+    </tr>
+    <tr> 
+      <td width="33%">-cid</td>
+      <td width="67%"> 
+        <p>Deprecated. Same as -version.</p>
+        </td>
+    </tr>
+    <tr> 
+      <td width="33%">-ctf &lt;file&gt;</td>
+      <td width="67%">Deprecated. Same as -db.</td>
+    </tr>
+    <tr> 
+      <td width="33%">-db &lt;file&gt;</td>
+      <td width="67%">The name of the ccdoc database. The -ctf switch has been 
+        deprecated and may go away in future versions.</td>
+    </tr>
+    <tr> 
+      <td width="33%">-h, -help</td>
+      <td width="67%">Displays the on-line help and exits.<br>
+      </td>
+    </tr>
+    <tr> 
+      <td width="33%">-log &lt;file&gt;</td>
+      <td width="67%">All information output by the program is also sent to the 
+        specified log file. Multiple log files can be specified. By default all 
+        output is sent to cout. For an example of how this switch is used see 
+        <a href="#example11">use case 11</a>.</td>
+    </tr>
+    <tr> 
+      <td width="33%">-nocout</td>
+      <td width="67%">Turn off output to cout. This is used to test the help output 
+        without displaying anything to the console.</td>
+    </tr>
+    <tr> 
+      <td width="33%">-putenv &lt;env&gt;</td>
+      <td width="67%">Set an environment variable from the command line. This 
+        is useful for setting up regression tests in scripts on various platforms</td>
+    </tr>
+    <tr> 
+      <td width="33%">-[no]v</td>
+      <td width="67%">Turn verbose mode on or off. The default is off.</td>
+    </tr>
+    <tr> 
+      <td width="33%">-version</td>
+      <td width="67%">Report the program version. The version contains the program 
+        name, the version, the revision, the release date and the compilation 
+        id. Here is an example of what the -version reports:<br>
+        % ccdoc -version<br>
+        ccdoc v0.8 r5 2001/08/27 bin_opt_msvc_MSWin32-4.0</td>
+    </tr>
+    <tr> 
+      <td width="33%">-[no]vf</td>
+      <td width="67%"> 
+        <p>Turn db verbose format mode on or off. The default is verbose because 
+          it speeds up the writing significantly and the only slightly larger.</p>
+        <p>This switch enables verbose mode in the database file to make things 
+          easier to read for debugging.</p>
+        <p>For more information on the database formats click <a href="#database">here</a>.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="33%">-[no]warn</td>
+      <td width="67%">Turn warnings on or off. The default is on</td>
+    </tr>
+  </table>
+  <h3><a name="phase1"></a>Phase 1: Parsing</h3>
+  <p>During the parse phase C++ files are parsed to find declarations and ccdoc 
+    comments. These entities are tokenized and stored into the database specified 
+    by the -db switch. The parse phase is specified by the -pkg switch or the 
+    presence of source files on the command line.</p>
+  <p> When new files are parsed, the indexing information from previous runs is 
+    lost.</p>
+  <table width="90%" border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="31%"><b>Switch</b></td>
+      <td width="69%"><b>Description</b></td>
+    </tr>
+    <tr> 
+      <td width="31%">-[no]cdsm</td>
+      <td width="69%">Turn on or off the creation of default special members for 
+        classes. Specifically this tells ccdoc to create (or not create) entries 
+        for default constructors, copy constructors, destructors and copy operators 
+        if they were not explicitly defined in the class. The default is -cdsm.</td>
+    </tr>
+    <tr> 
+      <td width="31%">-db &lt;file&gt;</td>
+      <td width="69%">The name of the ccdoc database. The -ctf switch has been 
+        deprecated and may go away in future versions.</td>
+    </tr>
+    <tr> 
+      <td width="31%">-D&lt;name&gt;[=&lt;value&gt;]</td>
+      <td width="69%">Define a macro and, optionally, define its value. The __ccdoc__ 
+        macro is pre-defined by ccdoc.</td>
+    </tr>
+    <tr> 
+      <td width="31%">-doxygen</td>
+      <td width="69%"> 
+        <p><i>New since r37</i>. Enable limited doxygen compatibility mode. The 
+          default -doxygen. This switch specifies that:</p>
+        <ul>
+          <li>the @endlink directive is ignored</li>
+          <li>the @file comment blocks are ignored</li>
+          <li>the following single line comment forms are supported. 
+            <ul>
+              <li>int a1; //!&lt; Variable a1.</li>
+              <li>int a2; ///&lt; Variable a2.</li>
+              <li>int a3; /*!&lt; Variable a3. */</li>
+              <li>int a4; /**&lt; Variable a4. */</li>
+            </ul>
+          </li>
+        </ul>
+        This allows users more flexibility in converting between doxygen and ccdoc.</td>
+    </tr>
+    <tr> 
+      <td width="31%">-files &lt;list&gt;</td>
+      <td width="69%"><i>New</i>. Specifies a file that contains a list of files 
+        to process. This is convenient for MS-DOS where the command interpreter 
+        does no expand wild cards.</td>
+    </tr>
+    <tr> 
+      <td width="31%">-[no]jdsds</td>
+      <td width="69%"> 
+        <p><i>New since r24</i>. Enable javadoc short description syntax. This 
+          causes ccdoc to conform to the javadoc specification for processing 
+          short descriptions.</p>
+        <p> This is the new default behavior as of r24. </p>
+        <p> </p>
+        <p>A javadoc short description is terminated by a period followed by a 
+          space, tab, newline or a tag (directive).</p>
+        <p>If -nojdsds is specified, the old-style ccdoc short description handling 
+          is enabled. That is, short descriptions are terminated by a blank line.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="31%">-pkg &lt;name&gt;</td>
+      <td width="69%"> 
+        <p>Define the package name for the entities in the the source files. If 
+          no package is specified a default name is used or the @pkg &lt;name&gt; 
+          directive in the ccdoc comment is used. Children (like class methods) 
+          inherit the package from their parent.</p>
+        <p>Names in the package hierarchy are separated by '::' or '.'. Thus, 
+          -pkg A::B::C denotes three packages, A is the parent of B and B is the 
+          parent of C.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="31%">-[no]tcms</td>
+      <td width="69%"> 
+        <p><i>New in r33</i>. Turn on or off the processing of template class 
+          methods that are defined outside of the class declaration. The example 
+          below shows what is ignored:</p>
+        <pre>template &lt;class T&gt;
+struct Test {
+  T Get() const {return m_val;}
+  void Set(T v);
+   T m_val;
+};
+
+// This will be ignored by ccdoc<br>// which implies that the ccdoc
+// comment must appear in the<br>// declaration above.<br>template &lt;class T&gt; Test&lt;T&gt;::Set(T v) {m_val=v;}
+</pre>
+        <p>The default is -notcms.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="31%">-U&lt;name&gt;</td>
+      <td width="69%">Undefine a macro.</td>
+    </tr>
+  </table>
+  <h3><a name="phase2"></a>Phase2: Indexing</h3>
+  <p>During the index phase ccdoc analyzes the database to find associations between 
+    related entities. For example, if class Child derives from class Parent, this 
+    phase will find Parent and link it to the Child record so that a link can 
+    be generated during the output phase. The index phase is specified by the 
+    -index switch.</p>
+  <p> If the index phase is not run, the output will contain no links.</p>
+  <table width="90%" border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="31%"><b>Switch</b></td>
+      <td width="69%"><b>Description</b></td>
+    </tr>
+    <tr> 
+      <td width="31%">-db &lt;file&gt;</td>
+      <td width="69%">The name of the ccdoc database. The -ctf switch has been 
+        deprecated and may go away in future versions.</td>
+    </tr>
+    <tr> 
+      <td width="31%">-index</td>
+      <td width="69%">Generate index information.</td>
+    </tr>
+  </table>
+  <h3><a name="phase3"></a>Phase 3: HTML Generation</h3>
+  <p> During the output phase, ccdoc generates HTML from the database. This phase 
+    is optional. A user could develop their db reader and output any another format 
+    (like XML). The output phase is specified by the -htm or the -html switch.</p>
+  <p> After this phase is run, a top level file called ccdoc.index.html will exist 
+    in the specified html path.</p>
+  <table width="90%" border="1" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="32%"><b>Switch</b></td>
+      <td width="68%"><b>Description</b></td>
+    </tr>
+    <tr> 
+      <td width="32%">-bg &lt;color&gt;</td>
+      <td width="68%">The background color. The default is the default for the 
+        browser.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-db &lt;file&gt;</td>
+      <td width="68%">The name of the ccdoc database. The -ctf switch has been 
+        deprecated and may go away in future versions.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-dospaths</td>
+      <td width="68%"><i>New</i>. The file paths contain backslashes that need 
+        to be converted to forwards slashes for HTML references.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-fg &lt;color&gt;</td>
+      <td width="68%">Same as -fgtext.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-fgtext &lt;color&gt;</td>
+      <td width="68%">The foreground text color. The default is the default for 
+        the browser. </td>
+    </tr>
+    <tr> 
+      <td width="32%">-fglink &lt;color&gt;</td>
+      <td width="68%">The foreground link color. The default is the default for 
+        the browser. </td>
+    </tr>
+    <tr> 
+      <td width="32%">-fgvlink &lt;color&gt;</td>
+      <td width="68%">The foreground vlink color. The default is the default for 
+        the browser. These are used links.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-header &lt;file&gt;</td>
+      <td width="68%">The HTML used for the customized header just after the &lt;body&gt; 
+        stmt. This is where clients insert their own custom information on each 
+        page.. See the -meta command for information on how to insert meta variables 
+        in the &lt;head&gt; section.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-html &lt;prefix&gt;</td>
+      <td width="68%">The HTML path prefix. This is used to designate the path 
+        where the HTML files will be stored. The directory suffix must be included 
+        if this is a directory path. Always use a forward slash to separate directories, 
+        even when you are running under a DOS window, because the HTTP path hierarchy 
+        separator is a forward slash. </td>
+    </tr>
+    <tr> 
+      <td width="32%">-imageurl &lt;URL&gt;<br>
+        -img &lt;URL&gt;</td>
+      <td width="68%"><i>Deprecated</i>. The URL that describes of the GIF images. 
+        This version of ccdoc does not use images so this switch has no effect.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]macros</td>
+      <td width="68%"><i>Deprecated</i>. Same as -[no]rptmac.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-maxpathlen &lt;num&gt;</td>
+      <td width="68%">Maximum file path size. The default is 128. When the file 
+        path size exceeds the limit, the file name is truncated and a checksum 
+        is added to guarantee that the file name is unique. If maxpathlen is set 
+        to zero, no limit checking is performed.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-meta &lt;file&gt;</td>
+      <td width="68%">The HTML used for the customized header just after the &lt;head&gt; 
+        stmt. This is where clients can insert their own custom information for 
+        meta variables on each page. If -meta is specified, ccdoc will not generate 
+        the the http-equiv meta variable for HTML 4.01 compliance and it will 
+        ignore the -rptctcs.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]private</td>
+      <td width="68%"><i>Deprecated</i>. Same as -[no]rptpri.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]protected</td>
+      <td width="68%"><i>Deprecated</i>. Same as -[no]rptpro.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]public</td>
+      <td width="68%"><i>Deprecated</i>. Same as -[no]rptpub.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-root &lt;name&gt;</td>
+      <td width="68%">Change the name of the root package from 'root' to something 
+        else.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rootfile &lt;name&gt;</td>
+      <td width="68%"> 
+        <p>Change the top level output file name from &lt;prefix&gt;ccdoc.root.pkg.html 
+          to whatever the user wants. </p>
+        <p>This can be used to create the ccdoc.index.html file by specifying: 
+          -rootfile ccdoc.index.html.</p>
+        <p>This switch allows you to completely specify the path. The -html prefix 
+          is ignored which means that you must be make sure that the output file 
+          is in the same directory as the other files generated by ccdoc so that 
+          the relative links work.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">-rootpurl &lt;URL&gt;<br>
+        -rooturl &lt;URL&gt;</td>
+      <td width="68%">The hyperlink for the parent of the root package. Setting 
+        this allows the generated HTML to seamlessly integrate to a higher level 
+        document by providing a back link to the users parent page.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptcfuns</td>
+      <td width="68%">Report comments for undocumented namespaces. When -rptcfuns 
+        is specified, all related namespaces comments are reported. This includes 
+        namespaces that do not contain ccdoc comments which can be somewhat busy. 
+        When -norptcfuns is specified, only related namespaces with ccdoc comments 
+        are reported. The only exception is when none of the namespaces have ccdoc 
+        comments. In that case, only the first undocumented namespace is reported 
+        (for backward compatibility). The default is -norptcfuns.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptcsd</td>
+      <td width="68%"><i>New</i>. Report class summary details. When -rptcsd is 
+        specified, the class summary page reports type, access and short description 
+        information. When -norptcsd is specified the class summary page only reports 
+        the names. The default is -rptcsd.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptcsi &lt;num&gt;</td>
+      <td width="68%"><i>New in r15</i>. The class summary indent switch. Define 
+        the indent level of each entry in the class summary report and the contents 
+        column. The default indent level is 4.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptctcs &lt;string&gt;</td>
+      <td width="68%"><i>New in r22</i>. Allow the user to specify the Content-Type 
+        char set. This allows international languages to be supported. The default 
+        char set is &quot;iso-8859-1&quot;. This switch is ignored if the -meta 
+        switch is specified. If both -rptctcs and -meta are specified a warning 
+        is issued.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptdefa &lt;string&gt;</td>
+      <td width="68%"><i>New in r20</i>. Set the default string for the author 
+        field in top level entities. The default is &quot;<i>unascribed</i>&quot;.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptdefasd &lt;string&gt;</td>
+      <td width="68%"><i>New in r20</i>. Set the default string for the automatically 
+        generated short description field in top level entities. The default is 
+        &quot;<i>automatically generated</i>&quot;.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptdefsd &lt;string&gt;</td>
+      <td width="68%"><i>New in r20</i>. Set the default string for the automatically 
+        generated short description field in top level entities. The default is 
+        &quot;<i>undocumented</i>&quot;.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptdefv &lt;string&gt;</td>
+      <td width="68%"><i>New in r20</i>. Set the default string for the version 
+        field in top level entities. The default is &quot;<i>unknown</i>&quot;.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptdpa</td>
+      <td width="68%"><i>New</i>. If the package author is not specified, report 
+        the author as unascribed. The default is -norptdpa which tells ccdoc to 
+        ignore authors on packages unless they are explicitly specified.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptdpd</td>
+      <td width="68%"><i>New</i>. If the package description is not specified, 
+        report the description as unknown. The default is -norptdpd which tells 
+        ccdoc to ignore descriptions on packages unless they are explicitly specified.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptdpv</td>
+      <td width="68%"><i>New</i>. If the package version is not specified, report 
+        the version as unknown. The default is -norptdpv which tells ccdoc to 
+        ignore version on packages unless they are explicitly specified.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptfwcf</td>
+      <td width="68%"><i>New in r15</i>. The fixed width code font switch. Use 
+        a fixed width font when reporting code fragments. The default is -norptfwcf. 
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rpthpc</td>
+      <td width="68%"><i>New</i>. Report package contents hierarchically like 
+        the the class summary page. The default is -rpthpc.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptim</td>
+      <td width="68%"><i>New</i>. Report all inherited methods as though they 
+        were defined locally. This allows you to read all of the methods that 
+        are available on a given class. The default is -rptim.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptmac</td>
+      <td width="68%"> 
+        <p><i>New</i>. Report macros. Default is -norptmac because there can be 
+          large numbers of guards in header files. If a system is designed with 
+          ccdoc in mind, the header guards can be surrounded by ccdoc guards (#ifndef 
+          __ccdoc__) which would make this data more useful.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptmac1</td>
+      <td width="68%"> 
+        <p><i>New in r34</i>. Report macros heuristically. This means that ccdoc 
+          attempts to filter out header guards and windows DLLIMPORT/DLLEXPORT 
+          macros by filtering out macro names with the following characteristics: 
+        </p>
+        <ul>
+          <li>Prefixes 
+            <ul>
+              <li>dll_,DLL_</li>
+              <li>include_,INCLUDE_</li>
+              <li>included_,INCLUDED_</li>
+            </ul>
+          </li>
+          <li>Suffixes 
+            <ul>
+              <li>_dll,_DLL</li>
+              <li>_h,_H</li>
+              <li>_hh,_HH,</li>
+              <li>_include,_INCLUDE</li>
+              <li>_included,_INCLUDED</li>
+              <li>_included_,_INCLUDED</li>
+            </ul>
+          </li>
+        </ul>
+        <p>The default is -norptmac1. When this switch is enabled, it also enables 
+          -rptmac.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptmlci &lt;num&gt;</td>
+      <td width="68%"><i>New in r37</i>. Maximum length of the content ids. This 
+        switch is used to avoid strange looking tables of content when the id 
+        is very long. When the string exceeds this length, only the first &lt;num&gt; 
+        characters are printed followed by .. to indicate truncation. The default 
+        length is 32. A value of zero means don't impose the limit. If no inherited 
+        from column exists, the value of the -rptmlcifi is added to make this 
+        field bigger.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-rptmlcifi &lt;num&gt;</td>
+      <td width="68%"><i>New in r37</i>. Maximum length of the contents &quot;inherited 
+        from&quot; column id. This switch is used to avoid strange looking tables 
+        of content when the parent id is very long. When the string exceeds this 
+        length, only the first &lt;num&gt; characters are printed followed by 
+        .. to indicate truncation. The default length is 32. A value of zero means 
+        don't impose the limit. </td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptpri</td>
+      <td width="68%"><i>New</i>. Report private items. The default is -norptpri.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptpro</td>
+      <td width="68%"><i>New</i>. Report protected items. The default is -norptpro.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptpub</td>
+      <td width="68%"><i>New</i>. Report public items. The default is -rptpub.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptsci</td>
+      <td width="68%"><i>New in r22</i>. Report the class information in sorted 
+        order. The default is -rptsci. If -norptsci is specified the class contents 
+        and details are not sorted.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptsrc</td>
+      <td width="68%"><i>New in r37</i>. Report the source information for each 
+        entity in the table of contents. This causes an additional column to be 
+        added to the table. The default is -norptsrc because this information 
+        is already reported for each entity in its description. It exists to provide 
+        debugging support for when no description is generated.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rpttyp</td>
+      <td width="68%"><i>New</i>. Report typedefs. Default is -rpttyp.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]rptun</td>
+      <td width="68%"><i>New</i>. Report unions. Default is -rptun.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-sourceurl &lt;URL&gt;<br>
+        -srcurl &lt;URL&gt;</td>
+      <td width="68%">The URL where the source files can be found. If this is 
+        specified, hyperlinks are created for Source entries.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-trailer &lt;file&gt;</td>
+      <td width="68%">The HTML used for the customized trailer.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]typedefs</td>
+      <td width="68%"><i>Deprecated</i>. Same as -[no]rpttyp.</td>
+    </tr>
+    <tr> 
+      <td width="32%">-[no]unions</td>
+      <td width="68%"><i>Deprecated</i>. Same as -[no]rptun.</td>
+    </tr>
+  </table>
+  
+</blockquote>
+<div align="left">
+<div align="left">
+    <div align="left"><a name="database_details"></a> </div>
+  </div>
+</div>
+<hr align="left">
+<div align="left">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Database Details</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#comment_syntax">&lt;</a> <a href="#release_notes">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<blockquote> 
+  <p>The database has changed in this version to accomodate namespace handling 
+    and better id parsing.</p>
+  <p>There are two database formats: verbose (-vf) and terse (-novf). The default 
+    is verbose because it is fastest.</p>
+  <h3><a name="db_vf"></a>Verbose Format</h3>
+  <p>The verbose format does not attempt to re-use strings. The format of the 
+    file is:</p>
+  <blockquote> 
+    <pre>&lt;header&gt;
+&lt;strings_header&gt;
+&lt;strings&gt;
+&lt;statements_header&gt;
+&lt;statements&gt;
+&lt;end_of_file&gt;</pre>
+  </blockquote>
+  <h4>Header</h4>
+  <p>The header is always the first line. This is the contents of the verbose 
+    header:</p>
+  <blockquote> 
+    <pre> ccdoc v0.8 verbose
+</pre>
+  </blockquote>
+  <h4>Strings Header</h4>
+  <p>The string table follows the header. It is denoted by a '$' followed by the 
+    number of strings in the string table. It is always empty in verbose format 
+    because strings are not-reused. The syntax is:</p>
+  <blockquote> 
+    <p>&lt;strings_header&gt; ::= '$' &lt;num&gt; ;</p>
+  </blockquote>
+  <p>The fragment below shows the string table entry:</p>
+  <blockquote> 
+    <pre>$ 0</pre>
+  </blockquote>
+  <h4>Strings</h4>
+  <p>There are no string entries in verbose format.</p>
+  <h4>Statements Header</h4>
+  <p>Following that is the statements record. This reports the number of statements 
+    in the database (not access_specifiers and files). It is denoted by a 'S' 
+    followed by a number. All numbers in the database are stored in hex format. 
+    The syntax is:</p>
+  <blockquote> 
+    <p>&lt;statements_header&gt; ::= 'S' &lt;num&gt;</p>
+  </blockquote>
+  <p>A database with 1 record would have an entry that looks like this:</p>
+  <blockquote> 
+    <pre>S 1
+</pre>
+  </blockquote>
+  <h4>Statements</h4>
+  <p>There are three types of statement records: access_specifiers, files and 
+    statements. </p>
+  <p>Access specifiers start with an 'a' followed by a keyword: 'pri', 'pro' or 
+    'pub' to indicate whether the following statements are private, protected 
+    or public. The syntax is:</p>
+  <blockquote> 
+    <p>&lt;access_specifier&gt; ::= 'f' 'pri' | 'f' 'pro' | 'f' 'pub' ;</p>
+  </blockquote>
+  <p>All entities outside of a class are public. The fragment belows shows a sample 
+    access specifier statement:</p>
+  <blockquote> 
+    <pre>a pub</pre>
+  </blockquote>
+  <p>File specifiers start with an 'f' followed by a hex number that specifies 
+    the number of characters in the string, followed by the string. The syntax 
+    is:</p>
+  <blockquote> 
+    <p>&lt;file_specifier&gt; ::= 'f' &lt;strlen&gt; &lt;string&gt; ;s</p>
+  </blockquote>
+  <p>It indicates that the following statements are associated with this file. 
+    The fragment below shows a sample file statement:</p>
+  <blockquote> 
+    <pre>f 5 foo.h</pre>
+  </blockquote>
+  <p>Statements are much more complex. They have the following syntax:</p>
+  <blockquote> 
+    <p>&lt;statement&gt; ::= 's' &lt;id&gt; &lt;tag&gt; &lt;ptag&gt; &lt;type&gt; 
+      &lt;extern&gt; &lt;lineno&gt; &lt;tokens&gt; ;<br>
+      &lt;id&gt; ::= &lt;strlen&gt; &lt;string&gt; ;<br>
+      &lt;tag&gt; ::= &lt;num&gt; ;<br>
+      &lt;pstag&gt; ::= &lt;num&gt; ;<br>
+      &lt;type&gt; ::= &lt;statement::base terse name&gt; ;<br>
+      &lt;extern&gt; ::= &lt;strlen&gt; &lt;string&gt; ;<br>
+      &lt;lineno&gt; ::= &lt;num&gt; ;<br>
+      &lt;tokens&gt; ::= &lt;num_tokens&gt; &lt;token_list&gt; ;<br>
+      &lt;num_tokens&gt; ::= &lt;num&gt; ;<br>
+      &lt;token_list&gt; ::= &lt;token&gt; | &lt;token_list&gt; &lt;token&gt; 
+      ;<br>
+      &lt;token&gt; ::= &lt;strlen&gt; &lt;string&gt; ;</p>
+  </blockquote>
+  <p>The id is the name of the statement. The tag is the index id of the statement. 
+    It is used to verify database integrity. The ptag is the parent tag. This 
+    is used to re-create the statement tree. The type is a 3 character designator 
+    that specifies the statement type. These types can be found in statement.cc 
+    under terse names. The extern entry specifies the extern type. The lineno 
+    is the line number in the source file where there entity was found. </p>
+  <p>The tokens are the specific tokens associated with this statement. They have 
+    different meanings for different statement types.</p>
+  <p> For all statements except comments, they are the C++ tokens.</p>
+  <p> For ccdoc comments, the tokens have a specific syntax. The ccdoc token syntax 
+    is as follows:</p>
+  <blockquote> 
+    <p>@{<br>
+      @file<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;2<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;source_file&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;lineno&gt;<br>
+      @type<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;@prefix or @suffix<br>
+      @short_desc<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @long_desc<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @params<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;@param<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;num&gt; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @returns<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @exceptions<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;@exception<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;num&gt; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @deprecated<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @authors <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @version<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;token&gt;<br>
+      @sees<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;@see<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;num&gt; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @since<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_lines (0 or 1)&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;line&gt;<br>
+      @source<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_files (0 or 1)&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;file&gt;<br>
+      @pkg<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @pkgdoc<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;num_tokens&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;tokens&gt;<br>
+      @}</p>
+  </blockquote>
+  <p>The @{ and @} designate the begining and ending of the comment tokens. The 
+    @file specifies the source file and lineno. The type is either @prefix or 
+    @suffix. @prefix indicates that this comment is associated with the next statement. 
+    @suffix indicates that this comment is associated with the previous statement.</p>
+  <p>@short is the short description and @long is the long description.</p>
+  <p>You might find @link sprinkled throughout the token lists. This indicates 
+    that a link was specified using the @link or @$ directive. The syntax of the 
+    @link sub-statement is:</p>
+  <blockquote> 
+    <p>@link<br>
+      &lt;num_tokens&gt;<br>
+      &lt;tokens&gt;</p>
+  </blockquote>
+  <p>The first token is the link, all of the other tokens are part of the anchor 
+    id.</p>
+  <p>@params is the list of parameters and @returns is the returns comments.</p>
+  <p>@exceptions is the list of exceptions, @deprecated is the deprecated comment 
+    and @authors is the list of authors.</p>
+  <p>@version is the version, @sees is the see also entries, @pkg is package and 
+    @pkgdoc specifies that this comment is for a specific package.</p>
+  <h4>End of File</h4>
+  <p>The end of the file is denoted by an 'e'.<br>
+  </p>
+  <h3><a name="db_novf"></a>Terse Format</h3>
+  <p>The terse format is identical to the verbose format with the following exceptions: 
+    the string table has entries and &lt;strlen&gt; &lt;string&gt; pairs in the 
+    verbose format are replaced with tags.</p>
+  <p> Each string entry has the following syntax:</p>
+  <blockquote> 
+    <p>&lt;tag&gt; &lt;strlen&gt; &lt;string&gt;</p>
+  </blockquote>
+  <p>Where &lt;tag&gt; is the index into the string table, &lt;strlen&gt; is the 
+    number of characters in the string and &lt;string&gt; is the string.</p>
+  <p>Terse mode uses less file space than verbose mode but the write operation 
+    is much slower.</p>
+</blockquote>
+<div align="left">
+  <blockquote><a name="release_notes"></a></blockquote>
+</div>
+<hr align="left">
+<div align="left"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h2>Release Notes</h2>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#database_details">&lt;</a> <a href="#top">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<blockquote> 
+  <p>For the latest information, see the news and issues sections of the ccdoc 
+    web page: http//ccdoc.sourceforge.net.</p>
+  <p>See the online help for the latest information about switches and directives.</p>
+  <p>This is the first new release since 1998. The program has been completely 
+    rewritten from scratch to conform to the latest C++ changes. Along the way 
+    a few new features were added and a bunch of bugs were fixed.</p>
+  <p>Far too much has changed for me to detail everything but here is a listing 
+    of some of the highlights.</p>
+  <ul>
+    <li>HTML files name do not change between runs so users can safely link to 
+      them.</li>
+    <li>Namespaces are supported.</li>
+    <li>Templates are supported.</li>
+    <li>Warnings are generated for unresolved links (in addition to being reported 
+      in red).</li>
+    <li>The development environment was moved to sourceforge.net.</li>
+    <li>Inherited methods (-rptim) are reported as part of each class.</li>
+    <li>Pre-processing directives are fully supported. Even complex expressions 
+      like this will work: 
+      <blockquote> 
+        <pre>#if defined(VENDOR1) &amp;&amp; ( MAJOR_VERSION &gt; 1 &amp;&amp; LANG_CXX == 1 )
+extern void g_fct(string s);
+#elif defined(VENDOR2)
+extern &quot;C&quot; void g_fct(const char* s);
+#else
+extern void g_fct(const char* s);
+#endif</pre>
+      </blockquote>
+    </li>
+    <li>The ccdoc.index.html file is not generated automatically. It has been 
+      replaced by the ccdoc.root.pkg.html for consistency with other packages.</li>
+    <li>A hierarchical class summary is generated.</li>
+    <li>The output format has changed. The new output format is much simpler and 
+      does not rely special GIF images.</li>
+    <li>The output ordering has changed. All entities are now sorted. This change 
+      was made to accomodate the support for reporting inherited methods. The 
+      only exceptions to this are that packages and namespaces show up first followed 
+      by constructors and destructors.</li>
+    <li>Ccdoc no longer attempts to expand wildcards on windows machines because 
+      that conflicts with attempts to specify * and ? characters in unix like 
+      shells.</li>
+    <li>More control over color.</li>
+    <li>The __ccdoc__ macro is now defined properly. You do not have to use the 
+      -D__ccdoc__=1 workaround from version 0.7a.</li>
+    <li>Modified implementation to use STL and namespaces.</li>
+    <li>Added regression tests.</li>
+    <li>Fixed many bugs, among them: 
+      <ul>
+        <li>Changed indent from &lt;dir&gt;&lt;/dir&gt; to &lt;table&gt;&lt;/table&gt; 
+          to improve display on different browsers. The &lt;table&gt;&lt;/table&gt; 
+          worked better than &lt;blockquote&gt;&lt;/blockquote&gt;.</li>
+        <li>Improved id recognition in C++ entities</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+<hr>
+<p align="left">&nbsp;</p>
+        </body>
+</html>

@@ -1,0 +1,984 @@
+ccdoc v0.8 verbose
+$ 0
+S 1c
+f 10 webdocs/ccdoc.db
+s
+7 Modules
+0
+0
+pkg
+0 
+0
+0
+f b polygon.h.h
+s
+a $comment-0
+1
+0
+cop
+0 
+9
+2b
+2 @{
+5 @file
+1 2
+b polygon.h.h
+1 8
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 4
+17  Module Polygon.h.h    
+2   
+29  Implements a medley of useful functions 
+1  
+a @long_desc
+1 0
+7 @params
+1 0
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 1
+a HI KAI JIE
+8 @version
+1 1
+c 2.1 12/05/14
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-1
+2
+0
+cop
+0 
+11
+2f
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 16
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 1
+66  Polygon structure initialize structure with parameters of numberOfVertices,xCoordinates,yCoordinates.
+a @long_desc
+1 1
+1  
+7 @params
+1 2
+6 @param
+1 2
+c xCoordinates
+36 -is a pointer for x coordinates point in the structure
+6 @param
+1 2
+c yCoordinates
+38 - a pointer for y coordinates of points in the structure
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+b $comment-10
+3
+0
+cop
+0 
+68
+2c
+2 @{
+5 @file
+1 2
+b polygon.h.h
+3 103
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+30  plg_getxCentroid accepts polygon as a parameter
+2a  Calculate the centroid of the xcoordinate
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 1
+29 a double - the xcoordinate of the Polygon
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+b $comment-11
+4
+0
+cop
+0 
+70
+2c
+2 @{
+5 @file
+1 2
+b polygon.h.h
+3 111
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+30  plg_getyCentroid accepts polygon as a parameter
+2a  Calculate the centroid of the ycoordinate
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 1
+29 a double - the ycoordinate of the Polygon
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+b $comment-12
+5
+0
+cop
+0 
+7a
+2f
+2 @{
+5 @file
+1 2
+b polygon.h.h
+3 121
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+61  plg_shiftHorizontally accepts polygon as a parameter & initiallize horizontal of polygon shifted
+3f  Calculate by adding each horizontal unit into each coordinates
+a @long_desc
+1 0
+7 @params
+1 2
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+6 @param
+1 2
+6 double
+1e - number of horizontal shifted
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+b $comment-13
+6
+0
+cop
+0 
+82
+2f
+2 @{
+5 @file
+1 2
+b polygon.h.h
+3 129
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+5f  plg_shiftVertically accepts polygon as a parameter & initiallize vertically of polygon shifted
+3f  Calculate by adding each vertically unit into each coordinates
+a @long_desc
+1 0
+7 @params
+1 2
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+6 @param
+1 2
+6 double
+1e - number of horizontal shifted
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-2
+7
+0
+cop
+0 
+20
+31
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 31
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 1
+68  plg_new Allocates memory to create a new Polygon and initialize the x and y coordinates in the Polygon.
+a @long_desc
+1 2
+22 Returns the Polygon which created.
+1  
+7 @params
+1 2
+6 @param
+1 2
+e xCoordinates[]
+24 -is an array for x coordinates point
+6 @param
+1 2
+e yCoordinates[]
+26 - an array for y coordinates of points
+8 @returns
+1 1
+20 a pointer of new Polygon created
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-3
+8
+0
+cop
+0 
+27
+2a
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 38
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 1
+54  plg_delete Frees up memory allocated by the Polygon then passess into this function
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+1a - a Polygon struct pointer
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-4
+9
+0
+cop
+0 
+31
+2d
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 48
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 1
+35  plg_read accepts a Polygon and a file as parameters.
+a @long_desc
+1 1
+49  this reads the polygon point data from the file, and then pass the data 
+7 @params
+1 1
+6 @param
+1 3
+3 plg
+f -polygon struct
+1  
+8 @returns
+1 1
+22 Polygon which new polygon created 
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-5
+a
+0
+cop
+0 
+39
+2b
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 56
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+35  plg_write accepts a Polygon and a file as parameters
+3f  plg_write write data to the file, plgfile from the polygon plg
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-6
+b
+0
+cop
+0 
+43
+2d
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 66
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 3
+2b  plg_getArea accepts polygon as a parameter
+15  reads input of data 
+2c  calculate and returns the area of a Polygon
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 1
+22 a double - the area of the Polygon
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-7
+c
+0
+cop
+0 
+4c
+2d
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 75
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 3
+30  plg_getPerimeter accepts polygon as a parameter
+1f  Allocate memory for perimeter 
+31  calculate and returns the perimeter of a Polygon
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 1
+27 a double - the perimeter of the Polygon
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-8
+d
+0
+cop
+0 
+55
+2d
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 84
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 3
+2d  plg_isRegular accepts polygon as a parameter
+1a  Allocate memory for units
+2a  By comparing the unit length of each side
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 1
+32 a integer - the case 1 or 2 of the Polygon belongs
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-9
+e
+0
+cop
+0 
+60
+2d
+2 @{
+5 @file
+1 2
+b polygon.h.h
+2 95
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 3
+29  plg_close accepts polygon as a parameter
+22  Check if polygon are close or not
+36  by checking the first coordinate with last coordinate
+a @long_desc
+1 0
+7 @params
+1 1
+6 @param
+1 2
+3 plg
+12 - a Polygon struct
+8 @returns
+1 1
+2f a int - the value indicate close of the Polygon
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 0
+8 @version
+1 0
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+7 Polygon
+f
+0
+tyv
+0 
+17
+10
+7 typedef
+6 struct
+1 {
+3 int
+10 numberOfVertices
+1 ;
+6 double
+1 *
+c xCoordinates
+1 ;
+6 double
+1 *
+c yCoordinates
+1 ;
+1 }
+7 Polygon
+s
+9 plg_close
+10
+0
+fct
+0 
+61
+7
+6 double
+9 plg_close
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+a plg_delete
+11
+0
+fct
+0 
+28
+7
+4 void
+a plg_delete
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+b plg_getArea
+12
+0
+fct
+0 
+44
+7
+6 double
+b plg_getArea
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+10 plg_getPerimeter
+13
+0
+fct
+0 
+4d
+7
+6 double
+10 plg_getPerimeter
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+10 plg_getxCentroid
+14
+0
+fct
+0 
+69
+7
+6 double
+10 plg_getxCentroid
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+10 plg_getyCentroid
+15
+0
+fct
+0 
+71
+7
+6 double
+10 plg_getyCentroid
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+d plg_isRegular
+16
+0
+fct
+0 
+57
+7
+6 double
+d plg_isRegular
+1 (
+7 Polygon
+1 *
+3 plg
+1 )
+s
+7 plg_new
+17
+0
+fct
+0 
+21
+f
+7 Polygon
+1 *
+7 plg_new
+1 (
+6 double
+1 *
+6 xCoord
+1 ,
+6 double
+1 *
+6 yCoord
+1 ,
+3 int
+10 numberOfVertices
+1 )
+s
+8 plg_read
+18
+0
+fct
+0 
+32
+c
+7 Polygon
+1 *
+8 plg_read
+1 (
+7 Polygon
+1 *
+3 plg
+1 ,
+4 FILE
+1 *
+9 plg_rfile
+1 )
+s
+15 plg_shiftHorizontally
+19
+0
+fct
+0 
+7b
+a
+4 void
+15 plg_shiftHorizontally
+1 (
+7 Polygon
+1 *
+3 plg
+1 ,
+6 double
+3 hor
+1 )
+s
+13 plg_shiftVertically
+1a
+0
+fct
+0 
+83
+a
+4 void
+13 plg_shiftVertically
+1 (
+7 Polygon
+1 *
+3 plg
+1 ,
+6 double
+3 ver
+1 )
+s
+9 plg_write
+1b
+0
+fct
+0 
+3a
+b
+4 void
+9 plg_write
+1 (
+7 Polygon
+1 *
+3 plg
+1 ,
+4 FILE
+1 *
+9 plg_wfile
+1 )
+e

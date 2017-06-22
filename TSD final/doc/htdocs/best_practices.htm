@@ -1,0 +1,938 @@
+<html>
+<head>
+<title>CcDoc Best Practices</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2 align="center"><a name="top"></a><font size="2"><a href="../index.html">ccdoc 
+  home page</a></font><br>
+  CcDoc Best Practices<br>
+  <font size="2">$Revision: 1.6 $<br>
+  $Date: 2003/02/27 05:02:51 $ <br>
+  Joe Linoff</font></h2>
+<hr>
+<p align="left">This paper details the best practices for using ccdoc based on 
+  feedback from users over the years. They are listed below:</p>
+<ol>
+  <li><a href="#p1">General Guidelines.</a></li>
+  <li><a href="#p2">Code examples.</a></li>
+  <li><a href="#p3">Ordered lists.</a></li>
+  <li><a href="#p4">Unordered lists.</a></li>
+  <li><a href="#p5">Tables.</a></li>
+  <li><a href="#p6">Reuse comments for derived virtual methods.</a></li>
+  <li><a href="#p7">Verify the output format.</a></li>
+  <li><a href="#p8">Create internal documentation for developers.</a></li>
+  <li><a href="#p9">Hide include guards.</a></li>
+  <li><a href="#p10">Namespaces</a></li>
+  <li><a href="#p11">Templates</a></li>
+</ol>
+<p align="left">In the following sections, each practice is presented a description 
+  and one or more examples.</p>
+<a name="p1"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>1. General Guidelines</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p8">&lt;</a> <a href="#p2">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <h4>Description</h4>
+  <ol>
+    <li>Document 'HOW' not 'WHAT'. 
+      <blockquote> 
+        <p>Program documentation is most useful for users when they are told how 
+          it is meant to be used. When writing documentation think about what 
+          the user would be likely to ask you. For example, a user rarely cares 
+          about the design decisions that lead to the development of a class whereas 
+          they are very concerned with when and how to use it, which constructor 
+          should they call and which operations make sense. Here are some additional 
+          rules of thumb:</p>
+      </blockquote>
+    </li>
+    <li>Provide working code examples when possible. This is especially important 
+      for global functions and classes.<br>
+      <br>
+    </li>
+    <li>Provide links to related classes and functions using the @see and {@link 
+      ...} directives.<br>
+      <br>
+    </li>
+    <li>Provide links to related external documentation using the HTML anchor 
+      directive.<br>
+      <br>
+    </li>
+    <li>Always provide the author (@author) for classes, global functions, global 
+      variables, global enumerations and global typedefs so that users know who 
+      to contact to get additional information. </li>
+    <blockquote> 
+      <p> When there are multiple authors, list them chronologically from most 
+        recent to earliest. That is the first @author statement should be the 
+        most recent author and the last @author statement should be the least 
+        recent. </p>
+    </blockquote>
+    <li> Always provide the version (@version) for classes, global functions, 
+      global variables, global enumerations and global typedefs so that users 
+      know who to contact to get additional information. </li>
+    <blockquote> 
+      <p> Use a revision control tag that is recognized by your revision control 
+        system for the @version when possible. This allows the automation of revision 
+        control information. For example, I generally specify my versions as use 
+        &quot;@version $Id: best_practices.htm,v 1.3 2003/02/19 14:52:27 jlinoff 
+        Exp $&quot; because I use the CVS revision control system.</p>
+    </blockquote>
+    <li>The user should not have to scan other source code to figure out how to 
+      do things. This leads to bad practices being propagated.<br>
+      <br>
+    </li>
+    <li>Document return values (@returns). Be especially careful to document the 
+      conditions under which a NULL value is returned for functions/methods that 
+      return pointers.<br>
+      <br>
+    </li>
+    <li>Document boundary conditions for function/method arguments (@param).<br>
+      <br>
+    </li>
+    <li>Document exceptions that can be thrown by a function/method (@exception).<br>
+      <br>
+    </li>
+    <li>Document how a user is supposed to alter their code when specifying a 
+      deprecated (@deprecated) entity.<br>
+      <br>
+    </li>
+    <li>Document namespaces in a single place to ease maintenance. After r27, 
+      ccdoc will correctly recognize which namespace entities are documented and 
+      only use them (you can override this behavior using the -rptcfuns switch).<br>
+      <br>
+    </li>
+    <li>Use the ///&lt; or //!&lt; form for single line comments.</li>
+  </ol>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>This example shows an example of a documented class that really doesn't 
+      help the user much:</p>
+    <blockquote> 
+      <pre>/**
+ * This is a directed, a cyclic graph class.
+ * For more information on directed, acyclic graphs see the
+ * text book &quot;Graph Theory&quot; by Professor S Obtuse.
+ * This was developed to allow us to experiment with different
+ * graph algorithms.
+ * @author author1
+ * @version $Id: best_practices.htm,v 1.6 2003/02/27 05:02:51 jlinoff Exp $
+ * @see Node
+ * @see Arc
+ */
+class Graph
+</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>As you can see, the previous documentation clearly describes what the class 
+      is but it really doesn't do much to help the user. I think that the following 
+      is much better:</p>
+    <blockquote> 
+      <pre>/**
+ * This is a directed, a cyclic graph class.
+ * For more information on directed, acyclic graphs see the
+ * text book &quot;Graph Theory&quot; by Professor S Obtuse.
+ * This was developed to allow us to experiment with different
+ * graph algorithms.
+ *
+ * The example below shows how to create a simple graph and
+ * then use the node and arc counting operations. The graph has
+ * three nodes that are fully connected.
+ *&lt;blockquote&gt;
+ *&lt;pre&gt;
+ *@@ #include &quot;Graph/export/Graph.h&quot;
+ *@@ int main()
+ *@@ {
+ *@@   Graph* graph = new Graph(&quot;g1&quot;);
+ *@@
+ *@@   // Create the top nodes.
+ *@@   graph-&gt;AddNode(&quot;N1&quot;);
+ *@@   graph-&gt;AddNode(&quot;N2&quot;);
+ *@@   graph-&gt;AddNode(&quot;N3&quot;);
+ *@@
+ *@@   // Fully connect them.
+ *@@   graph-&gt;Connect(&quot;N1&quot;,&quot;N2&quot;); // N1 -&gt; N2
+ *@@   graph-&gt;Connect(&quot;N1&quot;,&quot;N3&quot;); // N1 -&gt; N3
+ *@@   graph-&gt;Connect(&quot;N2&quot;,&quot;N1&quot;); // N2 -&gt; N1
+ *@@   graph-&gt;Connect(&quot;N2&quot;,&quot;N3&quot;); // N2 -&gt; N3
+ *@@   graph-&gt;Connect(&quot;N3&quot;,&quot;N1&quot;); // N3 -&gt; N1
+ *@@   graph-&gt;Connect(&quot;N3&quot;,&quot;N2&quot;); // N3 -&gt; N2
+ *@@
+ *@@   // Count the nodes and arcs.
+ *@@   assert( graph-&gt;GetNumNodes() == 3 );
+ *@@   assert( graph-&gt;GetNumArcs() == 6 ); // 3!
+ *@@
+ *@@   // Clean up
+ *@@   delete graph;
+ *@@    
+ *@@   return 0;
+ *@@ }
+ *&lt;/pre&gt;
+ *&lt;/blockquote&gt;
+ * The graph class also provides more complex algorithms and
+ * heuristics for finding shortest and longest paths, partitions
+ * etc.
+ *
+ * The graph class does not support hierarchy.
+ * @author author1
+ * @version $Id: best_practices.htm,v 1.6 2003/02/27 05:02:51 jlinoff Exp $
+ * @see Node
+ * @see Arc
+ */
+</pre>
+    </blockquote>
+    <p>As you can see, it provides a wealth of information about how to use this 
+      object. If a programmer sees this they will immediately have an idea of 
+      how to use this class. With the previous description they would have to 
+      call the author or look at code examples.</p>
+  </blockquote>
+</blockquote>
+<a name="p2"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>2. Code Examples</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p1">&lt;</a> <a href="#p3">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <h4>Description</h4>
+  <blockquote> 
+    <p>When documenting simple source code use one of the following paradigms 
+      to ensure maximum readability:</p>
+    <blockquote> 
+      <pre>/**
+ * Code example.
+ *&lt;blockquote&gt;
+ *&lt;pre&gt;
+ *@@ ...
+ *&lt;/pre&gt;
+ *&lt;/blockquote&gt;
+ */</pre>
+    </blockquote>
+    <p>or</p>
+    <blockquote> 
+      <pre>/**
+ * Code example.
+ *&lt;blockquote&gt;
+ *&lt;code&gt;
+ *@@ ...
+ *&lt;/code&gt;
+ *&lt;/blockquote&gt;
+ */</pre>
+    </blockquote>
+    <p>The &lt;blockquote&gt; tag is used to indent the region and the &lt;pre&gt; 
+      or &lt;code&gt; tag defines a fixed width font so that code looks more like 
+      it does in an editor. The ccdoc '@@' directive tells ccdoc to automatically 
+      convert &lt; to &amp;lt; &gt; to &amp;gt; and &amp; to &amp;amp; to avoid 
+      confusing the HTML parser.</p>
+    <p>Do not use the &lt;dir&gt; tag. It does not produce readable results on 
+      most browsers.</p>
+    <p>When documenting source code that you want to embed to HTML directives 
+      in make sure that you manually convert the &lt;, &gt; and &amp; characters.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user want to document source code with extra formatting 
+      but forgot to manually convert the &lt;, &gt; and &amp; characters. This 
+      fragment will produce very strange results in HTML.</p>
+    <blockquote> 
+      <pre>/**
+ * Code example with highlights that doesn't work at all:
+ *&lt;blockquote&gt;
+ *&lt;pre&gt;
+ * for( ; i&lt;10 &amp;&amp; i&gt;0; ++i )
+ *    cout &lt;&lt; &lt;b&gt;fct(i)&lt;/b&gt; &lt;&lt; endl;
+ *&lt;/pre&gt;
+ *&lt;/blockquote&gt;
+ */</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>The above example produces unexpected results because the HTML parser tries 
+      to interpret '&lt;10 &amp;&amp; i&gt;' as a tag with unexpected results. 
+      Changing this to the following would help but it would not fix the problem 
+      because &quot;fct&quot; would not show up in bold:</p>
+    <blockquote> 
+      <pre>/**
+ * Code example with highlights that doesn't works better:
+ *&lt;blockquote&gt;
+ *&lt;pre&gt;
+ *@@ for( ; i&lt;10 &amp;&amp; i&gt;0; ++i )
+ *@@    cout &lt;&lt; &lt;b&gt;fct(i)&lt;/b&gt; &lt;&lt; endl;
+ *&lt;/pre&gt;
+ *&lt;/blockquote&gt;
+ */</pre>
+    </blockquote>
+    <p>In fact, &quot;fct&quot; shows up as &quot;&lt;b&gt;fct&lt;/b&gt;&quot; 
+      in the HTML. This is very useful for documenting HTML tags but not helpful 
+      for code examples. To fix this, change it to the following:</p>
+    <blockquote> 
+      <pre>/**
+ * Code example with highlights that works:
+ *&lt;blockquote&gt;
+ *&lt;pre&gt;
+ *@@ for( ; i&lt;10 &amp;&amp; i&gt;0; ++i )
+ *    cout &amp;lt;&amp;lt; &lt;b&gt;fct(i)&lt;/b&gt; &amp;gt;&amp;gt; endl;
+ *&lt;/pre&gt;
+ *&lt;/blockquote&gt;
+ */</pre>
+    </blockquote>
+    <p>Note that I kept the '@@' on the first line because there were no HTML 
+      tags embedded there and the '@@' directive is more convenient than substituting 
+      for the &lt;, &gt; and &amp; characters.</p>
+  </blockquote>
+</blockquote>
+<a name="p3"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>3. Ordered Lists</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p2">&lt;</a> <a href="#p4">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <h4>Description</h4>
+  <blockquote> 
+    <p>When documenting ordered lists always use the HTML &lt;ol&gt; tag for maximum 
+      readability as follows:</p>
+    <blockquote> 
+      <pre>/**
+ * There are 4 things in the list:
+ *&lt;ol&gt;
+ *&lt;li&gt;One fish
+ *&lt;li&gt;Two fish
+ *&lt;li&gt;Red fish
+ *&lt;li&gt;Blue fish
+ *&lt;/ol&gt;
+ */</pre>
+    </blockquote>
+    <p>This recommendation is made because large list entries that are entered 
+      use the &lt;pre&gt; tag wrap in strange ways when users resize their windows.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user documents a list with using the HTML &lt;ol&gt; 
+      tag. </p>
+    <blockquote> 
+      <pre>/**
+ * Here is a list with a long entry that will be hard to read under
+ * certain conditions:
+ *&lt;pre&gt;
+ * 1. This really looks easy to read when you type it in but
+ *    for users it is a real disaster if their browser window
+ *    is too small.
+ *&lt;/pre&gt;
+ */</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>The above example is very hard to read when the users browser window is 
+      too small. Using the &lt;ol&gt; tag makes it much easier as shown below:</p>
+    <pre>/**
+ * Here is a list with a long entry that will be hard to read under
+ * certain conditions:
+ *&lt;ol&gt;
+ *&lt;li&gt;This is easy to read when you type it in and it is easy
+ *    for users read.
+ *&lt;/ol&gt;
+ */</pre>
+  </blockquote>
+</blockquote>
+<p><a name="p4"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>4. Unordered Lists</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p3">&lt;</a> <a href="#p5">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>When documenting unordered lists always use the HTML &lt;ul&gt; tag for 
+      maximum readability as follows:</p>
+    <blockquote> 
+      <pre>/**
+ * There are 4 things in the list:
+ *&lt;ul&gt;
+ *&lt;li&gt;One fish
+ *&lt;li&gt;Two fish
+ *&lt;li&gt;Red fish
+ *&lt;li&gt;Blue fish
+ *&lt;/ul&gt;
+ */</pre>
+    </blockquote>
+    <p>This recommendation is made because large list entries that are entered 
+      use the &lt;pre&gt; tag wrap in strange ways when users resize their windows.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user documents a list with using the HTML &lt;ol&gt; 
+      tag. </p>
+    <blockquote> 
+      <pre>/**
+ * Here is a list with a long entry that will be hard to read under
+ * certain conditions:
+ *&lt;pre&gt;
+ * 1. This really looks easy to read when you type it in but
+ *    for users it is a real disaster if their browser window
+ *    is too small.
+ *&lt;/pre&gt;
+ */</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>The above example is very hard to read when the users browser window is 
+      too small. Using the &lt;ol&gt; tag makes it much easier as shown below:</p>
+    <blockquote> 
+      <pre>/**
+ * Here is a list with a long entry that will be hard to read under
+ * certain conditions:
+ *&lt;ul&gt;
+ *&lt;li&gt;This is easy to read when you type it in and it is easy
+ *    for users read.
+ *&lt;/ul&gt;
+ */</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> </blockquote>
+</blockquote>
+<p><a name="p5"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>5. Tables</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p4">&lt;</a> <a href="#p6">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>There are two recommendations for tabular data: use the &lt;pre&gt; tag 
+      and format the data or use the &lt;table&gt; tag. The &lt;pre&gt; tag should 
+      be used for small, simple tables that aren't likely to have fields that 
+      wrap. The &lt;table&gt; tag should be used for complex tables.</p>
+    <p>The first example below shows how to use the &lt;pre&gt; paradigm.</p>
+    <blockquote> 
+      <pre>/**
+ * This enumerated type has three values as shown in
+ * the table below:
+ *&lt;pre&gt;
+ * Enumeration  Description
+ * ===========  =========================
+ * RED          This is a red hue value.
+ * GREEN        This is a green hue value.
+ * BLUE         This is a blue hue value.
+ *&lt;/pre&gt;</pre>
+    </blockquote>
+    <p>As you can see, the entries are very small and are not likely to wrap. 
+      They are also easy to read in the code.</p>
+    <p>The following example is more complex because it uses anchors and extra 
+      text.</p>
+    <blockquote> 
+      <pre>/**
+ * This enumerated type describes the currently active
+ * algorithm.
+ *&lt;table border=1&gt;
+ *&lt;tr&gt;
+ *   &lt;th&gt;Algorithm&lt;/th&gt;
+ *   &lt;th&gt;Author&lt;/th&gt;
+ *   &lt;th&gt;Brief Description&lt;/th&gt;
+ *&lt;/tr&gt;
+ *&lt;tr&gt;
+ *    &lt;td&gt;Annealing Placement&lt;/td&gt;
+ *    &lt;td&gt;&lt;a href=&quot;mailto:foobar@xilinx.com&quot;&gt;F. Bar&lt;/a&gt;
+ *    &lt;td&gt;Huston annealing algorithm.&lt;/td&gt;
+
+ *&lt;/tr&gt;
+ *&lt;tr&gt;
+ *    &lt;td&gt;Constructive Placement 1&lt;/td&gt;
+ *    &lt;td&gt;&lt;a href=&quot;mailto:smart1@xilinx.com&quot;&gt;A. Smart1&lt;/a&gt;
+ *    &lt;td&gt;An older constructive placement algorithm that
+ *        is faster than annealing placement with slightly
+ *        poorer results.&lt;/td&gt;
+ *&lt;/tr&gt;
+ *&lt;tr&gt;
+ *    &lt;td&gt;Constructive Placement 2&lt;/td&gt;
+ *    &lt;td&gt;&lt;a href=&quot;mailto:smart1@xilinx.com&quot;&gt;A. Smart1&lt;/a&gt;
+ *    &lt;td&gt;The latest and greatest constructive placement algorithm.&lt;/td&gt;
+ *&lt;/tr&gt;
+ *&lt;/table&gt;
+ */</pre>
+    </blockquote>
+    <p>It would be difficult to produce readable output using the &lt;pre&gt; 
+      paradigm. </p>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <blockquote></blockquote>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> </blockquote>
+</blockquote>
+<p><a name="p6"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>6. Reuse comments for derived virtual methods</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p5">&lt;</a> <a href="#p7">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>Many times derived virtual methods have exactly the same function as their 
+      base counterparts. When this is the case it is recommended that you reuse 
+      the prior comment by specifying the @link directive to save typing and to 
+      improve maintainability.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user re-documents an existing virtual function: is_in_db().</p>
+    <blockquote> 
+      <pre>struct A {
+  /**
+   * This method reports whether the specified name is
+   * in the database.
+   * @param name The name to search for. It can 
+   * any of the following formats:
+   *   &lt;ul&gt;
+   *     &lt;li&gt;Last, First MI
+   *     &lt;li&gt;First MI Last
+   *     &lt;li&gt;First Last
+   *   &lt;/ul&gt;
+   * @returns True if the name was found or false otherwise.
+   *          If the name is NULL, false is returned.
+   */
+  virtual bool is_in_db(const char* name) const;
+};
+</pre>
+      <pre>struct B : public A {
+  /**
+   * This method reports whether the specified name is
+   * in the database.
+   * @param name The name to search for. It can 
+   * any of the following formats:
+   *   &lt;ul&gt;
+   *     &lt;li&gt;Last, First MI
+   *     &lt;li&gt;First MI Last
+   *     &lt;li&gt;First Last
+   *   &lt;/ul&gt;
+   * @returns True if the name was found or false otherwise.
+   *          If the name is NULL, false is returned.
+   */
+  virtual bool is_in_db(const char* name) const;
+};</pre>
+    </blockquote>
+    <h4>Best Practice Example</h4>
+    <blockquote> 
+      <p>The problem with the previous example is maintenance. Anytime the behavior 
+        changes, both methods have to be updated. It is better to simply reference 
+        the original function unless you are really doing something different. 
+        The following example illustrates this:</p>
+      <blockquote> 
+        <pre>struct A {
+  /**
+   * This method reports whether the specified name is
+   * in the database.
+   * @param name The name to search for. It can 
+   * any of the following formats:
+   *   &lt;ul&gt;
+   *     &lt;li&gt;Last, First MI
+   *     &lt;li&gt;First MI Last
+   *     &lt;li&gt;First Last
+   *   &lt;/ul&gt;
+   * @returns True if the name was found or false otherwise.
+   *          If the name is NULL, false is returned.
+   */
+  virtual bool is_in_db(const char* name) const;
+};
+struct B : public A {
+  /** See {@link A::is_in_db}. */
+  virtual bool is_in_db(const char* name) const;
+};</pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<p><a name="p7"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>7. Verify the output format</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p6">&lt;</a> <a href="#p8">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>Before publishing ccdoc comments test them locally as shown below. Note 
+      that the first step is to manually verify that you are using the correct 
+      version of ccdoc.</p>
+    <blockquote> 
+      <pre>% ccdoc -version
+% rm -rf ccdoc
+% mkdir ccdoc
+% ccdoc -db ccdoc/ccdoc.db -pkg test export/*.h
+% ccdoc -db ccdoc/ccdoc.db -index
+% ccdoc -db ccdoc/ccdoc.db -norptim -rptmac -rptfwcf -html ccdoc/
+% &lt;view in the browser of your choice&gt;
+</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<p><a name="p8"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>8. Create internal documentation for developers</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p6">&lt;</a> <a href="#p9">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>Ccdoc can be useful in training new subsystem developers and for reminding 
+      existing developers of whats there. I recommend creating a ccdoc target 
+      in your development makefile that generates documentation about all of the 
+      external and internal classes.</p>
+    <p>This is generally different than the documentation generated for users 
+      because it can include headers files that are not exported.</p>
+  </blockquote>
+</blockquote>
+<p><a name="p9"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>9. Hide include guards</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p8">&lt;</a> <a href="#p10">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>When documenting header files, always hide the include guards unless there 
+      is a compelling reason to leave them. They are an unnecessary distraction 
+      for most users.</p>
+    <p>Another option for hiding include guards is to use the -rptmac1 switch. 
+      This will automatically ignore macros with the following name characteristics:</p>
+    <ul>
+      <li>Prefixes 
+        <ul>
+          <li>dll_,DLL_ </li>
+          <li>include_,INCLUDE_</li>
+          <li>included_,INCLUDED_</li>
+        </ul>
+      </li>
+      <li>Suffixes 
+        <ul>
+          <li>_dll,_DLL</li>
+          <li>_h,_H</li>
+          <li>_hh,_HH,</li>
+          <li>_include,_INCLUDE</li>
+          <li>_included,_INCLUDED</li>
+          <li>_included_,_INCLUDED_</li>
+        </ul>
+      </li>
+    </ul>
+    <p>This is especially useful for systems where you cannot change some of the 
+      header files.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user does not hide the include guard and doesn't document 
+      it leading to documentation clutter.</p>
+    <blockquote> 
+      <pre>// Header file for stuff.
+#ifndef my_stuff_h
+
+#define my_stuff_h
+
+...
+#endif</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Better Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user does not hide the include guard but documents 
+      it. Although this may still lead to documentation clutter, the user will 
+      be able to understand what it is.</p>
+    <blockquote> 
+      <pre>// Header file for stuff.
+#ifndef my_stuff_h
+/**
+ * Include guard for my_stuff.h.
+ * @author Ima Programmer
+ * @version $Id: best_practices.htm,v 1.6 2003/02/27 05:02:51 jlinoff Exp $
+ */
+
+#define my_stuff_h
+
+...
+#endif</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user hides the include guard to avoid documentation 
+      clutter. </p>
+    <blockquote> 
+      <pre>// Header file for stuff.
+#ifndef my_stuff_h
+#ifndef __ccdoc__
+#define my_stuff_h
+#endif
+
+...
+#endif</pre>
+    </blockquote>
+    <p> Another best practice is to not hide the include guard but use the -rptmac1 
+      switch.</p>
+    <blockquote> 
+      <pre> // Header file for stuff.
+#ifndef my_stuff_h
+// No need for a ccdoc guard because the
+// -rptmac1 switch is used.
+#define my_stuff_h
+
+...
+#endif</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<a name="p10"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>10. Namespaces</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p9">&lt;</a> <a href="#p11">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>When documenting the same namespace distributed over different files, choose 
+      one as the primary source and only document that one.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user does not document any of the Stuff namespace 
+      instances.</p>
+    <blockquote> 
+      <pre>// file1.h
+namespace Stuff {
+   int a;
+}
+
+
+
+// file2.h
+namespace Stuff {
+   int b;
+}</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Better Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user documents all of the Stuff namespace instances. 
+      This is better than the previous example because the user can at least determine 
+      who the author is.</p>
+    <blockquote> 
+      <pre>// file1.h
+/**
+ * This namespace does stuff.
+ * @author A. Programmer.
+ * @version 1.0
+ */
+namespace Stuff {
+   int a;
+}
+
+
+
+// file2.h
+/**
+ * This namespace does stuff.
+ * @author A. Programmer.
+ * @version 1.0
+ */
+namespace Stuff {
+   int b;
+}</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user documents one of the Stuff namespace instances. 
+      This is better than the previous example because it reduces documentation 
+      clutter in the ccdoc output.</p>
+    <blockquote> 
+      <pre>// file1.h
+/**
+ * This namespace does stuff.
+ * @author A. Programmer.
+ * @version 1.0
+ */
+namespace Stuff {
+   int a;
+}
+
+
+
+// file2.h
+// This is documented in file1.h
+namespace Stuff {
+   int b;
+}</pre>
+  </blockquote>
+</blockquote>
+</blockquote>
+<a name="p11"></a>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="87%"> 
+      <h3>11. Templates</h3>
+    </td>
+    <td width="13%"> 
+      <div align="right"><a href="#top">^</a> <a href="#p10">&lt;</a> <a href="#top">&gt;</a></div>
+    </td>
+  </tr>
+</table>
+<blockquote> 
+  <blockquote> </blockquote>
+  <h4>Description</h4>
+  <blockquote> 
+    <p>When documenting templates, always specify the parameter information.</p>
+  </blockquote>
+  <h4>Poor Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user does not document the template at all.</p>
+    <blockquote> 
+      <pre>template&lt;class T1,class T2=StdAllocator&gt;
+class MyArray
+{
+public:
+  MyArray();
+  ~MyArray();
+};</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Better Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user documents the template like a class.</p>
+    <blockquote> 
+      <pre>/**
+ * A simple vector like collection template.
+ * @author Joe Linoff
+ * @version $Id: best_practices.htm,v 1.6 2003/02/27 05:02:51 jlinoff Exp $
+ */
+template&lt;class T1,class T2=StdAllocator&gt;
+class MyArray
+{
+public:
+  /**
+   * Default constructor.
+   */
+  MyArray();
+  /**
+   * Destructor.
+   */
+  ~MyArray();
+};</pre>
+    </blockquote>
+  </blockquote>
+  <h4>Best Practice Example</h4>
+  <blockquote> 
+    <p>In this example, the user documents the template and its parameters.</p>
+    <blockquote> 
+      <pre>/**
+ * A simple vector like collection template.
+ * @param T1 The collection entry type.
+ * @param T2 The allocator. The default is the standard allocator.
+ * @author Joe Linoff
+ * @version $Id: best_practices.htm,v 1.6 2003/02/27 05:02:51 jlinoff Exp $
+ */
+template&lt;class T1,class T2=StdAllocator&gt;
+class MyArray
+{
+public:
+  /**
+   * Default constructor.
+   */
+  MyArray();
+  /**
+   * Destructor.
+   */
+  ~MyArray();
+};</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<hr>
+<div align="center"><font size="2">$Id: best_practices.htm,v 1.3 2003/02/19 14:52:27 
+  jlinoff Exp $ </font></div>
+<p>&nbsp;</p>
+</body>
+</html>

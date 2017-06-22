@@ -1,0 +1,520 @@
+<html>
+<head>
+<title>CcDoc FAQ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center">
+  <h2><font size="5"><a name="top"></a></font><font size="2"><a href="../index.html">ccdoc 
+    home page</a></font><br>
+    <font size="5">CcDoc FAQ</font> for v08<br>
+    <font size="2">Joe Linoff<br>
+    $Revision: 1.9 $<br>
+    $Date: 2004/09/30 15:04:06 $ </font></h2>
+  <div align="left">
+    <hr>
+    If you have questions or suggestions for FAQ entries please send me e-mail 
+    at <a href="mailto:jdl@xilinx.com?subject=Ccdoc_FAQ">jdl@xilinx.com</a> or 
+    <a href="mailto:joe@joelinoff.com?subject=Ccdoc_FAQ">joe@joelinoff.com</a>. 
+    <br>
+    <a name="contents"></a> </div>
+  <hr>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h3>Contents</h3>
+      </td>
+      <td> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#top">&lt;</a> <a href="#faq_001">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<ol>
+  <li><a href="#faq_001">How do I install ccdoc?</a></li>
+  <li><a href="#faq_002">How do I uninstall ccdoc?</a></li>
+  <li><a href="#faq_003">How can I determine which version of ccdoc I am using?</a></li>
+  <li><a href="#faq_004">How can I tell ccdoc to ignore include guards?</a></li>
+  <li><a href="#faq_005">Can I add documentation after the entity rather than 
+    before?</a></li>
+  <li><a href="#faq_006">What do I need to do to make my comments compatible with 
+    both doxygen and ccdoc?</a></li>
+  <li><a href="#faq_007">What is the difference between ccdoc and doxygen?</a></li>
+  <li><a href="#faq_008">Why is the on-line help so extensive?</a></li>
+  <li><a href="#faq_009">Do you have an example batch file for running ccdoc under 
+    Windows that I can use as a template?</a></li>
+  <li><a href="#faq_010">How do I log an issue?</a></li>
+</ol>
+<div align="center"> 
+  <div align="left"> 
+    <div align="left"><a name="faq_001"></a> </div>
+    <hr>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td> 
+          <h3>FAQ 01:<br>
+            How do I install ccdoc?</h3>
+        </td>
+        <td nowrap valign="top"> 
+          <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+            <a href="#contents">&lt;</a> <a href="#faq_002">&gt;</a></font></div>
+        </td>
+      </tr>
+    </table>
+    <p align="left"><b>Date: 2003/02/23</b></p>
+    <p align="left">Ccdoc is trivial to install, just copy the executable to a 
+      directory on your path and you are ready to go. It is the same on all platforms 
+      (including windows). There is no special setup.</p>
+    <p align="left">Here is an example install on unix:</p>
+  </div>
+</div>
+<ul>
+  <li> 
+    <div align="center"> 
+      <div align="left">cp ccdoc.exe /usr/local/bin/ccdoc</div>
+    </div>
+  </li>
+</ul>
+<p>Here is an example install on windows:</p>
+<ul>
+  <li>copy ccdoc.exe c:\windows\system32\ccdoc.exe</li>
+</ul>
+<div align="center"> 
+  <div align="left"> 
+    <div align="left"><a name="faq_002"></a> </div>
+    <hr>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td> 
+          <h3>FAQ 02:<br>
+            How do I uninstall ccdoc?</h3>
+        </td>
+        <td nowrap valign="top"> 
+          <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+            <a href="#faq_001">&lt;</a> <a href="#faq_003">&gt;</a></font></div>
+        </td>
+      </tr>
+    </table>
+    <p align="left"><b>Date: 2003/02/23</b></p>
+    <p align="left">Ccdoc is trivial to uninstall, just delete the executable 
+      (even on Windows).</p>
+    <div align="center"> 
+      <div align="left"> 
+        <p align="left">Here is an example uninstall on unix:</p>
+      </div>
+    </div>
+    <ul>
+      <li> 
+        <div align="center"> 
+          <div align="left">rm /usr/local/bin/ccdoc</div>
+        </div>
+      </li>
+    </ul>
+    <p>Here is an example unstall on windows:</p>
+    <ul>
+      <li>del c:\windows\system32\ccdoc.exe</li>
+    </ul>
+    <div align="left"><a name="faq_003"></a> </div>
+    <hr>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td> 
+          <h3>FAQ 03:<br>
+            How can I determine which version of ccdoc I am using?</h3>
+        </td>
+        <td nowrap valign="top"> 
+          <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+            <a href="#faq_002">&lt;</a> <a href="#faq_004">&gt;</a></font></div>
+        </td>
+      </tr>
+    </table>
+    <p align="left"><b>Date: 2003/02/24</b></p>
+    <p align="left">Use the -version switch as shown below:</p>
+  </div>
+</div>
+<blockquote> 
+  <div align="center"> 
+    <div align="left"> 
+      <p>% ccdoc -version<br>
+        ccdoc v08r38 2003/02/24 bin_opt_msvc_MSWin32-x86-multi-thread-4.0</p>
+    </div>
+  </div>
+</blockquote>
+<div align="center"> 
+  <div align="left"> 
+    <p>The format of the version string is described below:</p>
+  </div>
+</div>
+<blockquote>
+  <div align="center">
+    <div align="left"> 
+      <pre>ccdoc v08r38 2003/02/24 bin_opt_msvc_MSWin32-x86-multi-thread-4.0
+^     ^  ^   ^          ^
+|     |  |   |          +--- The compiler, platform and build type.
+|     |  |   +-------------- The release date.
+|     |  +------------------ The revision (minor version).
+|     +--------------------- The version.
++--------------------------- The program identifier.</pre>
+    </div>
+  </div>
+</blockquote>
+<div align="center">
+  <div align="left"><a name="faq_004"></a> </div>
+  <hr>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        <h3>FAQ 04:<br>
+          How can I tell ccdoc to ignore include guards?</h3>
+      </td>
+      <td nowrap valign="top"> 
+        <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+          <a href="#faq_003">&lt;</a> <a href="#faq_005">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+  <p align="left"><b>Date: 2003/02/23</b></p>
+  <p align="left">Use the -rptmac1 switch in phase 1. This is a new switch that 
+    was added in r37 that applies heuristics to remove macro names. The heuristics 
+    it looks for in a macro name to decide whether to ignore it:</p>
+</div>
+<ul>
+  <li> 
+    <div align="left">A _h or _H suffix.</div>
+  </li>
+  <li>A _hh or _HH suffix.</li>
+  <li>A _include or _INCLUDE suffix.</li>
+  <li>A _included_ or _INCLUDED_ suffix.</li>
+  <li>A include_ or INCLUDE_ prefix.</li>
+  <li>A _dll or _DLL suffix.</li>
+  <li>A dll_ or DLL_ prefix.</li>
+</ul>
+<p>More patterns can be added if users request it.</p>
+<div align="center"> 
+  <div align="left"> 
+    <div align="center"> 
+      <div align="left"><a name="faq_005"></a> </div>
+      <hr>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td> 
+            <h3>FAQ 05:<br>
+              Can I add documentation after the entity rather than before?</h3>
+          </td>
+          <td nowrap valign="top"> 
+            <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+              <a href="#faq_004">&lt;</a> <a href="#faq_006">&gt;</a></font></div>
+          </td>
+        </tr>
+      </table>
+      <p align="left"><b>Date: 2003/02/23</b></p>
+      <p align="left">Yes, ccdoc allows both prefix and suffix comment styles. 
+        It defaults to the prefix form because that is what javadoc supports.</p>
+    </div>
+    <p>The example below shows how to specify suffix style comments in ccdoc.</p>
+  </div>
+</div>
+<blockquote> 
+  <div align="center"> 
+    <div align="left"> 
+      <pre>struct Simple {
+  int m_x1; //@- The x1 field.
+  int m_x2; ///&lt; The x2 field.
+  int m_x3; //!&lt; The x3 field.
+  int m_x4; /**
+             * The x4 field.
+             * I want to say a lot about this one.
+             * @suffix
+             */
+  int m_x5; /**&lt;
+             * The x5 field.
+             * I want to say a lot about this one.
+             */
+  int m_x6; /*!&lt;
+             * The x6 field.
+             * I want to say a lot about this one.
+             */
+};</pre>
+    </div>
+  </div>
+</blockquote>
+<p>I prefer the ///&lt; and //!&lt; because they are doxygen compatible. The //@- 
+  and @suffix are historical.</p>
+  
+<div align="left"><a name="faq_006"></a> </div>
+  <hr>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td> 
+        
+      <h3>FAQ 06:<br>
+          What do I need to do to make my comments work compatible with both doxygen 
+          and ccdoc?</h3>
+      </td>
+      <td nowrap valign="top"> 
+        
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#faq_005">&lt;</a> <a href="#faq_007">&gt;</a></font></div>
+      </td>
+    </tr>
+  </table>
+<p align="left"><b>Date: 2003/02/23</b></p>
+<p align="left">I am not an expert on doxygen but here are a couple of things 
+  that have been pointed out me by users: </p>
+<ol>
+  <li>Make sure that you use the doxygen comment style for suffix comments and 
+    single line comments.</li>
+  <li>Use @link @endlink instead of {@link .. }.</li>
+  <li>Don't use doxygen style comment grouping. The syntax is the same as the 
+    ccdoc syntax for C++ style single line comments.</li>
+  <li>The HTML &lt;blockquote&gt; construct is not supported by doxygen so use 
+    it warily.</li>
+  <li>Don't use the '@@' ccdoc construct. It doesn't translate well to doxygen.</li>
+</ol>
+<p>I will try to continue to enhance ccdoc to work smoothly with doxygen. Any 
+  suggestions would be greatly appreciated.</p>
+<p>Three examples are presented below to show what works and what doesn't.</p>
+<h4>Example 1: Embedded links.</h4>
+<blockquote> 
+  <p>The example below shows two versions of the same comment. The first one will 
+    work with ccdoc and doxygen. The second one will only work with ccdoc because 
+    it uses the javadoc style {@link} directive which isn't supported by doxygen.</p>
+  <pre>// Works with doxygen and ccdoc.
+/**
+ * This function does stuff.
+ * This function is related to @link other_function @end_link .
+ * @author A. Programmer.
+ * @version 1.0
+ */
+void this_function();
+
+
+/**
+ * This function does stuff.
+ * This function is related to <font color="#990000">{@link other_function}</font> .
+ * @author A. Programmer.
+ * @version 1.0
+ */
+void this_function();
+</pre>
+</blockquote>
+<h4>Example 2: Suffix style multi-line comments</h4>
+<blockquote> 
+  <p>The example below shows two versions of the same comment. The first one will 
+    <br>
+    work with ccdoc and doxygen. The second one will only work with ccdoc because 
+    <br>
+    it uses the @suffix directive.<br>
+  </p>
+  <pre>// Works with doxygen and ccdoc. Note that /*!&lt; is also supported.
+void this_function();
+  /**&lt;
+   * This function does stuff.
+   * This function is related to @link other_function @end_link .
+   * @author A. Programmer.
+   * @version 1.0
+   */
+
+void this_function();
+  /**
+   * This function does stuff.
+   * This function is related to @link other_function @end_link .
+   * @author A. Programmer.
+   * @version 1.0
+   * @suffix
+   */
+</pre>
+</blockquote>
+<h4>Example 3: Suffix style single-line comments</h4>
+<blockquote> 
+  <p>The example below shows two versions of the same comment. The first one will 
+    <br>
+    work with ccdoc and doxygen. The second one will only work with ccdoc because 
+    <br>
+    it uses the //@- suffix comment type.<br>
+  </p>
+  <pre>// Works with doxygen and ccdoc. Note that //!&lt; is also supported.
+void this_function();
+  ///&lt; This function does stuff.
+
+void this_function();
+  //@- This function does stuff.
+</pre>
+</blockquote>
+<div align="left"><a name="faq_007"></a> </div>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h3>FAQ 07:<br>
+        What is the difference between ccdoc and doxygen?</h3>
+    </td>
+    <td nowrap valign="top"> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#faq_006">&lt;</a> <a href="#faq_008">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p align="left"><b>Date: 2003/02/23</b></p>
+<p align="left">I am not an expert on doxygen but here is my understanding of 
+  the differences between the two.</p>
+<p align="left">Ccdoc is an interface documentation tool. It is meant to be used 
+  by package developers who want to generate documentation for other developers 
+  who wish to use their systems. As such, it is only meant to document the header 
+  files that. Also, it only generates HTML.</p>
+<p align="left">Doxygen is a complete source code documentation and browsing system. 
+  It documents everything (the internal headers, the external headers and the 
+  source code) and is very useful for package maintainers and developers. It also 
+  generates good interface documentation and some cool class diagrams. Doxygen 
+  generates HTML, XML, LaTex, RTF and other formats.</p>
+<p align="left">Here is what I have been told by ccdoc users:</p>
+<ul>
+  <li>Ccdoc does a better job of handling certain C++ constructs, specifically 
+    namespaces (especially anonymous namespaces) and templates.<br>
+    <i>I would be very interested understanding more about this because I use 
+    ccdoc to document our local copy of STL so that I can browse it. I have never 
+    tried this with doxygen.</i></li>
+  <li>Ccdoc is faster than doxygen which is not suprising since it does less. 
+    This makes it suitable for very large systems. I know of one company that 
+    uses on a 10M LOC code base. The documentation is generated in about 30 minutes.</li>
+  <li>Ccdoc is simpler to use. My own experience is that both tools are pretty 
+    easy to use. Doxygen requires a configuration file and ccdoc uses command 
+    line switches.<br>
+    <i>I think that both approaches work equally well.</i></li>
+  <li>They like the output format better.<br>
+    <i> Of course the ones that don't like the output format switch to doxygen 
+    and I never hear about it.</i></li>
+</ul>
+<p align="left">It is interesting to note that I did a survey in the summer of 
+  2002 to determine whether I should drop ccdoc in favor of doxygen. I received 
+  about 30 responses which was good since the survey was posted to my web page 
+  and was not specifically targetted to anyone because I am totally anti-spam. 
+  All of the respondents asked me to continue to support ccdoc for the reasons 
+  cited above.</p>
+<p align="left">Since both tools are free I don't see any reason not to try both 
+  of them and use the one that works best for you.</p>
+<div align="left"><a name="faq_008"></a> </div>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h3>FAQ 08:<br>
+        Why is the on-line help so extensive?</h3>
+    </td>
+    <td nowrap valign="top"> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#faq_007">&lt;</a> <a href="#faq_009">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p align="left"><b>Date: 2003/02/23</b></p>
+<p align="left">It is the result of practicality and philosophy.</p>
+<p align="left">From a philosophical perspective, I believe that systems should 
+  be self documenting so the help can be found easily. </p>
+<p align="left">From a practical standpoint, the easiest thing to do from a documentation 
+  perspective is update the help text file while I am working. The upshot of this 
+  is that the on-line help is always the last word on the behavior of the program. 
+  When all the changes are finished and tested, I then update the users guide 
+  and/or the FAQ. </p>
+<div align="left"><a name="faq_009"></a> </div>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h3>FAQ 09:<br>
+        Do you have an example batch file for running ccdoc under Windows that 
+        I can use as a template?</h3>
+    </td>
+    <td nowrap valign="top"> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#faq_008">&lt;</a> <a href="#faq_010">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p align="left"><b>Date: 2003/02/23</b></p>
+<p align="left">Here is one that I recently used for a test case. I have added 
+  comments to make it bit more understandable.</p>
+<blockquote> 
+  <pre>@REM =====================================
+@REM Ccdoc batch file.
+@REM The argument is the output directory.
+@REM This batch file is run as follows:<br>@REM C:&gt; gendoc htdocs
+@REM =====================================
+if missing%1 == missing goto error
+
+@REM =====================================
+@REM Thoroughly clean out the target directory.
+@REM =====================================
+del /q %1\*.*
+
+@REM =====================================
+@REM Phase 1 processing.
+@REM =====================================
+ccdoc -db %1\ccdoc.db -pkg Utilities Utilities\export\*.h
+ccdoc -db %1\ccdoc.db -pkg Library Library\export\*.h
+
+@REM =====================================
+@REM Phase 2 processing.
+@REM =====================================
+ccdoc -db %1\ccdoc.db -index
+
+@REM =====================================
+@REM Phase 3 processing.
+@REM Note that I used forward slashes
+@REM here as a directory separator. I am
+@REM not sure whether it matters but this
+@REM definitely works.
+@REM Also notice that the -html argument
+@REM has a trailing directory separator.
+@REM This is very important because this
+@REM argument specifies a prefix NOT
+@REM necessarily a directory. With the
+@REM directory separator it definitely
+@REM indicates a directory in this case.
+@REM =====================================
+ccdoc -db %1\ccdoc.db -rptmac1 -html %1/ -rootfile %1/index.html -srcurl ../
+goto end
+
+error:
+@echo Missing directory name argument.
+
+:end</pre>
+</blockquote>
+<p align="left"></p>
+<p align="left"></p>
+<div align="left"><a name="faq_010"></a> </div>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h3>FAQ 10:<br>
+        How do I log an issue?</h3>
+    </td>
+    <td nowrap valign="top"> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#faq_009">&lt;</a> <a href="#faq_end">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p align="left"><b>Date: 2004/09/30</b></p>
+<p align="left">There is no automatic way to log an issue, just send me <a href="mailto:jdl@xilinx.com">e-mail</a> 
+  describing the issue and I will add it to the list.</p>
+<div align="left"><a name="faq_end"></a> </div>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h3>&nbsp;</h3>
+    </td>
+    <td nowrap valign="top"> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#faq_010">&lt;</a> <a href="#top">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<div align="center"><font size="2">$Id: faq.htm,v 1.9 2004/09/30 15:04:06 jlinoff Exp $ </font></div>
+<p>&nbsp;</p>
+</body>
+</html>

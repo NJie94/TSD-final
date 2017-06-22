@@ -1,0 +1,663 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>CcDoc Conversion Guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2 align="center"><font size="5"><a name="top"></a></font><font size="2"><a href="../index.html">ccdoc 
+  home page</a></font><font size="5"><br>
+  Conversion Guide<br>
+  v07a to v08<br>
+  Quick Reference</font><br>
+  <font size="3">Joe Linoff<br>
+  $Revision: 1.2 $<br>
+  $Date: 2003/02/26 18:45:28 $ </font></h2>
+<a name="contents"></a>
+<hr>
+<p>This document describes the major changes and features that you need to be 
+  aware of when moving from v0.7a to v0.8. For more information about any of these 
+  changes, see the <a href="http://www.joelinoff.com/ccdoc">users guide</a>.</p>
+<ol>
+  <li><a href="#change1">No ccdoc.index.html file.</a></li>
+  <li><a href="#change2">Unique HTML file names.</a></li>
+  <li><a href="#change3">Namespace support.</a></li>
+  <li><a href="#change4">//@{ .. //@}</a></li>
+  <li><a href="#change5">@deprecated</a></li>
+  <li><a href="#change6">@link</a></li>
+  <li><a href="#change7">@pkgdoctid</a></li>
+  <li><a href="#change8">@suffix</a></li>
+  <li> <a href="#change9">-db &lt;file&gt;</a></li>
+  <li><a href="#change10">-version</a></li>
+  <li><a href="#change11">-[no]cdsm</a></li>
+  <li><a href="#change12">All of the -rpt switches.</a></li>
+  <li><a href="#change13">-ctf is deprecated</a></li>
+  <li><a href="#change14">-imgurl is no longer needed</a></li>
+  <li><a href="#change15">-fgtext, -fglink, -fgvlink for better color control</a></li>
+  <li><a href="#change16">package tree view has changed</a></li>
+  <li><a href="#change17">template class method implementations</a></li>
+  <li><a href="#change18">-D option works in v0.8 but does not work in v0.7a</a></li>
+  <li><a href="#change19">Issue 0082: Short description syntax is different (in 
+    r24 or later).</a></li>
+  <li><a href="#change20">@since</a></li>
+  <li><a href="#change21">@throws</a></li>
+  <li><a href="#change22">{@link...}</a></li>
+</ol>
+<a name="change1"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 1: No ccdoc.index.html file.</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#top">&lt;</a> <a href="#change2">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>In previous versions of ccdoc, the root package was always named ccdoc.index.html. 
+  In this version this convention was changed because the root package was the 
+  same as any other package and I wanted the output to be consistent. Unfortunately, 
+  this means that many users might be stranded because they have already built 
+  systems that expect to find ccdoc.index.html. </p>
+<p>This example shows how to create a root package file with the name ccdoc.index.html.</p>
+<blockquote> 
+  <pre>
+% ccdoc -db simple.db simple.h -html webdocs/ \
+	-rootfile ccdoc.index.html</pre>
+</blockquote>
+<a name="change2"></a>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 2: Unique HTML file names.</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change1">&lt;</a> <a href="#change3">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>In previous versions of ccdoc, the output HTML file names were semi-random. 
+  In this version they are consistent and do not change between runs. This means 
+  that you can safely link to them from other documents.</p>
+<blockquote></blockquote>
+<a name="change3"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 3: Namespace support.</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change2">&lt;</a> <a href="#change4">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>Namespaces are supported.</p>
+<blockquote></blockquote>
+<a name="change4"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 4: //@{ .. //@}</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change3">&lt;</a> <a href="#change5">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>This version of ccdoc supports the C++ end of line comment form. This provides 
+  a way of guaranteeing that you don't have run-away comments in your code. An 
+  example is shown below:</p>
+<blockquote> 
+  <pre>// ================================================================
+//@{
+// This is a standard ccdoc style comment using the '//' comment
+// form. It is exactly the same as the previous form.
+// @author Foo Bar
+// @version v1.0
+// @see Stuff
+// @see &lt;a href=../webdocs/foo.htm&gt;Foo Package&lt;/a&gt;s
+//@}
+// ================================================================</pre>
+</blockquote>
+<a name="change5"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 5: @deprecated</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change4">&lt;</a> <a href="#change6">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>Specifies that this interface has been deprecated. You should specify what 
+  to use as an alternative. Here is an example of its use:</p>
+<blockquote> 
+  <pre>/**
+ * Get something.
+ * @deprecated Use this
+ * @link Better::Function new function
+ * to get better results.
+ */
+Something at_deprecated();</pre>
+</blockquote>
+<a name="change6"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 6: @link</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change5">&lt;</a> <a href="#change7">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>Generate a hyperlink to a ccdoc entity anywhere in the the code without generating 
+  an entry in the See section.</p>
+<p>The &lt;entity&gt; is the ccdoc entity to link to. The &lt;name&gt; is the 
+  user name of the link. It can consist of one or more tokens. Leading white space 
+  is ignored.</p>
+<p>If the name is not specified, the &lt;entity&gt; name is used.</p>
+<p>Here is an example of how it is used:</p>
+<blockquote> 
+  <pre>/**
+ * This function is closely associated with
+ * @link at_link2 the at_link1 function.
+ */
+void at_link1();
+/**
+ * This example shows how the @link uses the
+ * default name.
+ * This function is closely associated with
+ * @link at_link2
+ * .
+ */
+void at_link2();</pre>
+</blockquote>
+      
+<a name="change7"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 7: @pkgdoctid</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change6">&lt;</a> <a href="#change8">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>This directive must be specified after @pkgdoc. If it isn't a warning will 
+  be generated and the directive will be ignored.</p>
+<p> It allows you to redefine the pkgdoc title id. Normally when a package name 
+  is specified the title on the page is &quot;package &lt;name&gt;&quot;. With 
+  this directive you can change the &quot;package&quot; string to anything you 
+  like.</p>
+<p> It was added because some users would like to define different semantics for 
+  different packages, for example: some package might be subsystems, others might 
+  be modules and still others might really be packages. With this directive you 
+  can change the name in the generated HTML file to better reflect package semantics 
+  in your environment.</p>
+<p> The example below shows how to define three packages: A, B and C. A is the 
+  top level, B and C are children. A will be reported as a &quot;system&quot;, 
+  B will be reported as a &quot;module&quot; and C will be reported as a &quot;subsystem&quot;.</p>
+<blockquote> 
+  <pre>/**<br> * @pkgdoc A ../doc/A.html<br> * @pkgdoctid system<br> */<br>/**<br> * @pkgdoc A::B ../doc/A.B.html<br> * @pkgdoctid module<br> */<br>/**<br> * @pkgdoc A::C ../doc/A.C.html<br> * @pkgdoctid subsystem<br> */</pre>
+</blockquote>
+<p><a name="change8"></a> </p>
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 8: @suffix</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change7">&lt;</a> <a href="#change9">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>This is a suffix style comment, that is, it is attached to the preceding statement 
+  rather than the following statement as shown in the example below:</p>
+<blockquote> 
+  <pre>void at_suffix();
+  //@{
+  // This is the C++ style suffix comment
+  // form that some folks have requested.
+  // @suffix
+  //@}
+</pre>
+</blockquote>
+<blockquote></blockquote>
+<a name="change9"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 9: -db &lt;file&gt;</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change8">&lt;</a> <a href="#change10">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>The name of the ccdoc database. The -ctf switch has been deprecated and may 
+  go away in future versions.</p>
+<blockquote></blockquote>
+<blockquote></blockquote>
+<a name="change10"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 10: -version</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change9">&lt;</a> <a href="#change11">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>Report the program version. The version contains the program name, the version, 
+  the revision, the release date and the compilation id. Here is an example of 
+  what the -version reports:</p>
+<blockquote>
+  <p>% ccdoc -version<br>
+    ccdoc v0.8 r11 2001/09/02 bin_opt_msvc_MSWin32-4.0</p>
+</blockquote>
+<blockquote></blockquote>
+<blockquote></blockquote>
+<a name="change11"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 11: -[no]cdsms</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change10">&lt;</a> <a href="#change12">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>These are phase 1 switches.</p>
+<p>Turn on or off the creation of default special members for classes. Specifically 
+  this tells ccdoc to create (or not create) entries for default constructors, 
+  copy constructors, destructors and copy operators if they were not explicitly 
+  defined in the class. The default is -cdsm.</p>
+<blockquote></blockquote>
+<blockquote></blockquote>
+<a name="change12"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 12: -rpt switches</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change11">&lt;</a> <a href="#change13">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>These are phase 3 switches that give the user much more control over what is 
+  reported. Here is a summary of the switches. For additional details see the 
+  users guide.</p>
+<table width="90%" border="1" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="32%"><b>Switch</b></td>
+    <td width="68%"><b>Description</b></td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptcsd</td>
+    <td width="68%"><i>New</i>. Report class summary details. When -rptcsd is 
+      specified, the class summary page reports type, access and short description 
+      information. When -norptcsd is specified the class summary page only reports 
+      the names. The default is -rptcsd.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptdpa</td>
+    <td width="68%"><i>New</i>. If the package author is not specified, report 
+      the author as unascribed. The default is -norptdpa which tells ccdoc to 
+      ignore authors on packages unless they are explicitly specified.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptdpd</td>
+    <td width="68%"><i>New</i>. If the package description is not specified, report 
+      the description as unknown. The default is -norptdpd which tells ccdoc to 
+      ignore descriptions on packages unless they are explicitly specified.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptdpv</td>
+    <td width="68%"><i>New</i>. If the package version is not specified, report 
+      the version as unknown. The default is -norptdpv which tells ccdoc to ignore 
+      version on packages unless they are explicitly specified.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rpthpc</td>
+    <td width="68%"><i>New</i>. Report package contents hierarchically like the 
+      the class summary page. The default is -rpthpc.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptim</td>
+    <td width="68%"><i>New</i>. Report all inherited methods as though they were 
+      defined locally. This allows you to read all of the methods that are available 
+      on a given class. The default is -rptim.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptmac</td>
+    <td width="68%"><i>New</i>. Report macros. Default is -notprmac because there 
+      can be large numbers of guards in header files. If a system is designed 
+      with ccdoc in mind, the header guards can be surrounded by ccdoc guards 
+      (#ifndef __ccdoc__) which would make this data more useful.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptpri</td>
+    <td width="68%"><i>New</i>. Report private items. The default is -norptpri.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptpro</td>
+    <td width="68%"><i>New</i>. Report protected items. The default is -norptpro.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptpub</td>
+    <td width="68%"><i>New</i>. Report public items. The default is -rptpub.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rpttyp</td>
+    <td width="68%"><i>New</i>. Report typedefs. Default is -rpttyp.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-[no]rptun</td>
+    <td width="68%"><i>New</i>. Report unions. Default is -rptun.</td>
+  </tr>
+</table>
+<a name="change13"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 13: -ctf is deprecated</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change12">&lt;</a> <a href="#change14">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>The -ctf switch has been deprecated to inform the user that the database format 
+  has changed. The preferred switch -db. For additional details see the users 
+  guide.</p>
+<a name="change14"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 14: -imgurl is no longer needed</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change13">&lt;</a> <a href="#change15">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>The new version of ccdoc does not use images so this switch is not used. For 
+  additional details see the users guide.</p>
+<a name="change15"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 15: -fgtext, -fglink, -fgvlink for better color control</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change14">&lt;</a> <a href="#change16">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>These are phase 3 switches that give the user much more control over colors. 
+  For addition details see the users guide.</p>
+<table width="90%" border="1" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="32%"><b>Switch</b></td>
+    <td width="68%"><b>Description</b></td>
+  </tr>
+  <tr> 
+    <td width="32%">-bg &lt;color&gt;</td>
+    <td width="68%">The background color. The default is the default for the browser.</td>
+  </tr>
+  <tr> 
+    <td width="32%">-fgtext &lt;color&gt;</td>
+    <td width="68%">The foreground text color. The default is the default for 
+      the browser. </td>
+  </tr>
+  <tr> 
+    <td width="32%">-fglink &lt;color&gt;</td>
+    <td width="68%">The foreground link color. The default is the default for 
+      the browser. </td>
+  </tr>
+  <tr> 
+    <td width="32%">-fgvlink &lt;color&gt;</td>
+    <td width="68%">The foreground vlink color. The default is the default for 
+      the browser. These are used links.</td>
+  </tr>
+</table>
+<a name="change16"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 16: package tree view has changed</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change15">&lt;</a> <a href="#change17">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>The package view was previously organized as a tree with a large amount of 
+  horizontal white space. This has been changed in the new version to allow the 
+  package description to be incorporated. I also think that it is more readable.</p>
+<a name="change17"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 17: template class method implementations</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change16">&lt;</a> <a href="#change18">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>Template class method implementations do not work correctly in either version. 
+  Always document the template class method definition and tell ccdoc to ignore 
+  the implementation as shown in the example below:</p>
+<blockquote> 
+  <pre>
+#if !defined(header_guard)
+
+// Tell ccdoc to ignore the header_guard macro.
+#if !defined(__ccdoc__)
+#define header_guard
+#endif
+
+/**
+ * This is a template class.
+ */
+template &lt;class T&gt;
+class A {
+public:
+  /**
+   * Constructor.
+   */
+  A();
+  /**
+   * Destructor.
+   */
+  A();
+};
+// ================================================
+// Tell ccdoc to ignore the template class
+// implementations.
+// ================================================
+#if !defined(__ccdoc__)
+template &lt;class T&gt; A&lt;T&gt;::A()
+{
+}
+template &lt;class T&gt; A&lt;T&gt;::~A()
+{
+}
+#endif
+
+#endif // header guard</pre>
+</blockquote>
+<p>Although this is not strictly a difference between the versions it is important 
+  to remember the workaround.</p>
+<a name="change18"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 18: -D option works in v0.8 but does not work in v0.7a</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change17">&lt;</a> <a href="#change19">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>The -D option works in v0.8, but does not work in v0.7a, even though it is 
+  said to work in the v0.7a Users Guide. This can be confusing for users that 
+  have experience with v0.7a.</p>
+<a name="change19"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 19: Issue 0082: Short description syntax is different (in r24 
+        or later).</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change18">&lt;</a> <a href="#change20">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p>The short description syntax in older versions of ccdoc was not compliant with 
+  the javadoc standard. The newer versions of ccdoc have been upgraded to conform 
+  to the standard and a new switch -nojdsds was added to allow backward compatibility.</p>
+<a name="change20"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 20: @since</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change19">&lt;</a> <a href="#change21">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p><i>This directive is supported in r24 or later</i>. </p>
+<p>This is entity has only been available since the specified version. Ccdoc does 
+  not impose any syntax requirements on the version string so you can use anything 
+  you want.</p>
+<p>The example below shows how to use this directive.</p>
+<blockquote> 
+  <pre>class A {
+public:
+  /**
+   * Get the name of the object.
+   * @returns The name of the object as a &quot;C&quot; string.
+   * @deprecated This function will go away in build 12.
+   */
+  const char* get_name() const;
+  /**
+   * Get the name of the object.
+   * @param name The string to return the name to.s
+   * @since v1.2 Built 2001/10/10.
+   */
+  void get_name(string&amp; name) const;
+};
+</pre>
+</blockquote>
+<p>For more information see the users guide.</p>
+      <a name="change21"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 21: @throws</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change20">&lt;</a> <a href="#change22">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p><i>This directive is supported in r23 or later</i>. </p>
+<p>It is synonymous with @exception.</p>
+      <a name="change22"></a> 
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> 
+      <h2>Change 22: {@link...}</h2>
+    </td>
+    <td> 
+      <div align="right"> <font size="4"><a href="#contents">?</a> <a href="#top">^</a> 
+        <a href="#change21">&lt;</a> <a href="#top">&gt;</a></font></div>
+    </td>
+  </tr>
+</table>
+<p><i>This directive is supported in r24 or later</i>. </p>
+<p>It is very similar to the @link directive except that it can be embedded inside 
+  comment lines. Like @link, it tells ccdoc to generate a hyperlink to a ccdoc 
+  entity. Unlike @link the arguments are not optional.</p>
+<p>You must specify both the entity and the link name.</p>
+<p> You must not embed white space in the '{@link' specification. For example, 
+  '{ @ link' is not valid.</p>
+<p> Any number of link specifications are allowed on a single line.</p>
+<p> Invalid {@link...} specifications are output as simple text.</p>
+<p> The example below shows how it is used:</p>
+<blockquote> 
+  <pre>class A {
+public:
+  void fct1();
+  void fct2();
+  void fct3();
+  /**
+   * See {@link #fct1 x}, {@link #fct2 y} or {@link #fct3 x} to
+   * figure out how this stuff works.
+   */
+  void fct4();
+};</pre>
+</blockquote>
+<p>The &lt;entity&gt; is the ccdoc entity to link to. The &lt;name&gt; is the 
+  user name of the link. It can consist of one or more tokens. Leading white space 
+  is ignored.</p>
+<p>For more information see the users guide.</p>
+<hr>
+<div align="center"><font size="2">$Id: conversion_guide_to_08.htm,v 1.2 2003/02/26 18:45:28 jlinoff Exp $</font> </div>
+<p>&nbsp;</p>
+      </body>
+</html>

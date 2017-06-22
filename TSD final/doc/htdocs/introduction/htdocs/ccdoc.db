@@ -1,0 +1,294 @@
+ccdoc v0.8 verbose
+$ 0
+S b
+f 12 ../htdocs/ccdoc.db
+s
+c dreamers_inc
+0
+0
+pkg
+0 
+0
+0
+f 17 ../export/hello_world.h
+s
+a $comment-0
+1
+0
+cod
+0 
+b
+2e
+2 @{
+5 @file
+1 2
+17 ../export/hello_world.h
+2 10
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 3
+13  Copyright 2003 (c)
+37  Dreamers Incorporated is a company that sells software
+27  packages that make programming easier.
+a @long_desc
+1 3
+38  Our premier software package is the hello_world library
+39  that allows programmers in all walks of life to generate
+35  the hello world output in their own custom programs.
+7 @params
+1 0
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 1
+d I.M. Adreamer
+8 @version
+1 1
+5 $Id: ccdoc.db,v 1.2 2003/02/26 18:45:49 jlinoff Exp $
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 1
+5 @root
+5 @todo
+1 0
+2 @}
+s
+a $comment-1
+2
+0
+cop
+0 
+18
+2c
+2 @{
+5 @file
+1 2
+17 ../export/hello_world.h
+2 23
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+2c  The hello_world namespace associates all of
+31  the services related to the hello_world package.
+a @long_desc
+1 3
+31  This package exists to help programmers all over
+2e  the world output the standard "Hello, world!"
+15  with minimal effort.
+7 @params
+1 0
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 1
+d I.M. Adreamer
+8 @version
+1 1
+5 $Id: ccdoc.db,v 1.2 2003/02/26 18:45:49 jlinoff Exp $
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+a $comment-3
+3
+0
+cop
+0 
+19
+2c
+2 @{
+5 @file
+1 2
+17 ../export/hello_world.h
+2 23
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 2
+2c  The hello_world namespace associates all of
+31  the services related to the hello_world package.
+a @long_desc
+1 3
+31  This package exists to help programmers all over
+2e  the world output the standard "Hello, world!"
+15  with minimal effort.
+7 @params
+1 0
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 1
+d I.M. Adreamer
+8 @version
+1 1
+5 $Id: ccdoc.db,v 1.2 2003/02/26 18:45:49 jlinoff Exp $
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+27 +hello_world+../export/hello_world.h:25
+4
+0
+nsp
+0 
+19
+2
+9 namespace
+b hello_world
+s
+27 +hello_world+../export/hello_world.h:25
+5
+0
+nsx
+0 
+2a
+0
+s
+b hello_world
+6
+0
+nsp
+0 
+19
+0
+s
+a $comment-2
+7
+6
+cop
+0 
+28
+35
+2 @{
+5 @file
+1 2
+17 ../export/hello_world.h
+2 39
+5 @type
+1 1
+7 @prefix
+b @short_desc
+1 1
+22  Say "Hello, world!" to the world.
+a @long_desc
+1 9
+32  The example below shows how to use this function:
+c <blockquote>
+5 <pre>
+19  #include "hello_world.h"
+17  int main(int,char**) {
+16     hello_world::hi();
+2  }
+6 </pre>
+d </blockquote>
+7 @params
+1 1
+6 @param
+1 2
+2 os
+12 The output stream.
+8 @returns
+1 0
+b @exceptions
+1 0
+b @deprecated
+1 0
+8 @authors
+1 1
+10 I.M. Aprogrammer
+8 @version
+1 1
+5 $Id: ccdoc.db,v 1.2 2003/02/26 18:45:49 jlinoff Exp $
+5 @sees
+1 0
+6 @since
+1 0
+7 @source
+1 0
+4 @pkg
+1 0
+7 @pkgdoc
+1 0
+5 @todo
+1 0
+2 @}
+s
+2 hi
+8
+6
+fct
+0 
+29
+9
+4 void
+2 hi
+1 (
+7 ostream
+1 &
+2 os
+1 =
+4 cout
+1 )
+s
+b hello_world
+9
+0
+nsx
+0 
+19
+0
+s
+d hello_world_h
+a
+0
+m00
+0 
+f
+2
+6 define
+d hello_world_h
+e

@@ -1,0 +1,301 @@
+<html>
+<head>
+<title>CcDoc Introduction</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2 align="center"><a name="top"></a><font size="2"><a href="../../index.html">ccdoc 
+  home page</a></font><br>
+  Introduction<br>
+  <font size="2">$Revision: 1.2 $<br>
+  $Date: 2003/02/26 18:45:42 $ <br>
+  <a href="http://www.joelinoff.com">Joe Linoff</a></font></h2>
+<hr>
+<h3>History and Design Goals</h3>
+<p>Ccdoc is a free <a
+    href="http://java.sun.com/products/jdk/javadoc/index.html">javadoc</a> inspired 
+  tool that automatically generates HTML web documentation from C++ programs by 
+  parsing the source file headers. It was designed to aid collaboration between 
+  package users and package developers by documenting the interface. Although 
+  I tried very hard to stay true to the javadoc syntax and tool flow, I was forced 
+  to change (or add) a few things because of language differences like pre-processing 
+  directives, templates and namespaces.</p>
+<p>This tool was originally written by me, <a href="http://www.joelinoff.com">Joe 
+  Linoff</a>, in 1996 and has been updated as often as necessary to fix bugs or 
+  keep up with new language features.</p>
+<p></p>
+<p>Here are the design goals of ccdoc and some of the design decisions that were 
+  influenced by the goals.</p>
+<ul>
+  <li>It should be easy to use. 
+    <ul>
+      <li>There is no setup</li>
+      <li>You cannot specify include paths, although you may have to specify macro 
+        definitions.</li>
+      <li>It is easy to run. A simple command line invocation is all that is needed 
+        to document an entire system (in many cases).</li>
+    </ul>
+  </li>
+  <li>Controllable 
+    <ul>
+      <li>You can control which sections of code that ccdoc processes.</li>
+      <li>You can generate your own output format by parsing the database format.</li>
+      <li>You can modify the source code to add or remove your features.</li>
+    </ul>
+  </li>
+  <li>Robust 
+    <ul>
+      <li>A number of regression tests have been added to verify the operation 
+        of this program.</li>
+      <li>Uses STL extensively.</li>
+    </ul>
+  </li>
+</ul>
+<p>If you are interested in being added to my CcDoc mailing list, please send 
+  me e-mail by clicking <a
+    href="mailto:jdl@xilinx.com,joe@joelinoff.com?subject=CcDoc Registration">here</a>. 
+  The mailing list is not disclosed to anyone (other than the other participants). 
+  I only use it to send out infrequent status updates.</p>
+<p>The ccdoc web site provides a number of resources to help you use this tool. 
+  If you want to document some code, the best place to start is the next section. 
+  After that take a look at the best practices document and the users guide.</p>
+<p>If you want to port ccdoc to another platform, take a look at the porting guide.</p>
+<hr>
+<h3>Usage Introduction</h3>
+<p>This section briefly introduces how to use ccdoc for a very simple &quot;Hello, 
+  world!&quot; type example. This will give you a general flavor of how this tool 
+  works but first here is a screen shot showing the flow from the source file 
+  (in the upper left) to the HTML documentation (on the right).</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 1. Overview Screen Shot</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre><img src="screen_shot.jpg" width="785" height="592"></pre>
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</blockquote>
+<p>In this example you are a programmer who is developing a package that will 
+  be used by other programmers. The other programmers want to know how to use 
+  your package but don't want (or need) to understand the source code. Your charter 
+  is to produce documentation that can be used by your clients but you have the 
+  challenge of making sure it describes how you expect them to use the package 
+  and you have to keep it up to date as the package changes over time.</p>
+<p>Your package is called the hello_world package. It provides a single function 
+  that prints &quot;Hello, world!&quot; to cout. Shown below is your source directory 
+  setup:</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 2. The example directory structure.</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre>hello_world --+--&gt; export ------&gt; hello_world.h<br>              |
+              +--&gt; src -----+---&gt; Makefile
+                            +---&gt; hello_world.cc</pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>The initial version of the hello_world.h file looks like this:</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 3. hello_world.h (no comments)</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre>#<font color="#CC33CC">ifndef</font> <font color="#CC9933">hello_world_h</font>
+#<font color="#CC33CC">define</font> <font color="#CC9933">hello_world_h</font>
+
+<font color="#9966FF">namespace</font> <font color="#009900">hello_world</font> {
+   <font color="#009900">void</font> <font color="#0066FF">hi</font>(<font color="#009900">ostream</font>&amp; <font color="#CC9933">os</font> = cout);
+}
+
+#<font color="#CC33CC">endif</font></pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>You now decide that you want to use ccdoc, so the first step is to go to the 
+  ccdoc web site and download the executable. The executable is always called 
+  ccdoc.exe and the only thing that you need to do to use it is install it somewhere 
+  where your PATH variable can find it. To uninstall ccdoc all you have to do 
+  is delete the executable. This example assumes that ccdoc.exe has already been 
+  installed. </p>
+<p>Here is how you could update the header file with ccdoc comments:</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 4. hello_world.h (with ccdoc comments)</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre><font color="#A53A55">/**<br> * Copyright 2003 (c)
+ * Dreamers Incorporated is a company that sells software<br> * packages that make programming easier.<br> * Our premier software package is the hello_world library<br> * that allows programmers in all walks of life to generate<br> * the hello world output in their own custom programs.<br> * @author I.M. Adreamer<br> * @version $Id: introduction.htm,v 1.2 2003/02/26 18:45:42 jlinoff Exp $<br> * @pkgdoc @root<br> */</font>
+#<font color="#CC33CC">ifndef</font> <font color="#CC9933">hello_world_h</font>
+#<font color="#CC33CC">define</font> <font color="#CC9933">hello_world_h</font>
+<br><font color="#A53A55">/**
+ * The hello_world namespace associates all of
+ * the services related to the hello_world package.
+ * This package exists to help programmers all over<br> * the world output the standard &quot;Hello, world!&quot;<br> * with minimal effort.
+ * @author I.M. Adreamer
+ * @version $Id: introduction.htm,v 1.2 2003/02/26 18:45:42 jlinoff Exp $
+ */
+</font><font color="#9966FF">namespace</font> <font color="#009900">hello_world</font> {
+<font color="#A53A55">   /**
+    * Say &quot;Hello, world!&quot; to the world.
+    * The example below shows how to use this function:
+    *&lt;blockquote&gt;
+    *&lt;pre&gt;
+    *@@ #include &quot;hello_world.h&quot;
+    *@@ int main(int,char**) {
+    *@@    hello_world::hi();
+    *@@ }
+    *&lt;/pre&gt;
+    *&lt;/blockquote&gt;
+    * @param os The output stream.
+    * @author I.M. Aprogrammer<br>    * @version $Id: introduction.htm,v 1.2 2003/02/26 18:45:42 jlinoff Exp $<br>    */
+</font><font color="#009900">   void</font> <font color="#0066FF">hi</font>(<font color="#009900">ostream</font>&amp; <font color="#CC9933">os</font> = cout);
+}
+
+#<font color="#CC33CC">endif</font></pre>
+      </td>
+    </tr>
+  </table>
+</blockquote>
+<p>As you can see, anyone reading this header file would know several important 
+  things:</p>
+<ol>
+  <li>Who the author of the package is.</li>
+  <li>What the version is.</li>
+  <li>What the intent of the package is.</li>
+  <li>How to use the hi() function.</li>
+</ol>
+<p>To create the associated web documentation you would create another directory 
+  that was accessible from the web (it will be called <i>htdocs</i> in this example) 
+  and run ccdoc to create the documentation files in that directory. As shown 
+  below, the ccdoc command was added to the make file so that the web based documentation 
+  is automatically updated each time the header file is changed.</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 5. Makefile target for ccdoc</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre><font color="#A53A55"># Create the ccdoc documentation if the header file changed.</font>
+<font color="#0066FF">../htdocs/ccdoc.db</font> : ../htdocs ../export/hello_world.h
+        rm -f ../htdocs/*
+        ccdoc.exe -db ../htdocs/ccdoc.db \
+                ../export/hello_world.h \
+                -index \
+                -root dreamers_inc \
+                -rootfile ../htdocs/index.html \
+                -html ../htdocs/
+        <br><font color="#A53A55"># Create the htdocs directory, if necessary.</font>
+<font color="#0066FF">../htdocs</font> : ; @mkdir $@</pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>When this make target is run, the htdocs directory is created with the following 
+  files:</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 6. Generated Documentation Files</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre>ccdoc.class_summary.html<br>ccdoc.db<br>ccdoc.dreamers_inc.hello_world.hi.void.hi.-28.ostream.-26.os.-3d.cout.-29.fct.html<br>ccdoc.dreamers_inc.hello_world.nsp.html<br>index.html</pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>Here is what the documentation looks like from a browser:</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 7. htdocs/index.html</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre><img src="dreamers_inc.jpg" width="545" height="616"></pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>When you click on the hello_world namespace you will see this page:</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 8. The hello_world namespace documentation</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre><img src="hello_world.jpg" width="517" height="630"></pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>When you click on the hi function you will see this page.</p>
+<blockquote> 
+  <table width="0%" border="1" cellspacing="0" cellpadding="2">
+    <tr> 
+      <td> 
+        <div align="center"><b>Figure 9. The hi() function documentation</b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <pre><img src="hi.jpg" width="545" height="630"></pre>
+      </td>
+    </tr>
+  </table>
+  
+</blockquote>
+<p>As this example demonstrates, ccdoc enables you to create web documentation 
+  to describe your interface. It also allows you to tie that documentation in 
+  with your existing site documentation.</p>
+<p>What this example doesn't show are the many user configurable options that 
+  you can use to customize the generated documentation. For example, you might 
+  want to change the trailer so that it references your company and allows clients 
+  to submit requests to you (not me). This is done using the -trailer switch. 
+  For more information about this switch and everything else that ccdoc has to 
+  offer, see the users guide. For more style and usage information take a look 
+  at the best practices document </p>
+<hr>
+<div align="center"><font size="2">$Id: introduction.htm,v 1.2 2003/02/26 18:45:42 jlinoff Exp $</font> </div>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+</body>
+</html>
